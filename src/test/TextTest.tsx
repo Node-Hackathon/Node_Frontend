@@ -27,6 +27,7 @@ export default function TextTest() {
       <Body2 color={theme.colors.textNeutral}>Body2</Body2>
       <Body3 color={theme.colors.textNeutral}>Body3</Body3>
       <Body4 color={theme.colors.textNeutral}>Body4</Body4>
+      <br />
       <Label1 color={theme.colors.textNeutral}>Label1</Label1>
       <Label2 color={theme.colors.textNeutral}>Label2</Label2>
       <Label3 color={theme.colors.textNeutral}>Label3</Label3>

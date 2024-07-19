@@ -4,11 +4,11 @@ import { theme } from '../../styles/theme';
 
 const Title = styled.h1<TextType>`
   color: ${({ color }) => color || `${theme.colors.textBlack}`};
-  font-family: 'Pretendard';
+  white-space: nowrap;
 `;
 const Typography = styled.span<TextType>`
   color: ${({ color }) => color || `${theme.colors.textBlack}`};
-  font-family: 'Pretendard';
+  white-space: nowrap;
 `;
 
 const Title1 = styled(Title)`
