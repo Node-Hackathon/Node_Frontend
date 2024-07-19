@@ -5,6 +5,12 @@ export const GlobalStyle = styled.createGlobalStyle`
     box-sizing: border-box;
   }
 
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
   body {
     font-family:
       'Pretendard',
@@ -25,13 +31,15 @@ export const GlobalStyle = styled.createGlobalStyle`
     line-height: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    max-width: 767px;
+    margin: 0 auto;
+    padding: 0;
   }
 
   ::-webkit-scrollbar {
     display: none;
   }
 
-  body,
   div,
   dl,
   dd,
