@@ -14,7 +14,7 @@ const fadeIn = keyframes`
   0% {
     opacity: 0;
   }
-  50% {
+  100% {
     opacity: 1;
   }
 `;
@@ -24,7 +24,7 @@ export const LandingContainer = styled.div`
   padding: 10.63rem 0 5rem;
   overflow-x: hidden;
   cursor: pointer;
-  animation: ${fadeIn} 2s ease-in-out;
+  animation: ${fadeIn} 1.5s ease-in-out;
 `;
 
 export const LandingBox = styled.div`
