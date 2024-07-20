@@ -1,3 +1,7 @@
+import { useOutlet } from 'react-router-dom';
+
 export default function Home() {
-  return <>임시 홈</>;
+  const outlet = useOutlet();
+
+  return <>{outlet}</>;
 }

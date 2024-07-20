@@ -5,6 +5,7 @@ import { theme } from '../../styles/theme';
 import Input from '../../components/input/Input';
 import { PrimaryButton } from '../../components/button/Button';
 import { useSignIn } from './events';
+import { Link } from 'react-router-dom';
 
 export default function SignIn() {
   const { register, handleSubmit, errors, handleSignIn } = useSignIn();
@@ -40,7 +41,9 @@ export default function SignIn() {
             로그인
           </PrimaryButton>
         </SignInForm>
-        <Label7 color={theme.colors.textHeavy}>회원가입</Label7>
+        <Link to="/signUp">
+          <Label7 color={theme.colors.textHeavy}>회원가입</Label7>
+        </Link>
       </SignInLayout>
     </SignInContainer>
   );
