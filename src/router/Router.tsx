@@ -4,6 +4,7 @@ import TextTest from '../test/TextTest';
 import LandingPage from '../pages/landing/LandingPage';
 import SignInPage from '../pages/signIn/SignInPage';
 import InputTest from '../test/InputTest';
+import ButtonTest from '../test/ButtonTest';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: 'input',
         element: <InputTest />,
+      },
+      {
+        path: 'button',
+        element: <ButtonTest />,
       },
     ],
   },
