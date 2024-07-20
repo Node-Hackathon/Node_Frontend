@@ -21,7 +21,7 @@ function PasswordInput({ placeholder, name, register, errors, size }: PasswordIn
         {...register}
         placeholder={placeholder}
         size={size}
-        isError={!!errors[name]}
+        $iserror={!!errors[name]}
         name={name}
       />
       <InputIcon onClick={handleTogglePasswords}>
@@ -54,7 +54,7 @@ function Input({ type, label, placeholder, name, register, errors, size }: Input
             {...register}
             placeholder={placeholder}
             size={size}
-            isError={!!errors[name]}
+            $iserror={!!errors[name]}
             name={name}
           />
         )}

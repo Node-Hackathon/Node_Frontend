@@ -24,7 +24,7 @@ export const InputBase = styled.input<InputStyleType>`
   width: ${({ size }) => (size === 'l' ? '20rem' : '10rem')};
   height: 3.5rem;
   border-radius: 0.5rem;
-  border: 1px solid ${({ isError }) => (isError ? theme.colors.error : theme.colors.textNormal)};
+  border: 1px solid ${({ $iserror }) => ($iserror ? theme.colors.error : theme.colors.textNormal)};
   background-color: ${theme.colors.backgroundNormal};
   padding: 0 ${({ name }) => (name === 'password' ? '3.5rem' : '1rem')} 0 1rem;
   font-size: 1rem;
@@ -37,7 +37,7 @@ export const InputBase = styled.input<InputStyleType>`
 
   &:focus {
     border: 1px solid
-      ${({ isError }) => (isError ? theme.colors.error : theme.colors.primaryNormal)};
+      ${({ $iserror }) => ($iserror ? theme.colors.error : theme.colors.primaryNormal)};
   }
 `;
 

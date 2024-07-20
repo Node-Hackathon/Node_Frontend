@@ -16,5 +16,5 @@ export interface InputType extends PasswordInputType {
 export interface InputStyleType {
   name?: string;
   size?: 'l' | 's';
-  isError?: boolean;
+  $iserror?: boolean;
 }

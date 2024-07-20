@@ -1,5 +1,6 @@
 export interface ButtonType {
   size: 's' | 'm' | 'l';
-  onClick: () => void;
+  onClick?: () => void;
   disabled?: boolean;
+  type?: string;
 }
