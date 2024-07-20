@@ -8,7 +8,11 @@ export default function ProgressBar({ currentStep, prevStep, totalStep, isForwar
 
   return (
     <ProgressContainer>
-      <ProgressGradient width={progressWidth} prevWidth={prevProgressWidth} isForward={isForward} />
+      <ProgressGradient
+        $width={progressWidth}
+        $prevWidth={prevProgressWidth}
+        $isForward={isForward}
+      />
     </ProgressContainer>
   );
 }

@@ -27,18 +27,18 @@ export const ProgressContainer = styled.div`
 `;
 
 export const ProgressGradient = styled.div<{
-  width: number;
-  prevWidth: number;
-  isForward: boolean;
+  $width: number;
+  $prevWidth: number;
+  $isForward: boolean;
 }>`
-  ${({ prevWidth, width, isForward }) => css`
-    width: ${width}%;
+  ${({ $prevWidth, $width, $isForward }) => css`
+    width: ${$width}%;
     height: 100%;
     border-radius: 3.125rem;
     background: linear-gradient(90deg, #5fcf89 2.82%, #00b644 100%);
-    animation: ${isForward
-        ? forwardAnimation(prevWidth, width)
-        : reverseAnimation(width, prevWidth)}
+    animation: ${$isForward
+        ? forwardAnimation($prevWidth, $width)
+        : reverseAnimation($width, $prevWidth)}
       2s ease forwards;
   `}
 `;
