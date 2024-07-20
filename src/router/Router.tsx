@@ -3,6 +3,7 @@ import Root from '../pages/Root';
 import TextTest from '../test/TextTest';
 import LandingPage from '../pages/landing/LandingPage';
 import SignInPage from '../pages/signIn/SignInPage';
+import InputTest from '../test/InputTest';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: 'text',
         element: <TextTest />,
+      },
+      {
+        path: 'input',
+        element: <InputTest />,
       },
     ],
   },

@@ -23,7 +23,6 @@ export const LandingContainer = styled.div`
   height: 100%;
   padding: 10.63rem 0 5rem;
   overflow-x: hidden;
-  cursor: pointer;
   animation: ${fadeIn} 1.5s ease-in-out;
 `;
 

@@ -67,6 +67,10 @@ const Label6 = styled(Typography)`
   ${theme.typography.label6};
 `;
 
+const Label7 = styled(Typography)`
+  ${theme.typography.label7};
+`;
+
 export {
   Title1,
   Title2,
@@ -82,4 +86,5 @@ export {
   Label4,
   Label5,
   Label6,
+  Label7,
 };

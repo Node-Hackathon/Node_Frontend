@@ -1,3 +1,10 @@
+import { SignInContainer } from './styles';
+import { ReactComponent as Logo } from '../../assets/images/Logo.svg';
+
 export default function SignIn() {
-  return <>로그인</>;
+  return (
+    <SignInContainer>
+      <Logo />
+    </SignInContainer>
+  );
 }
