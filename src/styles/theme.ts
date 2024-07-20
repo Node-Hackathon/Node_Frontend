@@ -17,7 +17,7 @@ const colors = {
   textPoint: '#5D5D5D',
   textNeutral: '#333333',
   textBlack: '#000000',
-  error: 'EC5555',
+  error: '#EC5555',
 };
 
 const typography = {
@@ -35,6 +35,7 @@ const typography = {
   label4: `font-size: 0.9375rem; font-weight: 600;`,
   label5: `font-size: 0.875rem; font-weight: 600;`,
   label6: `font-size: 0.875rem; font-weight: 500;`,
+  label7: `font-size: 0.75rem; font-weight: 600;`,
 };
 
 export type ColorsType = typeof colors;
