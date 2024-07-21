@@ -39,6 +39,6 @@ export const ProgressGradient = styled.div<{
     animation: ${$isForward
         ? forwardAnimation($prevWidth, $width)
         : reverseAnimation($width, $prevWidth)}
-      2s ease forwards;
+      1s ease forwards;
   `}
 `;
