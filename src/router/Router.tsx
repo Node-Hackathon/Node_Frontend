@@ -8,6 +8,7 @@ import ButtonTest from '../test/ButtonTest';
 import SignUpPage from '../pages/signUp/SignUpPage';
 import Home from '../pages/Home';
 import MainPage from '../pages/main/MainPage';
+import ProgressTest from '../test/ProgressTest';
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: 'button',
         element: <ButtonTest />,
+      },
+      {
+        path: 'progress',
+        element: <ProgressTest />,
       },
     ],
   },
