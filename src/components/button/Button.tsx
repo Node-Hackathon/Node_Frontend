@@ -5,7 +5,6 @@ import { theme } from '../../styles/theme';
 const BaseButton = styled.button<ButtonType>`
   width: ${({ size }) => (size === 'l' ? '20rem' : size === 'm' ? '9.6875rem' : 'auto')};
   height: ${({ size }) => (size === 's' ? '2rem' : '3.5rem')};
-  font-family: 'Pretendard';
   font-size: 1rem;
   font-weight: 600;
   padding: 0 1.47rem;

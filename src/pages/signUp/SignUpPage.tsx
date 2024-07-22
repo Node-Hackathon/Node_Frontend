@@ -25,6 +25,7 @@ export default function SignUpPage() {
     firstHandleSubmit,
     firstErrors,
     onFirstSubmit,
+    firstSetValue,
   } = useSignUp();
 
   return (
@@ -55,6 +56,7 @@ export default function SignUpPage() {
           firstHandleSubmit={firstHandleSubmit}
           errors={firstErrors}
           onFirstSubmit={onFirstSubmit}
+          firstSetValue={firstSetValue}
         />
       )}
     </SignUpContainer>

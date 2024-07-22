@@ -1,4 +1,10 @@
-import { DeepMap, FieldError, FieldValues, UseFormHandleSubmit } from 'react-hook-form';
+import {
+  DeepMap,
+  FieldError,
+  FieldValues,
+  UseFormHandleSubmit,
+  UseFormSetValue,
+} from 'react-hook-form';
 import { SignUpFirstFormType, SignUpMessageFormType } from '../../services/sign/types';
 
 interface SignUpType {
@@ -17,5 +23,7 @@ export interface SignUpMessageType extends SignUpType {
 
 export interface SignUpFirstType extends SignUpType {
   firstHandleSubmit: UseFormHandleSubmit<SignUpFirstFormType, undefined>;
-  onFirstSubmit: () => void;
+  // eslint-disable-next-line no-unused-vars
+  onFirstSubmit: (data: SignUpFirstFormType) => void;
+  firstSetValue: UseFormSetValue<SignUpFirstFormType>;
 }

@@ -113,10 +113,13 @@ export const useSignUp = () => {
   const {
     register: firstRegister,
     handleSubmit: firstHandleSubmit,
+    setValue: firstSetValue,
     formState: { errors: firstErrors },
   } = useForm<SignUpFirstFormType>();
 
-  const onFirstSubmit = () => {};
+  const onFirstSubmit = (data: SignUpFirstFormType) => {
+    console.log(data);
+  };
 
   return {
     messageRegister,
@@ -130,5 +133,6 @@ export const useSignUp = () => {
     isPhoneVerified,
     buttonText,
     formattedCountdown,
+    firstSetValue,
   };
 };

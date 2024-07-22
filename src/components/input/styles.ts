@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Label5, Label7 } from '../text/Text';
 import { theme } from '../../styles/theme';
 import { InputStyleType } from './types';
+import { SecondaryButton } from '../button/Button';
 
 export const InputContainer = styled.div`
   display: flex;
@@ -51,6 +52,21 @@ export const InputTimer = styled.div`
   position: absolute;
   top: 1.19rem;
   right: 1rem;
+`;
+
+export const GenderInputBox = styled.div`
+  display: flex;
+  width: 20rem;
+  gap: 0.62rem;
+`;
+
+export const GenderButton = styled(SecondaryButton)<{ selected: boolean }>`
+  width: 100%;
+  background-color: ${({ selected }) =>
+    selected ? theme.colors.primaryNormal : theme.colors.backgroundNormal};
+  color: ${({ selected }) => (selected ? theme.colors.backgroundNormal : theme.colors.textLight)};
+  border: ${({ selected }) => (selected ? 'none' : `1px solid ${theme.colors.primaryStrong}`)};
+  cursor: pointer;
 `;
 
 export const InputMessage = styled(Label7)`
