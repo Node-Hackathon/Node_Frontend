@@ -47,6 +47,12 @@ export const InputIcon = styled.div`
   right: 1rem;
 `;
 
+export const InputTimer = styled.div`
+  position: absolute;
+  top: 1.19rem;
+  right: 1rem;
+`;
+
 export const InputMessage = styled(Label7)`
   margin-left: 0.38rem;
 `;

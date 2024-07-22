@@ -7,9 +7,12 @@ export interface PasswordInputType {
   errors: DeepMap<FieldValues, FieldError>;
   size?: 'l' | 's';
 }
-
-export interface InputType extends PasswordInputType {
+export interface VerifyInputType extends PasswordInputType {
   type: string;
+  formattedCountdown?: string;
+}
+
+export interface InputType extends VerifyInputType {
   label: string;
 }
 

@@ -7,9 +7,11 @@ import {
   InputPlaceholder,
   InputBox,
   InputIcon,
+  InputTimer,
 } from './styles';
-import { InputType, PasswordInputType } from './types';
+import { InputType, PasswordInputType, VerifyInputType } from './types';
 import { IoMdEye, IoMdEyeOff } from 'react-icons/io';
+import { Label2 } from '../text/Text';
 
 function PasswordInput({ placeholder, name, register, errors, size }: PasswordInputType) {
   const { showPassword, handleTogglePasswords } = useTogglePassword();
@@ -35,7 +37,42 @@ function PasswordInput({ placeholder, name, register, errors, size }: PasswordIn
   );
 }
 
-function Input({ type, label, placeholder, name, register, errors, size }: InputType) {
+function VerifyInput({
+  placeholder,
+  name,
+  register,
+  errors,
+  size,
+  type,
+  formattedCountdown,
+}: VerifyInputType) {
+  return (
+    <>
+      <InputBase
+        type={type}
+        {...register}
+        placeholder={placeholder}
+        size={size}
+        $iserror={!!errors[name]}
+        name={name}
+      />
+      <InputTimer>
+        <Label2 color={theme.colors.primaryStrong}>{formattedCountdown}</Label2>
+      </InputTimer>
+    </>
+  );
+}
+
+function Input({
+  type,
+  label,
+  placeholder,
+  name,
+  register,
+  errors,
+  size,
+  formattedCountdown,
+}: InputType) {
   return (
     <InputContainer>
       <InputPlaceholder>{label}</InputPlaceholder>
@@ -47,6 +84,16 @@ function Input({ type, label, placeholder, name, register, errors, size }: Input
             register={register}
             errors={errors}
             size={size}
+          />
+        ) : name === 'code' ? (
+          <VerifyInput
+            placeholder={placeholder}
+            name={name}
+            register={register}
+            errors={errors}
+            size={size}
+            type={type}
+            formattedCountdown={formattedCountdown}
           />
         ) : (
           <InputBase

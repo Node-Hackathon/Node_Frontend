@@ -29,6 +29,6 @@ export const signApi = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useSendMessageMutation } = signApi;
+export const { useSendMessageMutation, useVerifyMessageMutation } = signApi;
 
 export default signApi;

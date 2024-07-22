@@ -17,6 +17,10 @@ const PrimaryButton = styled(BaseButton)`
     disabled ? theme.colors.textNormal : theme.colors.primaryNormal};
   color: ${({ disabled }) => (disabled ? theme.colors.textLight : theme.colors.backgroundNormal)};
   border: none;
+
+  &:active {
+    background: ${theme.colors.primaryStrong};
+  }
 `;
 
 const SecondaryButton = styled(BaseButton)`
