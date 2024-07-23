@@ -31,6 +31,7 @@ export const useSignUp = () => {
     handleSubmit: messageHandleSubmit,
     setError: messageSetError,
     reset: messageReset,
+    setFocus: messageSetFocus,
     formState: { errors: messageErrors },
   } = useForm<SignUpMessageFormType>({
     defaultValues: {
@@ -39,6 +40,7 @@ export const useSignUp = () => {
     },
   });
 
+  // 타이머가 종료되면 초기화 후 버튼 텍스트 변경
   useEffect(() => {
     if (!isCountdownActive) return;
 
@@ -57,6 +59,13 @@ export const useSignUp = () => {
     return () => clearInterval(timer);
   }, [isCountdownActive]);
 
+  // 포커스 설정 useEffect
+  useEffect(() => {
+    if (isPhoneVerified) {
+      messageSetFocus('code');
+    }
+  }, [isPhoneVerified, messageSetFocus]);
+
   const formattedCountdown = `${Math.floor(countdown / 60)}:${(countdown % 60)
     .toString()
     .padStart(2, '0')}`;
@@ -72,13 +81,12 @@ export const useSignUp = () => {
     data: SignUpMessageFormType,
   ) => {
     try {
-      const response = await requestMessage(data.phone).unwrap();
+      await requestMessage(data.phone).unwrap();
       alert('인증번호 전송이 완료되었습니다.');
       setIsPhoneVerified(true);
       resetCountdown();
       messageReset({ code: '' });
       setButtonText('다음');
-      console.log(response);
     } catch (error) {
       console.error(error);
       alert('인증번호 발송이 실패했습니다.');
@@ -130,10 +138,10 @@ export const useSignUp = () => {
 
   const [requestFirstSignUp] = useFirstSignUpMutation();
 
+  // SignUpFirst 폼 제출 처리 함수
   const onFirstSubmit = async (data: SignUpFirstFormType) => {
     try {
-      const response = await requestFirstSignUp(data).unwrap();
-      console.log(response);
+      await requestFirstSignUp(data).unwrap();
       dispatch(nextStep());
     } catch (error) {
       console.error(error);

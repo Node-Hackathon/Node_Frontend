@@ -23,10 +23,13 @@ export const useGenderInput = (
   const [selectedGender, setSelectedGender] = useState('');
 
   // 버튼 클릭 시
-  const handleGenderChange = (gender: string) => {
-    setSelectedGender(gender);
-    firstSetValue?.(name, gender, { shouldValidate: true, shouldDirty: true });
-  };
+  const handleGenderChange = useCallback(
+    (gender: string) => {
+      setSelectedGender(gender);
+      firstSetValue?.(name, gender, { shouldValidate: true, shouldDirty: true });
+    },
+    [firstSetValue, name],
+  );
 
   return { selectedGender, setSelectedGender, handleGenderChange };
 };
@@ -45,9 +48,9 @@ export const useBirthInput = (
   const inputRef = useRef<HTMLDivElement>(null);
 
   // 인풋 클릭 처리
-  const handleInputClick = () => {
+  const handleInputClick = useCallback(() => {
     setIsCalendarOpen(!isCalendarOpen);
-  };
+  }, []);
 
   // 외부 클릭 시 캘린더 닫기
   useEffect(() => {
@@ -73,10 +76,10 @@ export const useBirthInput = (
   }, [selectedBirth, firstSetValue, name]);
 
   // 날짜 변경 시 상태 업데이트 및 캘린더 닫기
-  const handleDateChange = (date: Date) => {
+  const handleDateChange = useCallback((date: Date) => {
     setSelectedBirth(date);
     setIsCalendarOpen(false);
-  };
+  }, []);
 
   return {
     handleInputClick,
@@ -98,16 +101,21 @@ export const useAddressInput = (
   const [isPostOpen, setIsPostOpen] = useState(false);
   const [addressValue, setAddressValue] = useState('');
 
-  const handleAddressClick = () => {
+  // 인풋 클릭 처리
+  const handleAddressClick = useCallback(() => {
     setIsPostOpen(true);
-  };
+  }, []);
 
-  const completeHandler = (data: Address) => {
-    firstSetValue?.(name, data.address, { shouldValidate: true, shouldDirty: true });
-    setAddressValue(data.address);
-    firstClearErrors?.(name);
-    setIsPostOpen(false);
-  };
+  // 주소 선택 시 상태 업데이트 및 모달 닫기
+  const completeHandler = useCallback(
+    (data: Address) => {
+      firstSetValue?.(name, data.address, { shouldValidate: true, shouldDirty: true });
+      setAddressValue(data.address);
+      firstClearErrors?.(name);
+      setIsPostOpen(false);
+    },
+    [firstSetValue, name, firstClearErrors],
+  );
 
   return { isPostOpen, setIsPostOpen, addressValue, handleAddressClick, completeHandler };
 };
