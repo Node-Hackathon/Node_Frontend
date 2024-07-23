@@ -28,7 +28,12 @@ export const useSignUp = () => {
     setError: messageSetError,
     reset: messageReset,
     formState: { errors: messageErrors },
-  } = useForm<SignUpMessageFormType>({ mode: 'onBlur' });
+  } = useForm<SignUpMessageFormType>({
+    defaultValues: {
+      phone: '',
+      code: '',
+    },
+  });
 
   useEffect(() => {
     if (!isCountdownActive) return;
@@ -115,7 +120,16 @@ export const useSignUp = () => {
     handleSubmit: firstHandleSubmit,
     setValue: firstSetValue,
     formState: { errors: firstErrors },
-  } = useForm<SignUpFirstFormType>();
+  } = useForm<SignUpFirstFormType>({
+    defaultValues: {
+      name: '',
+      address: '',
+      birth: '',
+      gender: '',
+      height: '',
+      weight: '',
+    },
+  });
 
   const onFirstSubmit = (data: SignUpFirstFormType) => {
     console.log(data);

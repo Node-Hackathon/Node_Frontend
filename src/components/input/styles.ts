@@ -3,6 +3,8 @@ import { Label5, Label7 } from '../text/Text';
 import { theme } from '../../styles/theme';
 import { InputStyleType } from './types';
 import { SecondaryButton } from '../button/Button';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
 export const InputContainer = styled.div`
   display: flex;
@@ -22,7 +24,7 @@ export const InputBox = styled.div<InputStyleType>`
 `;
 
 export const InputBase = styled.input<InputStyleType>`
-  width: ${({ size }) => (size === 'l' ? '20rem' : '10rem')};
+  width: ${({ size }) => (size === 'l' ? '20rem' : '9.6875rem')};
   height: 3.5rem;
   border-radius: 0.5rem;
   border: 1px solid ${({ $iserror }) => ($iserror ? theme.colors.error : theme.colors.textNormal)};
@@ -40,6 +42,7 @@ export const InputBase = styled.input<InputStyleType>`
     border: 1px solid
       ${({ $iserror }) => ($iserror ? theme.colors.error : theme.colors.primaryNormal)};
   }
+  cursor: ${({ name }) => name === 'birth' && 'pointer'};
 `;
 
 export const InputIcon = styled.div`
@@ -57,17 +60,102 @@ export const InputTimer = styled.div`
 export const GenderInputBox = styled.div`
   display: flex;
   width: 20rem;
-  gap: 0.62rem;
+  justify-content: space-between;
 `;
 
 export const GenderButton = styled(SecondaryButton)<{ selected: boolean }>`
-  width: 100%;
+  width: 9.6875rem;
   background-color: ${({ selected }) =>
     selected ? theme.colors.primaryNormal : theme.colors.backgroundNormal};
   color: ${({ selected }) => (selected ? theme.colors.backgroundNormal : theme.colors.textLight)};
   border: ${({ selected }) => (selected ? 'none' : `1px solid ${theme.colors.primaryStrong}`)};
   cursor: pointer;
+  transition: background-color 0.3s;
+  transition: color 0.3s;
 `;
+
+export const CalendarWrapper = styled.div`
+  position: relative;
+
+  .react-calendar {
+    color: ${theme.colors.textNeutral};
+    border: 1px solid ${theme.colors.textNormal};
+    border-radius: 0.5rem;
+    position: absolute;
+    top: 4.28rem;
+    z-index: 10;
+    padding: 0.25rem;
+    font-family:
+      'Pretendard',
+      -apple-system,
+      BlinkMacSystemFont,
+      system-ui,
+      Roboto,
+      'Helvetica Neue',
+      'Segoe UI',
+      'Apple SD Gothic Neo',
+      'Noto Sans KR',
+      'Malgun Gothic',
+      'Apple Color Emoji',
+      'Segoe UI Emoji',
+      'Segoe UI Symbol',
+      sans-serif;
+  }
+
+  button {
+    background-color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 1rem 0.5rem;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: ${theme.colors.backgroundLight};
+    }
+  }
+
+  .react-calendar__navigation {
+    margin-bottom: 0.5rem;
+    justify-content: center;
+
+    button {
+      font-size: 1rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .react-calendar__month-view {
+    color: ${theme.colors.textNeutral};
+  }
+
+  .react-calendar__month-view__weekdays {
+    abbr {
+      text-decoration: none;
+    }
+  }
+
+  .react-calendar__month-view__days__day {
+    padding: 0.5rem 0.5rem 1.5rem;
+
+    &--weekend {
+      color: ${theme.colors.error};
+    }
+
+    &--neighboringMonth {
+      color: ${theme.colors.textLight};
+    }
+  }
+
+  .react-calendar__tile:enabled:focus,
+  .react-calendar__tile--active {
+    background-color: ${theme.colors.primaryNormal};
+    color: #fff;
+  }
+`;
+export const CalendarBox = styled(Calendar)``;
 
 export const InputMessage = styled(Label7)`
   margin-left: 0.38rem;

@@ -38,13 +38,14 @@ function SignUpFirst({
         <Input
           type="text"
           label="생년월일"
-          placeholder="생년월일을 8자리로 입력해주세요."
+          placeholder="생년월일을 선택해주세요."
           name="birth"
           size="l"
           register={register('birth', {
             required: '생년월일을 입력해주세요.',
           })}
           errors={errors}
+          firstSetValue={firstSetValue}
         />
         <SignUpInputPair>
           <Input

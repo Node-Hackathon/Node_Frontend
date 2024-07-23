@@ -29,5 +29,5 @@ export const SignUpInputBox = styled.div`
 
 export const SignUpInputPair = styled.div`
   display: flex;
-  gap: 0.63rem;
+  justify-content: space-between;
 `;

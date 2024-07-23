@@ -1,4 +1,5 @@
 import { theme } from '../../styles/theme';
+import BirthInput from './BirthInput';
 import GenderInput from './GenderInput';
 import PasswordInput from './PasswordInput';
 import { InputContainer, InputBase, InputMessage, InputPlaceholder, InputBox } from './styles';
@@ -43,6 +44,16 @@ function Input({
             name={name}
             register={register}
             errors={errors}
+            firstSetValue={firstSetValue}
+          />
+        ) : name === 'birth' ? (
+          <BirthInput
+            placeholder={placeholder}
+            name={name}
+            register={register}
+            errors={errors}
+            size={size}
+            type={type}
             firstSetValue={firstSetValue}
           />
         ) : (
