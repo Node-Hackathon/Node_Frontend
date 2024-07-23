@@ -26,6 +26,7 @@ export default function SignUpPage() {
     firstErrors,
     onFirstSubmit,
     firstSetValue,
+    firstClearErrors,
   } = useSignUp();
 
   return (
@@ -57,6 +58,7 @@ export default function SignUpPage() {
           errors={firstErrors}
           onFirstSubmit={onFirstSubmit}
           firstSetValue={firstSetValue}
+          firstClearErrors={firstClearErrors}
         />
       )}
     </SignUpContainer>

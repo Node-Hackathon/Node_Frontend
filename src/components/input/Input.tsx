@@ -1,4 +1,5 @@
 import { theme } from '../../styles/theme';
+import AddressInput from './AddressInput';
 import BirthInput from './BirthInput';
 import GenderInput from './GenderInput';
 import PasswordInput from './PasswordInput';
@@ -16,6 +17,7 @@ function Input({
   size,
   formattedCountdown,
   firstSetValue,
+  firstClearErrors,
 }: InputType) {
   return (
     <InputContainer>
@@ -55,6 +57,17 @@ function Input({
             size={size}
             type={type}
             firstSetValue={firstSetValue}
+          />
+        ) : name === 'address' ? (
+          <AddressInput
+            placeholder={placeholder}
+            name={name}
+            register={register}
+            errors={errors}
+            size={size}
+            type={type}
+            firstSetValue={firstSetValue}
+            firstClearErrors={firstClearErrors}
           />
         ) : (
           <InputBase

@@ -2,6 +2,7 @@ import {
   DeepMap,
   FieldError,
   FieldValues,
+  UseFormClearErrors,
   UseFormHandleSubmit,
   UseFormSetValue,
 } from 'react-hook-form';
@@ -26,4 +27,5 @@ export interface SignUpFirstType extends SignUpType {
   // eslint-disable-next-line no-unused-vars
   onFirstSubmit: (data: SignUpFirstFormType) => void;
   firstSetValue: UseFormSetValue<SignUpFirstFormType>;
+  firstClearErrors: UseFormClearErrors<SignUpFirstFormType>;
 }

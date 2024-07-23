@@ -1,5 +1,6 @@
+import Calendar from 'react-calendar';
 import { useBirthInput } from './events';
-import { CalendarBox, CalendarWrapper, InputBase } from './styles';
+import { CalendarWrapper, InputBase } from './styles';
 import { BirthInputType } from './types';
 
 export default function BirthInput({
@@ -35,7 +36,7 @@ export default function BirthInput({
         readOnly
       />
       {isCalendarOpen && (
-        <CalendarBox
+        <Calendar
           onChange={setSelectedBirth}
           value={selectedBirth}
           calendarType="gregory"

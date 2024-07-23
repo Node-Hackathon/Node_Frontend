@@ -10,6 +10,7 @@ function SignUpFirst({
   errors,
   onFirstSubmit,
   firstSetValue,
+  firstClearErrors,
 }: SignUpFirstType) {
   return (
     <SignUpForm onSubmit={firstHandleSubmit(onFirstSubmit)}>
@@ -42,31 +43,39 @@ function SignUpFirst({
           name="birth"
           size="l"
           register={register('birth', {
-            required: '생년월일을 입력해주세요.',
+            required: '생년월일을 선택해주세요.',
           })}
           errors={errors}
           firstSetValue={firstSetValue}
         />
         <SignUpInputPair>
           <Input
-            type="number"
+            type="text"
             label="키"
             placeholder="cm"
             name="height"
             size="s"
             register={register('height', {
               required: '키를 입력해주세요.',
+              pattern: {
+                value: /^[0-9]*$/,
+                message: '숫자만 입력해주세요.',
+              },
             })}
             errors={errors}
           />
           <Input
-            type="number"
+            type="text"
             label="몸무게"
             placeholder="kg"
             name="weight"
             size="s"
             register={register('weight', {
               required: '몸무게를 입력해주세요.',
+              pattern: {
+                value: /^[0-9]*$/,
+                message: '숫자만 입력해주세요.',
+              },
             })}
             errors={errors}
           />
@@ -81,6 +90,7 @@ function SignUpFirst({
             required: '주소를 입력해주세요.',
           })}
           errors={errors}
+          firstClearErrors={firstClearErrors}
         />
       </SignUpInputBox>
       <PrimaryButton size="l">다음</PrimaryButton>

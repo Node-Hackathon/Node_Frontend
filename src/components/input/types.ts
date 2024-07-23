@@ -1,4 +1,10 @@
-import { DeepMap, FieldError, FieldValues, UseFormSetValue } from 'react-hook-form';
+import {
+  DeepMap,
+  FieldError,
+  FieldValues,
+  UseFormClearErrors,
+  UseFormSetValue,
+} from 'react-hook-form';
 import { SignUpFirstFormType, SignUpMessageFormType } from '../../services/sign/types';
 
 export interface PasswordInputType {
@@ -26,6 +32,10 @@ export interface GenderInputType {
   firstSetValue?: UseFormSetValue<SignUpFirstFormType>;
 }
 
+export type BirthPiece = Date | null;
+
+export type SelectedBirth = BirthPiece | [BirthPiece, BirthPiece];
+
 export interface BirthInputType {
   name: keyof SignUpFirstFormType;
   register: any;
@@ -36,20 +46,28 @@ export interface BirthInputType {
   firstSetValue?: UseFormSetValue<SignUpFirstFormType>;
 }
 
-export type BirthPiece = Date | null;
-
-export type SelectedBirth = BirthPiece | [BirthPiece, BirthPiece];
+export interface AddressInputType {
+  name: keyof SignUpFirstFormType;
+  register: any;
+  errors: DeepMap<FieldValues, FieldError>;
+  placeholder?: string;
+  size?: 'l' | 's';
+  type: string;
+  firstSetValue?: UseFormSetValue<SignUpFirstFormType>;
+  firstClearErrors?: UseFormClearErrors<SignUpFirstFormType>;
+}
 
 export interface InputType {
   name: string;
   register: any;
   errors: DeepMap<FieldValues, FieldError>;
-  firstSetValue?: UseFormSetValue<SignUpFirstFormType>;
   placeholder?: string;
   size?: 'l' | 's';
   type: string;
   formattedCountdown?: string;
   label: string;
+  firstSetValue?: UseFormSetValue<SignUpFirstFormType>;
+  firstClearErrors?: UseFormClearErrors<SignUpFirstFormType>;
 }
 
 export interface InputStyleType {

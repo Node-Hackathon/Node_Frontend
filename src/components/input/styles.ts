@@ -3,7 +3,6 @@ import { Label5, Label7 } from '../text/Text';
 import { theme } from '../../styles/theme';
 import { InputStyleType } from './types';
 import { SecondaryButton } from '../button/Button';
-import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
 export const InputContainer = styled.div`
@@ -42,7 +41,7 @@ export const InputBase = styled.input<InputStyleType>`
     border: 1px solid
       ${({ $iserror }) => ($iserror ? theme.colors.error : theme.colors.primaryNormal)};
   }
-  cursor: ${({ name }) => name === 'birth' && 'pointer'};
+  cursor: ${({ name }) => (name === 'birth' || name === 'address') && 'pointer'};
 `;
 
 export const InputIcon = styled.div`
@@ -67,7 +66,8 @@ export const GenderButton = styled(SecondaryButton)<{ selected: boolean }>`
   width: 9.6875rem;
   background-color: ${({ selected }) =>
     selected ? theme.colors.primaryNormal : theme.colors.backgroundNormal};
-  color: ${({ selected }) => (selected ? theme.colors.backgroundNormal : theme.colors.textLight)};
+  color: ${({ selected }) =>
+    selected ? theme.colors.backgroundNormal : theme.colors.primaryStrong};
   border: ${({ selected }) => (selected ? 'none' : `1px solid ${theme.colors.primaryStrong}`)};
   cursor: pointer;
   transition: background-color 0.3s;
@@ -139,6 +139,7 @@ export const CalendarWrapper = styled.div`
 
   .react-calendar__month-view__days__day {
     padding: 0.5rem 0.5rem 1.5rem;
+    font-size: 0.75rem;
 
     &--weekend {
       color: ${theme.colors.error};
@@ -155,7 +156,19 @@ export const CalendarWrapper = styled.div`
     color: #fff;
   }
 `;
-export const CalendarBox = styled(Calendar)``;
+
+export const customStyles = {
+  content: {
+    width: '70%',
+    height: '61%',
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
 
 export const InputMessage = styled(Label7)`
   margin-left: 0.38rem;

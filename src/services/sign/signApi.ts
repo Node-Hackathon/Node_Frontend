@@ -1,4 +1,5 @@
 import apiSlice from '../apiSlice';
+import { SignUpFirstFormType } from './types';
 
 export const signApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -26,9 +27,16 @@ export const signApi = apiSlice.injectEndpoints({
         },
       }),
     }),
+    firstSignUp: builder.mutation({
+      query: (data: SignUpFirstFormType) => ({
+        url: '/sign-api/sign-up-first',
+        method: 'POST',
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useSendMessageMutation, useVerifyMessageMutation } = signApi;
+export const { useSendMessageMutation, useVerifyMessageMutation, useFirstSignUpMutation } = signApi;
 
 export default signApi;

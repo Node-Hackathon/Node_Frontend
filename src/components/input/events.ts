@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { SignUpFirstFormType } from '../../services/sign/types';
-import { UseFormSetValue } from 'react-hook-form';
+import { UseFormClearErrors, UseFormSetValue } from 'react-hook-form';
 import { SelectedBirth } from './types';
+import { Address } from 'react-daum-postcode';
 
-// 비밀번호 인풋 사용
+// 비밀번호 인풋에서 사용
 export const useTogglePassword = () => {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -86,4 +87,27 @@ export const useBirthInput = (
     birthInputValue,
     handleDateChange,
   };
+};
+
+// 주소 인풋에서 사용
+export const useAddressInput = (
+  firstSetValue: UseFormSetValue<SignUpFirstFormType> | undefined,
+  name: keyof SignUpFirstFormType,
+  firstClearErrors: UseFormClearErrors<SignUpFirstFormType> | undefined,
+) => {
+  const [isPostOpen, setIsPostOpen] = useState(false);
+  const [addressValue, setAddressValue] = useState('');
+
+  const handleAddressClick = () => {
+    setIsPostOpen(true);
+  };
+
+  const completeHandler = (data: Address) => {
+    firstSetValue?.(name, data.address, { shouldValidate: true, shouldDirty: true });
+    setAddressValue(data.address);
+    firstClearErrors?.(name);
+    setIsPostOpen(false);
+  };
+
+  return { isPostOpen, setIsPostOpen, addressValue, handleAddressClick, completeHandler };
 };

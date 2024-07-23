@@ -8,7 +8,7 @@ interface progressState {
 }
 
 const initialState: progressState = {
-  currentStep: 2,
+  currentStep: 1,
   prevStep: 0,
   isForward: true,
   totalSteps: 3,

@@ -3,7 +3,11 @@ import { useCallback, useEffect, useState } from 'react';
 import { SignUpFirstFormType, SignUpMessageFormType } from '../../services/sign/types';
 import { useDispatch } from 'react-redux';
 import { nextStep, setTotalSteps } from '../../store/reducer/progressSlice';
-import { useSendMessageMutation, useVerifyMessageMutation } from '../../services/sign/signApi';
+import {
+  useFirstSignUpMutation,
+  useSendMessageMutation,
+  useVerifyMessageMutation,
+} from '../../services/sign/signApi';
 
 export const useSignUp = () => {
   // SignUpPage에서 사용
@@ -68,12 +72,13 @@ export const useSignUp = () => {
     data: SignUpMessageFormType,
   ) => {
     try {
-      await requestMessage(data.phone).unwrap();
+      const response = await requestMessage(data.phone).unwrap();
       alert('인증번호 전송이 완료되었습니다.');
       setIsPhoneVerified(true);
       resetCountdown();
       messageReset({ code: '' });
       setButtonText('다음');
+      console.log(response);
     } catch (error) {
       console.error(error);
       alert('인증번호 발송이 실패했습니다.');
@@ -90,14 +95,14 @@ export const useSignUp = () => {
     }
     try {
       const response = await requestVerify(data.code).unwrap();
-      if (response.code === 200) {
-        dispatch(nextStep());
-      } else {
+      if (response.status === 400) {
         messageSetError(
           'code',
           { message: '인증번호가 일치하지 않습니다.' },
           { shouldFocus: true },
         );
+      } else {
+        dispatch(nextStep());
       }
     } catch (error) {
       console.error(error);
@@ -119,20 +124,21 @@ export const useSignUp = () => {
     register: firstRegister,
     handleSubmit: firstHandleSubmit,
     setValue: firstSetValue,
+    clearErrors: firstClearErrors,
     formState: { errors: firstErrors },
-  } = useForm<SignUpFirstFormType>({
-    defaultValues: {
-      name: '',
-      address: '',
-      birth: '',
-      gender: '',
-      height: '',
-      weight: '',
-    },
-  });
+  } = useForm<SignUpFirstFormType>();
 
-  const onFirstSubmit = (data: SignUpFirstFormType) => {
-    console.log(data);
+  const [requestFirstSignUp] = useFirstSignUpMutation();
+
+  const onFirstSubmit = async (data: SignUpFirstFormType) => {
+    try {
+      const response = await requestFirstSignUp(data).unwrap();
+      console.log(response);
+      dispatch(nextStep());
+    } catch (error) {
+      console.error(error);
+      alert('회원 정보 전송에 실패했습니다.');
+    }
   };
 
   return {
@@ -148,5 +154,6 @@ export const useSignUp = () => {
     buttonText,
     formattedCountdown,
     firstSetValue,
+    firstClearErrors,
   };
 };
