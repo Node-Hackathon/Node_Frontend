@@ -1,14 +1,17 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Input from '../components/input/Input';
 import { SignInType } from '../pages/signIn/types';
+import ImageInput from '../components/input/ImageInput';
+import { SignUpSecondFormType } from '../services/sign/types';
 
 export default function InputTest() {
   const {
     register,
     handleSubmit,
     setError,
+    setValue: secondSetValue,
     formState: { errors },
-  } = useForm<SignInType>();
+  } = useForm<SignUpSecondFormType>();
 
   const onSubmit: SubmitHandler<SignInType> = (data: SignInType) => {
     console.log(data);
@@ -38,6 +41,14 @@ export default function InputTest() {
           required: '비밀번호를 입력해주세요.',
         })}
         errors={errors}
+      />
+      <ImageInput
+        type="file"
+        name="profile"
+        size="s"
+        register={register('profile', { required: '사진을 선택해 주세요.' })}
+        errors={errors}
+        secondSetValue={secondSetValue}
       />
       <button type="submit">제출</button>
     </form>

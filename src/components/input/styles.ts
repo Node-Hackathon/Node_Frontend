@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Label5, Label7 } from '../text/Text';
 import { theme } from '../../styles/theme';
-import { InputStyleType } from './types';
+import { ImageInputStyleType, InputStyleType } from './types';
 import { SecondaryButton } from '../button/Button';
 import 'react-calendar/dist/Calendar.css';
 
@@ -172,4 +172,30 @@ export const customStyles = {
 
 export const InputMessage = styled(Label7)`
   margin-left: 0.38rem;
+`;
+
+export const ImageContainer = styled.div<ImageInputStyleType>`
+  width: ${({ size }) => (size === 's' ? '10.3125rem' : '15.625rem')};
+  height: ${({ size }) => (size === 's' ? '10.3125rem' : '15.625rem')};
+  border-radius: 0.5rem;
+  border: 1px solid ${theme.colors.textNormal};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+`;
+
+export const ImageBox = styled.input`
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+`;
+
+export const PreviewImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
 `;

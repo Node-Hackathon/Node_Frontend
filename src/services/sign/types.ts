@@ -11,3 +11,10 @@ export interface SignUpFirstFormType {
   height: Number;
   weight: Number;
 }
+
+export interface SignUpSecondFormType {
+  id: string;
+  password: string;
+  passwordCheck: string;
+  profile: File;
+}

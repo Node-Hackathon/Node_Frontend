@@ -5,7 +5,11 @@ import {
   UseFormClearErrors,
   UseFormSetValue,
 } from 'react-hook-form';
-import { SignUpFirstFormType, SignUpMessageFormType } from '../../services/sign/types';
+import {
+  SignUpFirstFormType,
+  SignUpMessageFormType,
+  SignUpSecondFormType,
+} from '../../services/sign/types';
 
 export interface PasswordInputType {
   name: string;
@@ -57,6 +61,15 @@ export interface AddressInputType {
   firstClearErrors?: UseFormClearErrors<SignUpFirstFormType>;
 }
 
+export interface ImageInputType {
+  name: keyof SignUpSecondFormType;
+  register: any;
+  errors: DeepMap<FieldValues, FieldError>;
+  size?: 'l' | 's';
+  type: string;
+  secondSetValue?: UseFormSetValue<SignUpSecondFormType>;
+}
+
 export interface InputType {
   name: string;
   register: any;
@@ -68,10 +81,15 @@ export interface InputType {
   label: string;
   firstSetValue?: UseFormSetValue<SignUpFirstFormType>;
   firstClearErrors?: UseFormClearErrors<SignUpFirstFormType>;
+  secondSetValue?: UseFormSetValue<SignUpSecondFormType>;
 }
 
 export interface InputStyleType {
   name?: string;
   size?: 'l' | 's';
   $iserror?: boolean;
+}
+
+export interface ImageInputStyleType {
+  size?: 'l' | 's';
 }
