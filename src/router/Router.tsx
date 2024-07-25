@@ -10,6 +10,7 @@ import Home from '../pages/Home';
 import MainPage from '../pages/main/MainPage';
 import ProgressTest from '../test/ProgressTest';
 import ModalTest from '../test/ModalTest';
+import GuardianPage from '../pages/signUp/GuardianPage';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: 'signUp',
         element: <SignUpPage />,
+      },
+      {
+        path: 'signUp-guardian',
+        element: <GuardianPage />,
       },
     ],
   },

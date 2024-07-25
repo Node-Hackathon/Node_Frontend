@@ -1,6 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useCallback, useEffect, useState } from 'react';
 import {
+  GuardianFormType,
   SignUpFirstFormType,
   SignUpMessageFormType,
   SignUpSecondFormType,
@@ -10,6 +11,7 @@ import { nextStep, setStepReset, setTotalSteps } from '../../store/reducer/progr
 import { closeModal, openModal } from '../../store/reducer/modalSlice';
 import {
   useFirstSignUpMutation,
+  useGuardianSignUpMutation,
   useSecondSignUpMutation,
   useSendMessageMutation,
   useVerifyMessageMutation,
@@ -27,7 +29,7 @@ export const useSignUp = () => {
 
   const handleModalYes = () => {
     dispatch(closeModal());
-    navigate('/form', { replace: true });
+    navigate('/signUp-guardian', { replace: true });
   };
 
   const handleModalNo = () => {
@@ -129,6 +131,7 @@ export const useSignUp = () => {
         );
       } else {
         dispatch(nextStep());
+        messageReset();
       }
     } catch (error) {
       console.error(error);
@@ -151,6 +154,7 @@ export const useSignUp = () => {
     handleSubmit: firstHandleSubmit,
     setValue: firstSetValue,
     clearErrors: firstClearErrors,
+    reset: firstReset,
     formState: { errors: firstErrors },
   } = useForm<SignUpFirstFormType>();
 
@@ -161,6 +165,7 @@ export const useSignUp = () => {
     try {
       await requestFirstSignUp(data).unwrap();
       dispatch(nextStep());
+      firstReset();
     } catch (error) {
       console.error(error);
       alert('회원 정보 전송에 실패했습니다.');
@@ -174,6 +179,7 @@ export const useSignUp = () => {
     setValue: secondSetValue,
     clearErrors: secondClearErrors,
     setError: secondSetError,
+    reset: secondReset,
     formState: { errors: secondErrors },
     watch,
   } = useForm<SignUpSecondFormType>();
@@ -212,6 +218,7 @@ export const useSignUp = () => {
             }),
           );
           dispatch(setStepReset());
+          secondReset();
         }
       } catch (error) {
         console.error('폼 제출 오류:', error);
@@ -238,6 +245,8 @@ export const useSignUp = () => {
     }
   });*/
 
+  // GuardianPage 에서 사용
+
   return {
     handleModalNo,
     handleModalYes,
@@ -262,5 +271,40 @@ export const useSignUp = () => {
     secondClearErrors,
     secondSetError,
     validatePasswordCheck,
+  };
+};
+
+export const useGuardianSignUp = () => {
+  const navigate = useNavigate();
+
+  const {
+    register: guardianRegister,
+    handleSubmit: guardianHandleSubmit,
+    setValue: guardianSetValue,
+    clearErrors: guardianClearErrors,
+    reset: guardianReset,
+    formState: { errors: guardianErrors },
+  } = useForm<GuardianFormType>();
+
+  const [requestGuardianSignUp] = useGuardianSignUpMutation();
+
+  const onGuardianSubmit = async (data: GuardianFormType) => {
+    try {
+      await requestGuardianSignUp(data).unwrap();
+      navigate('/signIn', { replace: true });
+      guardianReset();
+    } catch (error) {
+      console.error(error);
+      alert('보호자 정보 입력에 실패했습니다.');
+    }
+  };
+
+  return {
+    guardianRegister,
+    guardianHandleSubmit,
+    guardianErrors,
+    onGuardianSubmit,
+    guardianSetValue,
+    guardianClearErrors,
   };
 };

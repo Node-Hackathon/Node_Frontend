@@ -35,7 +35,7 @@ const progressSlice = createSlice({
     setStepReset(state) {
       state.prevStep = 0;
       state.currentStep = 1;
-      state.isForward = true;
+      state.isForward = false;
     },
     setTotalSteps(state, action: PayloadAction<number>) {
       state.totalSteps = action.payload;

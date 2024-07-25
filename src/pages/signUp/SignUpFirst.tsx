@@ -90,6 +90,7 @@ function SignUpFirst({
             required: '주소를 입력해주세요.',
           })}
           errors={errors}
+          firstSetValue={firstSetValue}
           firstClearErrors={firstClearErrors}
         />
       </SignUpInputBox>

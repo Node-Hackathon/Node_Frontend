@@ -1,5 +1,5 @@
 import apiSlice from '../apiSlice';
-import { SignUpFirstFormType } from './types';
+import { GuardianFormType, SignUpFirstFormType } from './types';
 
 export const signApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -41,6 +41,13 @@ export const signApi = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    guardianSignUp: builder.mutation({
+      query: (data: GuardianFormType) => ({
+        url: '/sign-api/sign-up-guardian',
+        method: 'POST',
+        body: data,
+      }),
+    }),
   }),
 });
 
@@ -49,6 +56,7 @@ export const {
   useVerifyMessageMutation,
   useFirstSignUpMutation,
   useSecondSignUpMutation,
+  useGuardianSignUpMutation,
 } = signApi;
 
 export default signApi;

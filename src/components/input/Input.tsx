@@ -22,6 +22,8 @@ function Input({
   secondSetValue,
   secondClearErrors,
   secondSetError,
+  guardianSetValue,
+  guardianClearErrors,
 }: InputType) {
   return (
     <InputContainer>
@@ -62,7 +64,7 @@ function Input({
             type={type}
             firstSetValue={firstSetValue}
           />
-        ) : name === 'address' ? (
+        ) : name === 'address' || name === 'guardian_address' ? (
           <AddressInput
             placeholder={placeholder}
             name={name}
@@ -72,6 +74,8 @@ function Input({
             type={type}
             firstSetValue={firstSetValue}
             firstClearErrors={firstClearErrors}
+            guardianSetValue={guardianSetValue}
+            guardianClearErrors={guardianClearErrors}
           />
         ) : name === 'file' ? (
           <ImageInput

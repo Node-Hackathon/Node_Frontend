@@ -1,6 +1,10 @@
 import React from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { SignUpFirstFormType, SignUpSecondFormType } from '../../services/sign/types';
+import {
+  GuardianFormType,
+  SignUpFirstFormType,
+  SignUpSecondFormType,
+} from '../../services/sign/types';
 import { UseFormClearErrors, UseFormSetError, UseFormSetValue } from 'react-hook-form';
 import { SelectedBirth } from './types';
 import { Address } from 'react-daum-postcode';
@@ -50,7 +54,7 @@ export const useBirthInput = (
 
   // 인풋 클릭 처리
   const handleInputClick = useCallback(() => {
-    setIsCalendarOpen(!isCalendarOpen);
+    setIsCalendarOpen((prevState) => !prevState);
   }, []);
 
   // 외부 클릭 시 캘린더 닫기
@@ -95,9 +99,11 @@ export const useBirthInput = (
 
 // 주소 인풋에서 사용
 export const useAddressInput = (
+  name: keyof SignUpFirstFormType | keyof GuardianFormType,
   firstSetValue: UseFormSetValue<SignUpFirstFormType> | undefined,
-  name: keyof SignUpFirstFormType,
   firstClearErrors: UseFormClearErrors<SignUpFirstFormType> | undefined,
+  guardianSetValue: UseFormSetValue<GuardianFormType> | undefined,
+  guardianClearErrors: UseFormClearErrors<GuardianFormType> | undefined,
 ) => {
   const [isPostOpen, setIsPostOpen] = useState(false);
   const [addressValue, setAddressValue] = useState('');
@@ -110,9 +116,14 @@ export const useAddressInput = (
   // 주소 선택 시 상태 업데이트 및 모달 닫기
   const completeHandler = useCallback(
     (data: Address) => {
-      firstSetValue?.(name, data.address, { shouldValidate: true, shouldDirty: true });
+      if (name === 'address') {
+        firstSetValue?.(name, data.address, { shouldValidate: true, shouldDirty: true });
+        firstClearErrors?.(name);
+      } else if (name === 'guardian_address') {
+        guardianSetValue?.(name, data.address, { shouldValidate: true, shouldDirty: true });
+        guardianClearErrors?.(name);
+      }
       setAddressValue(data.address);
-      firstClearErrors?.(name);
       setIsPostOpen(false);
     },
     [firstSetValue, name, firstClearErrors],
@@ -136,7 +147,6 @@ export const useImageInput = (
   useEffect(() => {
     if (secondSetValue) {
       secondSetValue(name, file);
-      console.log(file);
     }
   }, [file, name, secondSetValue]);
 

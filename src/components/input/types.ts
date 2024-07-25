@@ -7,6 +7,7 @@ import {
   UseFormSetValue,
 } from 'react-hook-form';
 import {
+  GuardianFormType,
   SignUpFirstFormType,
   SignUpMessageFormType,
   SignUpSecondFormType,
@@ -52,7 +53,7 @@ export interface BirthInputType {
 }
 
 export interface AddressInputType {
-  name: keyof SignUpFirstFormType;
+  name: keyof SignUpFirstFormType | keyof GuardianFormType;
   register: any;
   errors: DeepMap<FieldValues, FieldError>;
   placeholder?: string;
@@ -60,6 +61,8 @@ export interface AddressInputType {
   type: string;
   firstSetValue?: UseFormSetValue<SignUpFirstFormType>;
   firstClearErrors?: UseFormClearErrors<SignUpFirstFormType>;
+  guardianSetValue?: UseFormSetValue<GuardianFormType>;
+  guardianClearErrors?: UseFormClearErrors<GuardianFormType>;
 }
 
 export interface ImageInputType {
@@ -87,6 +90,8 @@ export interface InputType {
   secondSetValue?: UseFormSetValue<SignUpSecondFormType>;
   secondClearErrors?: UseFormClearErrors<SignUpSecondFormType>;
   secondSetError?: UseFormSetError<SignUpSecondFormType>;
+  guardianSetValue?: UseFormSetValue<GuardianFormType>;
+  guardianClearErrors?: UseFormClearErrors<GuardianFormType>;
 }
 
 export interface InputStyleType {

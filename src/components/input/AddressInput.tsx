@@ -13,9 +13,11 @@ export default function AddressInput({
   type,
   firstSetValue,
   firstClearErrors,
+  guardianSetValue,
+  guardianClearErrors,
 }: AddressInputType) {
   const { isPostOpen, setIsPostOpen, addressValue, handleAddressClick, completeHandler } =
-    useAddressInput(firstSetValue, name, firstClearErrors);
+    useAddressInput(name, firstSetValue, firstClearErrors, guardianSetValue, guardianClearErrors);
 
   return (
     <>

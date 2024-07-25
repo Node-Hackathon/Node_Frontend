@@ -18,3 +18,9 @@ export interface SignUpSecondFormType {
   passwordCheck: string;
   file: File | null;
 }
+
+export interface GuardianFormType {
+  guardian_name: string;
+  guardian_address: string;
+  guardian_phone_num: string;
+}
