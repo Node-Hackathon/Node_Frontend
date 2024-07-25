@@ -6,20 +6,34 @@ import {
   SignUpSecondFormType,
 } from '../../services/sign/types';
 import { useDispatch } from 'react-redux';
-import { nextStep, setTotalSteps } from '../../store/reducer/progressSlice';
+import { nextStep, setStepReset, setTotalSteps } from '../../store/reducer/progressSlice';
+import { closeModal, openModal } from '../../store/reducer/modalSlice';
 import {
   useFirstSignUpMutation,
+  useSecondSignUpMutation,
   useSendMessageMutation,
   useVerifyMessageMutation,
 } from '../../services/sign/signApi';
+import { useNavigate } from 'react-router-dom';
 
 export const useSignUp = () => {
   // SignUpPage에서 사용
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(setTotalSteps(3));
   }, [dispatch]);
+
+  const handleModalYes = () => {
+    dispatch(closeModal());
+    navigate('/form', { replace: true });
+  };
+
+  const handleModalNo = () => {
+    dispatch(closeModal());
+    navigate('/signIn', { replace: true });
+  };
 
   // SignUpMessage에서 사용
   const [isPhoneVerified, setIsPhoneVerified] = useState(false);
@@ -164,6 +178,8 @@ export const useSignUp = () => {
     watch,
   } = useForm<SignUpSecondFormType>();
 
+  const [requestSecondSignUp] = useSecondSignUpMutation();
+
   const validatePasswordCheck = (value: string) => {
     // 비밀번호와 비밀번호 확인 필드의 값이 일치하는지 확인
     const password = watch('password');
@@ -177,18 +193,29 @@ export const useSignUp = () => {
     formData.append('password', data.password);
     formData.append('passwordCheck', data.passwordCheck);
 
-    // 폼 데이터에 파일 추가
     const file = data.file;
     if (file && file instanceof File) {
       formData.append('file', file);
-      // 콘솔로 폼 데이터를 출력하는 방법
-      formData.forEach((value, key) => {
-        if (value instanceof File) {
-          console.log(`${key}: ${value.name}`); // 파일 이름만 출력
+
+      try {
+        const response = await requestSecondSignUp(formData).unwrap();
+        if (response.status === 400) {
+          secondSetError('userId', {
+            type: 'manual',
+            message: '이미 존재하는 아이디입니다.',
+          });
         } else {
-          console.log(`${key}: ${value}`);
+          dispatch(
+            openModal({
+              question1: '보호자 정보를',
+              question2: '입력하시겠습니까?',
+            }),
+          );
+          dispatch(setStepReset());
         }
-      });
+      } catch (error) {
+        console.error('폼 제출 오류:', error);
+      }
     } else if (file) {
       secondSetError('file', {
         message: '아직 사진이 로드되지 않았습니다. 버튼을 한 번 더 클릭해주세요.',
@@ -203,7 +230,17 @@ export const useSignUp = () => {
     }
   };
 
+  /*formData.forEach((value, key) => {
+    if (value instanceof File) {
+      console.log(`${key}: ${value.name}`); // 파일 이름만 출력
+    } else {
+      console.log(`${key}: ${value}`);
+    }
+  });*/
+
   return {
+    handleModalNo,
+    handleModalYes,
     messageRegister,
     messageHandleSubmit,
     messageErrors,

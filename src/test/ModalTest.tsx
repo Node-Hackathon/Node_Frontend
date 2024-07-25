@@ -8,7 +8,6 @@ export default function ModalTest() {
     <>
       <Modal
         isOpen={isOpen}
-        setIsOpen={setIsOpen}
         question1="보호자 정보를"
         question2="입력하시겠습니까?"
         onClickYes={() => {

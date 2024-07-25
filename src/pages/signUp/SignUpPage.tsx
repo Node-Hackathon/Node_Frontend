@@ -8,13 +8,18 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { useSignUp } from './events';
 import SignUpSecond from './SignUpSecond';
+import Modal from '../../components/modal/Modal';
 
 export default function SignUpPage() {
   const { currentStep, prevStep, isForward, totalSteps } = useSelector(
     (state: RootState) => state.progress,
   );
 
+  const { isOpen, question1, question2 } = useSelector((state: RootState) => state.modal);
+
   const {
+    handleModalNo,
+    handleModalYes,
     messageRegister,
     messageHandleSubmit,
     messageErrors,
@@ -82,6 +87,13 @@ export default function SignUpPage() {
           validatePasswordCheck={validatePasswordCheck}
         />
       )}
+      <Modal
+        isOpen={isOpen}
+        question1={question1}
+        question2={question2}
+        onClickNo={handleModalNo}
+        onClickYes={handleModalYes}
+      />
     </SignUpContainer>
   );
 }

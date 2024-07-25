@@ -8,7 +8,7 @@ interface progressState {
 }
 
 const initialState: progressState = {
-  currentStep: 3,
+  currentStep: 1,
   prevStep: 0,
   isForward: true,
   totalSteps: 3,
@@ -32,11 +32,16 @@ const progressSlice = createSlice({
         state.isForward = false;
       }
     },
+    setStepReset(state) {
+      state.prevStep = 0;
+      state.currentStep = 1;
+      state.isForward = true;
+    },
     setTotalSteps(state, action: PayloadAction<number>) {
       state.totalSteps = action.payload;
     },
   },
 });
 
-export const { nextStep, prevStep, setTotalSteps } = progressSlice.actions;
+export const { nextStep, prevStep, setTotalSteps, setStepReset } = progressSlice.actions;
 export default progressSlice.reducer;

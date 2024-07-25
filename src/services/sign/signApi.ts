@@ -34,9 +34,21 @@ export const signApi = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    secondSignUp: builder.mutation({
+      query: (data: FormData) => ({
+        url: '/sign-api/sign-up-second',
+        method: 'POST',
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useSendMessageMutation, useVerifyMessageMutation, useFirstSignUpMutation } = signApi;
+export const {
+  useSendMessageMutation,
+  useVerifyMessageMutation,
+  useFirstSignUpMutation,
+  useSecondSignUpMutation,
+} = signApi;
 
 export default signApi;

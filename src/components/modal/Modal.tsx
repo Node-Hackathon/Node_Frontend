@@ -4,23 +4,9 @@ import { ModalType } from './types';
 import { Title3 } from '../text/Text';
 import { PrimaryButton, SecondaryButton } from '../button/Button';
 
-export default function Modal({
-  isOpen,
-  setIsOpen,
-  question1,
-  question2,
-  onClickNo,
-  onClickYes,
-}: ModalType) {
+export default function Modal({ isOpen, question1, question2, onClickNo, onClickYes }: ModalType) {
   return (
-    <ReactModal
-      isOpen={isOpen}
-      ariaHideApp={false}
-      style={modalCustomStyles}
-      onRequestClose={() => {
-        setIsOpen(false);
-      }}
-    >
+    <ReactModal isOpen={isOpen} ariaHideApp={false} style={modalCustomStyles}>
       <ModalContainer>
         <ModalTitle>
           <Title3>{question1}</Title3>
