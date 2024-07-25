@@ -197,7 +197,7 @@ export const useSignUp = () => {
       return;
     } else {
       secondSetError('file', {
-        message: '본인 사진을 업로드해주세요.',
+        message: '본인 사진을 선택해주세요.',
       });
       return;
     }

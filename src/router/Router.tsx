@@ -9,6 +9,7 @@ import SignUpPage from '../pages/signUp/SignUpPage';
 import Home from '../pages/Home';
 import MainPage from '../pages/main/MainPage';
 import ProgressTest from '../test/ProgressTest';
+import ModalTest from '../test/ModalTest';
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: 'progress',
         element: <ProgressTest />,
+      },
+      {
+        path: 'modal',
+        element: <ModalTest />,
       },
     ],
   },

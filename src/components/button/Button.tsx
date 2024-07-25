@@ -3,8 +3,9 @@ import { ButtonType } from './types';
 import { theme } from '../../styles/theme';
 
 const BaseButton = styled.button<ButtonType>`
-  width: ${({ size }) => (size === 'l' ? '20rem' : size === 'm' ? '9.6875rem' : 'auto')};
-  height: ${({ size }) => (size === 's' ? '2rem' : '3.5rem')};
+  width: ${({ size }) =>
+    size === 'l' ? '20rem' : size === 'm' ? '9.6875rem' : size === 's' ? '7.75rem' : 'auto'};
+  height: ${({ size }) => (size === 'xs' ? '2rem' : '3.5rem')};
   font-size: 1rem;
   font-weight: 600;
   padding: 0 1.47rem;
