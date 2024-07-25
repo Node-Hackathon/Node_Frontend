@@ -9,6 +9,7 @@ import SignUpPage from '../pages/signUp/SignUpPage';
 import Home from '../pages/Home';
 import MainPage from '../pages/main/MainPage';
 import ProgressTest from '../test/ProgressTest';
+import CenterListPage from '../pages/centerList/CenterListPage';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: 'signUp',
         element: <SignUpPage />,
+      },
+      {
+        path: 'list',
+        element: <CenterListPage />,
       },
     ],
   },
