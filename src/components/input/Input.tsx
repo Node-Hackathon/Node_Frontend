@@ -2,6 +2,7 @@ import { theme } from '../../styles/theme';
 import AddressInput from './AddressInput';
 import BirthInput from './BirthInput';
 import GenderInput from './GenderInput';
+import ImageInput from './ImageInput';
 import PasswordInput from './PasswordInput';
 import { InputContainer, InputBase, InputMessage, InputPlaceholder, InputBox } from './styles';
 import { InputType } from './types';
@@ -18,11 +19,14 @@ function Input({
   formattedCountdown,
   firstSetValue,
   firstClearErrors,
+  secondSetValue,
+  secondClearErrors,
+  secondSetError,
 }: InputType) {
   return (
     <InputContainer>
       <InputPlaceholder>{label}</InputPlaceholder>
-      <InputBox size={size}>
+      <InputBox size={size} name={name}>
         {type === 'password' ? (
           <PasswordInput
             placeholder={placeholder}
@@ -68,6 +72,17 @@ function Input({
             type={type}
             firstSetValue={firstSetValue}
             firstClearErrors={firstClearErrors}
+          />
+        ) : name === 'file' ? (
+          <ImageInput
+            name={name}
+            register={register}
+            errors={errors}
+            size={size}
+            type={type}
+            secondSetValue={secondSetValue}
+            secondClearErrors={secondClearErrors}
+            secondSetError={secondSetError}
           />
         ) : (
           <InputBase

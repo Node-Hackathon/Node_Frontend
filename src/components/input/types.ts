@@ -3,6 +3,7 @@ import {
   FieldError,
   FieldValues,
   UseFormClearErrors,
+  UseFormSetError,
   UseFormSetValue,
 } from 'react-hook-form';
 import {
@@ -68,6 +69,8 @@ export interface ImageInputType {
   size?: 'l' | 's';
   type: string;
   secondSetValue?: UseFormSetValue<SignUpSecondFormType>;
+  secondClearErrors?: UseFormClearErrors<SignUpSecondFormType>;
+  secondSetError?: UseFormSetError<SignUpSecondFormType>;
 }
 
 export interface InputType {
@@ -82,6 +85,8 @@ export interface InputType {
   firstSetValue?: UseFormSetValue<SignUpFirstFormType>;
   firstClearErrors?: UseFormClearErrors<SignUpFirstFormType>;
   secondSetValue?: UseFormSetValue<SignUpSecondFormType>;
+  secondClearErrors?: UseFormClearErrors<SignUpSecondFormType>;
+  secondSetError?: UseFormSetError<SignUpSecondFormType>;
 }
 
 export interface InputStyleType {
@@ -92,4 +97,5 @@ export interface InputStyleType {
 
 export interface ImageInputStyleType {
   size?: 'l' | 's';
+  $iserror?: boolean;
 }

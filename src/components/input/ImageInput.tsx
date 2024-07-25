@@ -1,9 +1,8 @@
-import React from 'react';
-import { useState } from 'react';
 import { theme } from '../../styles/theme';
 import { ImageBox, ImageContainer, PreviewImage } from './styles';
 import { ImageInputType } from './types';
 import { CiImageOn } from 'react-icons/ci';
+import { useImageInput } from './events';
 
 export default function ImageInput({
   name,
@@ -12,28 +11,26 @@ export default function ImageInput({
   size,
   type,
   secondSetValue,
+  secondClearErrors,
+  secondSetError,
 }: ImageInputType) {
-  const [preview, setPreview] = useState<string | null>(null);
-
-  const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setPreview(URL.createObjectURL(file));
-      secondSetValue?.(name, file, { shouldValidate: true, shouldDirty: true });
-    }
-  };
+  const { preview, handleFileChange, isFileLoaded } = useImageInput(
+    name,
+    secondSetValue,
+    secondSetError,
+    secondClearErrors,
+  );
 
   return (
-    <ImageContainer size={size}>
+    <ImageContainer size={size} $iserror={!!errors[name]}>
       <ImageBox
         type={type}
         {...register}
-        $iserror={!!errors[name]}
         name={name}
         accept="image/*"
-        onChange={handleImageSelect}
+        onChange={handleFileChange}
       />
-      {preview ? (
+      {preview && isFileLoaded ? (
         <PreviewImage src={preview} alt="미리보기" />
       ) : (
         <CiImageOn size={50} color={theme.colors.textLight} />

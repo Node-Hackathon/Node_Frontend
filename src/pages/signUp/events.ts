@@ -1,6 +1,10 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useCallback, useEffect, useState } from 'react';
-import { SignUpFirstFormType, SignUpMessageFormType } from '../../services/sign/types';
+import {
+  SignUpFirstFormType,
+  SignUpMessageFormType,
+  SignUpSecondFormType,
+} from '../../services/sign/types';
 import { useDispatch } from 'react-redux';
 import { nextStep, setTotalSteps } from '../../store/reducer/progressSlice';
 import {
@@ -149,6 +153,56 @@ export const useSignUp = () => {
     }
   };
 
+  // SignUpSecond에서 사용
+  const {
+    register: secondRegister,
+    handleSubmit: secondHandleSubmit,
+    setValue: secondSetValue,
+    clearErrors: secondClearErrors,
+    setError: secondSetError,
+    formState: { errors: secondErrors },
+    watch,
+  } = useForm<SignUpSecondFormType>();
+
+  const validatePasswordCheck = (value: string) => {
+    // 비밀번호와 비밀번호 확인 필드의 값이 일치하는지 확인
+    const password = watch('password');
+    return password === value || '비밀번호가 일치하지 않습니다.';
+  };
+
+  // SignUpSecond 폼 제출 처리 함수
+  const onSecondSubmit = async (data: SignUpSecondFormType) => {
+    let formData = new FormData();
+    formData.append('userId', data.userId);
+    formData.append('password', data.password);
+    formData.append('passwordCheck', data.passwordCheck);
+
+    // 폼 데이터에 파일 추가
+    const file = data.file;
+    if (file && file instanceof File) {
+      formData.append('file', file);
+      // 콘솔로 폼 데이터를 출력하는 방법
+      formData.forEach((value, key) => {
+        if (value instanceof File) {
+          console.log(`${key}: ${value.name}`); // 파일 이름만 출력
+        } else {
+          console.log(`${key}: ${value}`);
+        }
+      });
+    } else if (file) {
+      secondSetError('file', {
+        message: '아직 사진이 로드되지 않았습니다. 버튼을 한 번 더 클릭해주세요.',
+      });
+      console.error('사진이 아직 완전히 로드되지 않았습니다.');
+      return;
+    } else {
+      secondSetError('file', {
+        message: '본인 사진을 업로드해주세요.',
+      });
+      return;
+    }
+  };
+
   return {
     messageRegister,
     messageHandleSubmit,
@@ -163,5 +217,13 @@ export const useSignUp = () => {
     formattedCountdown,
     firstSetValue,
     firstClearErrors,
+    secondRegister,
+    secondHandleSubmit,
+    secondSetValue,
+    secondErrors,
+    onSecondSubmit,
+    secondClearErrors,
+    secondSetError,
+    validatePasswordCheck,
   };
 };

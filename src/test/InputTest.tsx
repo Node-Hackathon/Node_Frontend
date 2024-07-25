@@ -1,6 +1,5 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Input from '../components/input/Input';
-import { SignInType } from '../pages/signIn/types';
 import ImageInput from '../components/input/ImageInput';
 import { SignUpSecondFormType } from '../services/sign/types';
 
@@ -13,10 +12,10 @@ export default function InputTest() {
     formState: { errors },
   } = useForm<SignUpSecondFormType>();
 
-  const onSubmit: SubmitHandler<SignInType> = (data: SignInType) => {
+  const onSubmit: SubmitHandler<SignUpSecondFormType> = (data: SignUpSecondFormType) => {
     console.log(data);
-    if (data.id !== 'jieun') {
-      setError('id', { message: '존재하지 않는 아이디입니다!' }, { shouldFocus: true });
+    if (data.userId !== 'jieun') {
+      setError('userId', { message: '존재하지 않는 아이디입니다!' }, { shouldFocus: true });
     }
   };
 
@@ -26,9 +25,9 @@ export default function InputTest() {
         type="text"
         label="아이디"
         placeholder="아이디를 입력해주세요"
-        name="id"
+        name="userId"
         size="l"
-        register={register('id', { required: '아이디를 입력해주세요.' })}
+        register={register('userId', { required: '아이디를 입력해주세요.' })}
         errors={errors}
       />
       <Input
@@ -44,9 +43,9 @@ export default function InputTest() {
       />
       <ImageInput
         type="file"
-        name="profile"
+        name="file"
         size="s"
-        register={register('profile', { required: '사진을 선택해 주세요.' })}
+        register={register('file', { required: '사진을 선택해 주세요.' })}
         errors={errors}
         secondSetValue={secondSetValue}
       />

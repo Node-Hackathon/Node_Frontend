@@ -13,8 +13,8 @@ export interface SignUpFirstFormType {
 }
 
 export interface SignUpSecondFormType {
-  id: string;
+  userId: string;
   password: string;
   passwordCheck: string;
-  profile: File;
+  file: File | null;
 }

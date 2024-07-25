@@ -7,6 +7,7 @@ import SignUpFirst from './SignUpFirst';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import { useSignUp } from './events';
+import SignUpSecond from './SignUpSecond';
 
 export default function SignUpPage() {
   const { currentStep, prevStep, isForward, totalSteps } = useSelector(
@@ -27,6 +28,14 @@ export default function SignUpPage() {
     onFirstSubmit,
     firstSetValue,
     firstClearErrors,
+    secondRegister,
+    secondHandleSubmit,
+    secondErrors,
+    onSecondSubmit,
+    secondSetValue,
+    secondClearErrors,
+    secondSetError,
+    validatePasswordCheck,
   } = useSignUp();
 
   return (
@@ -59,6 +68,18 @@ export default function SignUpPage() {
           onFirstSubmit={onFirstSubmit}
           firstSetValue={firstSetValue}
           firstClearErrors={firstClearErrors}
+        />
+      )}
+      {currentStep === 3 && (
+        <SignUpSecond
+          register={secondRegister}
+          secondHandleSubmit={secondHandleSubmit}
+          errors={secondErrors}
+          onSecondSubmit={onSecondSubmit}
+          secondSetValue={secondSetValue}
+          secondClearErrors={secondClearErrors}
+          secondSetError={secondSetError}
+          validatePasswordCheck={validatePasswordCheck}
         />
       )}
     </SignUpContainer>

@@ -27,7 +27,7 @@ function SignUpFirst({
           errors={errors}
         />
         <Input
-          type="gender"
+          type="text"
           label="성별"
           name="gender"
           register={register('gender', {

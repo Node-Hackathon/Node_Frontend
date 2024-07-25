@@ -18,7 +18,14 @@ export const InputPlaceholder = styled(Label5).attrs({
 `;
 
 export const InputBox = styled.div<InputStyleType>`
-  width: ${({ size }) => (size === 'l' ? '20rem' : '10rem')};
+  width: ${({ size, name }) =>
+    name === 'file'
+      ? size === 'l'
+        ? '15.625rem'
+        : '10.3125rem'
+      : size === 'l'
+        ? '20rem'
+        : '10rem'};
   position: relative;
 `;
 
@@ -178,7 +185,7 @@ export const ImageContainer = styled.div<ImageInputStyleType>`
   width: ${({ size }) => (size === 's' ? '10.3125rem' : '15.625rem')};
   height: ${({ size }) => (size === 's' ? '10.3125rem' : '15.625rem')};
   border-radius: 0.5rem;
-  border: 1px solid ${theme.colors.textNormal};
+  border: 1px solid ${({ $iserror }) => ($iserror ? theme.colors.error : theme.colors.textNormal)};
   display: flex;
   align-items: center;
   justify-content: center;

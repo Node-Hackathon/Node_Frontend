@@ -4,9 +4,14 @@ import {
   FieldValues,
   UseFormClearErrors,
   UseFormHandleSubmit,
+  UseFormSetError,
   UseFormSetValue,
 } from 'react-hook-form';
-import { SignUpFirstFormType, SignUpMessageFormType } from '../../services/sign/types';
+import {
+  SignUpFirstFormType,
+  SignUpMessageFormType,
+  SignUpSecondFormType,
+} from '../../services/sign/types';
 
 interface SignUpType {
   register: any;
@@ -28,4 +33,15 @@ export interface SignUpFirstType extends SignUpType {
   onFirstSubmit: (data: SignUpFirstFormType) => void;
   firstSetValue: UseFormSetValue<SignUpFirstFormType>;
   firstClearErrors: UseFormClearErrors<SignUpFirstFormType>;
+}
+
+export interface SignUpSecondType extends SignUpType {
+  secondHandleSubmit: UseFormHandleSubmit<SignUpSecondFormType, undefined>;
+  // eslint-disable-next-line no-unused-vars
+  onSecondSubmit: (data: SignUpSecondFormType) => void;
+  secondSetValue: UseFormSetValue<SignUpSecondFormType>;
+  secondClearErrors: UseFormClearErrors<SignUpSecondFormType>;
+  secondSetError: UseFormSetError<SignUpSecondFormType>;
+  // eslint-disable-next-line no-unused-vars
+  validatePasswordCheck: (value: string) => boolean | String;
 }
