@@ -1,24 +1,47 @@
 import ProgressBar from '../../components/progress/ProgressBar';
 import { Title1 } from '../../components/text/Text';
 import { theme } from '../../styles/theme';
-import { SignUpContainer, SignUpForm, SignUpInputBox, SignUpTitle } from './styles';
-import Input from '../../components/input/Input';
-import { useSignIn } from './events';
-import { PrimaryButton } from '../../components/button/Button';
+import { SignUpContainer, SignUpTitle } from './styles';
+import SignUpMessage from './SignUpMessage';
+import SignUpFirst from './SignUpFirst';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
+import { useSignUp } from './events';
+import SignUpSecond from './SignUpSecond';
+import Modal from '../../components/modal/Modal';
 
 export default function SignUpPage() {
+  const { currentStep, prevStep, isForward, totalSteps } = useSelector(
+    (state: RootState) => state.progress,
+  );
+
+  const { isOpen, question1, question2 } = useSelector((state: RootState) => state.modal);
+
   const {
-    register,
-    handleSubmit,
-    errors,
-    onSubmit,
-    currentStep,
-    prevStep,
-    totalSteps,
-    isForward,
+    handleModalNo,
+    handleModalYes,
+    messageRegister,
+    messageHandleSubmit,
+    messageErrors,
+    onMessageSubmit,
     isPhoneVerified,
     buttonText,
-  } = useSignIn();
+    formattedCountdown,
+    firstRegister,
+    firstHandleSubmit,
+    firstErrors,
+    onFirstSubmit,
+    firstSetValue,
+    firstClearErrors,
+    secondRegister,
+    secondHandleSubmit,
+    secondErrors,
+    onSecondSubmit,
+    secondSetValue,
+    secondClearErrors,
+    secondSetError,
+    validatePasswordCheck,
+  } = useSignUp();
 
   return (
     <SignUpContainer>
@@ -31,39 +54,46 @@ export default function SignUpPage() {
           isForward={isForward}
         />
       </SignUpTitle>
-      <SignUpForm onSubmit={handleSubmit(onSubmit)}>
-        <SignUpInputBox>
-          <Input
-            type="tel"
-            label="전화번호"
-            placeholder="010-0000-0000"
-            name="phone"
-            size="l"
-            register={register('phone', {
-              required: '전화번호를 입력해주세요.',
-              pattern: {
-                value: /^010-\d{4}-\d{4}$/,
-                message: '010-0000-0000 형식으로 입력해주세요.',
-              },
-            })}
-            errors={errors}
-          />
-          {isPhoneVerified && (
-            <Input
-              type="number"
-              label="인증번호"
-              placeholder="인증번호를 입력해주세요."
-              name="number"
-              size="l"
-              register={register('number', {
-                required: '인증번호를 입력해주세요.',
-              })}
-              errors={errors}
-            />
-          )}
-        </SignUpInputBox>
-        <PrimaryButton size="l">{buttonText}</PrimaryButton>
-      </SignUpForm>
+      {currentStep === 1 && (
+        <SignUpMessage
+          register={messageRegister}
+          messageHandleSubmit={messageHandleSubmit}
+          errors={messageErrors}
+          onMessageSubmit={onMessageSubmit}
+          isPhoneVerified={isPhoneVerified}
+          buttonText={buttonText}
+          formattedCountdown={formattedCountdown}
+        />
+      )}
+      {currentStep === 2 && (
+        <SignUpFirst
+          register={firstRegister}
+          firstHandleSubmit={firstHandleSubmit}
+          errors={firstErrors}
+          onFirstSubmit={onFirstSubmit}
+          firstSetValue={firstSetValue}
+          firstClearErrors={firstClearErrors}
+        />
+      )}
+      {currentStep === 3 && (
+        <SignUpSecond
+          register={secondRegister}
+          secondHandleSubmit={secondHandleSubmit}
+          errors={secondErrors}
+          onSecondSubmit={onSecondSubmit}
+          secondSetValue={secondSetValue}
+          secondClearErrors={secondClearErrors}
+          secondSetError={secondSetError}
+          validatePasswordCheck={validatePasswordCheck}
+        />
+      )}
+      <Modal
+        isOpen={isOpen}
+        question1={question1}
+        question2={question2}
+        onClickNo={handleModalNo}
+        onClickYes={handleModalYes}
+      />
     </SignUpContainer>
   );
 }
