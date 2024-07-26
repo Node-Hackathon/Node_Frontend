@@ -12,6 +12,7 @@ import ProgressTest from '../test/ProgressTest';
 import CenterListPage from '../pages/centerList/CenterListPage';
 import GuardianPage from '../pages/signUp/GuardianPage';
 import ModalTest from '../test/ModalTest';
+import FDFramePage from '../pages/4DFrame/FDFramePage';
 
 const router = createBrowserRouter([
   {
@@ -28,11 +29,16 @@ const router = createBrowserRouter([
       },
       {
         path: 'signUp',
-        element: <SignUpPage />,
-      },
-      {
-        path: 'signUp-guardian',
-        element: <GuardianPage />,
+        children: [
+          {
+            path: '',
+            element: <SignUpPage />,
+          },
+          {
+            path: 'guardian',
+            element: <GuardianPage />,
+          },
+        ],
       },
       {
         path: 'list',
@@ -47,6 +53,15 @@ const router = createBrowserRouter([
       {
         path: 'main',
         element: <MainPage />,
+      },
+      {
+        path: '4dFrame',
+        children: [
+          {
+            path: '',
+            element: <FDFramePage />,
+          },
+        ],
       },
     ],
   },

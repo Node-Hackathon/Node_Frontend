@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 
 export const SignInContainer = styled.section`
   height: 100%;
-  padding-top: 2.75rem;
+  padding: 2.75rem 0 5rem;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
