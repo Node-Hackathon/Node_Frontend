@@ -45,6 +45,9 @@ export default function SignInPage() {
           <Label7 color={theme.colors.textHeavy}>회원가입</Label7>
         </Link>
       </SignInLayout>
+      <Link to="/list">
+        <PrimaryButton size="l">센터 리스트</PrimaryButton>
+      </Link>
     </SignInContainer>
   );
 }
