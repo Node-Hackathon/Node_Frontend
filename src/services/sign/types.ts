@@ -1,3 +1,8 @@
+export interface SignInFormType {
+  userId: string;
+  password: string;
+}
+
 export interface SignUpMessageFormType {
   phone: string;
   code: string;
