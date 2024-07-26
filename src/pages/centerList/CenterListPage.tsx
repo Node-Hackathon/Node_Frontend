@@ -12,7 +12,6 @@ import {
 } from './styles';
 import { CenterListType } from './types';
 import { regions } from './regionsdata';
-import Header from '../../components/header/Header';
 
 export default function CenterListPage() {
   const [centers, setCenters] = useState<CenterListType[]>([]);
@@ -37,7 +36,6 @@ export default function CenterListPage() {
 
   return (
     <CenterListContainer>
-      <Header isHambergerOpen={isHambergerOpen} handleToggleHamberger={handleToggleHamberger} />
       <CenterListHeader>
         <CenterListTitle>상담 센터</CenterListTitle>
         <select onChange={(e) => setSelectedRegion(e.target.value)} value={selectedRegion}>
