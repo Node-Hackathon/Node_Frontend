@@ -36,6 +36,7 @@ const typography = {
   label5: `font-size: 0.875rem; font-weight: 600;`,
   label6: `font-size: 0.875rem; font-weight: 500;`,
   label7: `font-size: 0.75rem; font-weight: 600;`,
+  label8: `font-size: 1rem; font-weight: 400; color: #5d5d5d`,
 };
 
 export type ColorsType = typeof colors;

@@ -13,6 +13,8 @@ export const useSignIn = () => {
 
   const handleSignIn: SubmitHandler<SignInType> = (data: SignInType) => {
     console.log(data);
+    console.log('로그인 성공!');
+    console.log();
     navigate('/main');
   };
 
