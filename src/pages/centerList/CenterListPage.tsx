@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { centerList, centerListSearch } from '../../services/center/centerApi';
 import {
   CenterListContainer,
-  CenterListHeader,
   CenterListTitle,
   CenterList,
   CenterListItem,
   CenterName,
   CenterLocation,
   CenterPhone,
+  CenterType,
 } from './styles';
 import { CenterListType } from './types';
 import { regions } from './regionsdata';
@@ -16,11 +16,6 @@ import { regions } from './regionsdata';
 export default function CenterListPage() {
   const [centers, setCenters] = useState<CenterListType[]>([]);
   const [selectedRegion, setSelectedRegion] = useState('');
-  const [isHambergerOpen, setIsHambergerOpen] = useState(false);
-
-  const handleToggleHamberger = () => {
-    setIsHambergerOpen(!isHambergerOpen);
-  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,26 +28,24 @@ export default function CenterListPage() {
     };
     fetchData();
   }, [selectedRegion]);
-
   return (
     <CenterListContainer>
-      <CenterListHeader>
-        <CenterListTitle>상담 센터</CenterListTitle>
-        <select onChange={(e) => setSelectedRegion(e.target.value)} value={selectedRegion}>
-          <option value="">전체</option>
-          {regions.map((region) => (
-            <option key={region} value={region}>
-              {region}
-            </option>
-          ))}
-        </select>
-      </CenterListHeader>
+      <CenterListTitle>센터 목록</CenterListTitle>
+      <select onChange={(e) => setSelectedRegion(e.target.value)} value={selectedRegion}>
+        <option value="">전체</option>
+        {regions.map((region) => (
+          <option key={region} value={region}>
+            {region}
+          </option>
+        ))}
+      </select>
       <CenterList>
         {centers.map((center) => (
           <CenterListItem key={center.id}>
             <CenterName>{center.center_name}</CenterName>
-            <CenterPhone>{center.center_phone_num}</CenterPhone>
             <CenterLocation>{center.center_address}</CenterLocation>
+            <CenterPhone>전화번호: {center.center_phone_num}</CenterPhone>
+            <CenterType>센터 유형: {center.center_type}</CenterType>
           </CenterListItem>
         ))}
       </CenterList>

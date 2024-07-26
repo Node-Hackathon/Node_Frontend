@@ -7,7 +7,7 @@ import { PrimaryButton } from '../../components/button/Button';
 import { useSignIn } from './events';
 import { Link } from 'react-router-dom';
 
-export default function SignIn() {
+export default function SignInPage() {
   const { register, handleSubmit, errors, handleSignIn } = useSignIn();
 
   return (
@@ -45,6 +45,9 @@ export default function SignIn() {
           <Label7 color={theme.colors.textHeavy}>회원가입</Label7>
         </Link>
       </SignInLayout>
+      <Link to="/list">
+        <PrimaryButton size="l">센터 리스트</PrimaryButton>
+      </Link>
     </SignInContainer>
   );
 }

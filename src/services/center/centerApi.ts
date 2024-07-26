@@ -10,7 +10,7 @@ export const centerListSearch = async (region = ''): Promise<CenterListType[]> =
         headers: {
           // 실제 사용자 토큰 저장해서 받아와야함 지금은 하드코딩해버림
           'X-AUTH-TOKEN':
-            'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMTAtNTI3OC05MDgyIiwicm9sZXMiOlsiTUVNQkVSIl0sImlhdCI6MTcyMTg5NjA5MCwiZXhwIjoxNzIxODk5NjkwfQ.BAbcPdsHnprUWVxfmWMOXS_XG69WgY1-EXVXGfKGKPE',
+            'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMTAtNTI3OC05MDgyIiwicm9sZXMiOlsiTUVNQkVSIl0sImlhdCI6MTcyMTg4MTk3NywiZXhwIjoxNzIxODg1NTc3fQ.WE-Bw7EjxRAczNNmo6lrpH8HRXDxhYclhti678DqE7Y',
         },
       },
     );
@@ -29,7 +29,7 @@ export const centerList = async (): Promise<CenterListType[]> => {
       headers: {
         // 실제 사용자 토큰 저장해서 받아와야함 지금은 하드코딩해버림
         'X-AUTH-TOKEN':
-          'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMTAtNTI3OC05MDgyIiwicm9sZXMiOlsiTUVNQkVSIl0sImlhdCI6MTcyMTg5NjA5MCwiZXhwIjoxNzIxODk5NjkwfQ.BAbcPdsHnprUWVxfmWMOXS_XG69WgY1-EXVXGfKGKPE',
+          'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIwMTAtNTI3OC05MDgyIiwicm9sZXMiOlsiTUVNQkVSIl0sImlhdCI6MTcyMTg4MTk3NywiZXhwIjoxNzIxODg1NTc3fQ.WE-Bw7EjxRAczNNmo6lrpH8HRXDxhYclhti678DqE7Y',
       },
     });
     console.log('전체 센터 리스트 확인:', response.data);

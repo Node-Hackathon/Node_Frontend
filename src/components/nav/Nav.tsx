@@ -27,7 +27,7 @@ function Nav({ $isClosing }: NavType) {
           <Link to="/edu-4d">
             <NavList>포디프레임</NavList>
           </Link>
-          <Link to="/edu-ect">
+          <Link to="/edu-etc">
             <NavList>게임</NavList>
           </Link>
         </NavDetails>

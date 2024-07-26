@@ -13,6 +13,7 @@ export const SignUpTitle = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  min-width: 20rem;
 `;
 
 export const SignUpForm = styled.form`
@@ -25,4 +26,9 @@ export const SignUpInputBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+`;
+
+export const SignUpInputPair = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
