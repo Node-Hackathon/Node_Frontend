@@ -18,7 +18,7 @@ export default function Home() {
       alert('자동 로그아웃되었습니다!');
       navigate('/signIn');
     }
-  }, [accessToken, dispatch]);
+  }, [accessToken, dispatch, navigate]);
 
   // true -> Nav Open
   // false -> Nav Close
