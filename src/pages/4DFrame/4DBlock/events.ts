@@ -1,8 +1,12 @@
 import { useForm } from 'react-hook-form';
-import { FDBlockFormType } from '../../services/4d/types';
-import { useBlockPlayMutation } from '../../services/4d/fdApi';
+import { BlockReturnType, FDBlockFormType } from '../../../services/4d/types';
+import { useBlockPlayMutation } from '../../../services/4d/fdApi';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const use4DBlock = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -10,10 +14,18 @@ export const use4DBlock = () => {
     formState: { errors },
   } = useForm<FDBlockFormType>();
 
+  const handleReplay = () => {
+    navigate(0);
+  };
+
+  const handleNavigate = () => {
+    navigate('/myPage/result/block');
+  };
+
   const [blockPlay, { isLoading, isSuccess, isError }] = useBlockPlayMutation();
+  const [blockData, setBlockData] = useState<BlockReturnType | null>(null);
 
   const on4DBlockHandler = async (data: FDBlockFormType) => {
-    console.log(data.blockImage);
     let formData = new FormData();
     const blockImage = data.blockImage;
 
@@ -24,9 +36,9 @@ export const use4DBlock = () => {
 
           try {
             const response = await blockPlay(formData).unwrap();
-            console.log(response);
-            console.log('제출 성공');
+            setBlockData(response);
           } catch (error) {
+            alert('사진 분석에 실패했습니다. 다시 시도해주세요.');
             console.error('폼 제출 오류:', error);
           }
         } else {
@@ -50,5 +62,8 @@ export const use4DBlock = () => {
     isLoading,
     isSuccess,
     isError,
+    blockData,
+    handleReplay,
+    handleNavigate,
   };
 };

@@ -13,8 +13,7 @@ import CenterListPage from '../pages/centerList/CenterListPage';
 import GuardianPage from '../pages/signUp/GuardianPage';
 import ModalTest from '../test/ModalTest';
 import FDFramePage from '../pages/education/FDFramePage';
-import BlockPage from '../pages/4DFrame/BlockPage';
-import BlockResult from '../pages/4DFrame/BlockResult';
+import BlockPage from '../pages/4DFrame/4DBlock/BlockPage';
 
 const router = createBrowserRouter([
   {
@@ -98,10 +97,6 @@ const router = createBrowserRouter([
       {
         path: 'modal',
         element: <ModalTest />,
-      },
-      {
-        path: 'block',
-        element: <BlockResult />,
       },
     ],
   },

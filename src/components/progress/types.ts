@@ -3,4 +3,5 @@ export interface ProgressType {
   prevStep: number;
   totalStep: number;
   isForward: boolean;
+  type?: 'default' | 'graph';
 }

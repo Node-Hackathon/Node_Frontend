@@ -5,7 +5,7 @@ import {
   UseFormHandleSubmit,
   UseFormSetValue,
 } from 'react-hook-form';
-import { FDBlockFormType } from '../../services/4d/types';
+import { BlockReturnType, FDBlockFormType } from '../../../services/4d/types';
 
 export interface BlockUploadType {
   question: string;
@@ -18,4 +18,10 @@ export interface BlockUploadType {
   // eslint-disable-next-line no-unused-vars
   onSubmitHandler: (data: FDBlockFormType) => Promise<void>;
   blockSetValue?: UseFormSetValue<FDBlockFormType>;
+}
+
+export interface BlockResultType {
+  data: BlockReturnType | null;
+  handleReplay: () => void;
+  handleNavigate: () => void;
 }

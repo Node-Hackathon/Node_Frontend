@@ -1,6 +1,6 @@
-import { theme } from '../../styles/theme';
+import { theme } from '../../../styles/theme';
 import { LoadingBox, LoadingContainer, LoadingLogo, LoadingSVG } from './styles';
-import { ReactComponent as Logo } from '../../assets/images/Logo-M.svg';
+import { ReactComponent as Logo } from '../../../assets/images/Logo-M.svg';
 
 export default function BlockLoading() {
   return (

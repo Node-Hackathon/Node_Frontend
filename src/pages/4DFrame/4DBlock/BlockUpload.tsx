@@ -1,7 +1,7 @@
-import { PrimaryButton } from '../../components/button/Button';
-import ImageInput from '../../components/input/ImageInput';
-import { Body2 } from '../../components/text/Text';
-import { theme } from '../../styles/theme';
+import { PrimaryButton } from '../../../components/button/Button';
+import ImageInput from '../../../components/input/ImageInput';
+import { Body2 } from '../../../components/text/Text';
+import { theme } from '../../../styles/theme';
 import {
   UploadBox,
   UploadButton,
