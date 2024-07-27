@@ -24,10 +24,10 @@ function Nav({ $isClosing }: NavType) {
             {!isDetailsOpen && <FaAngleDown />}
             {isDetailsOpen && <FaAngleUp />}
           </NavSummary>
-          <Link to="/edu-4d">
+          <Link to="/education/4DFrame">
             <NavList>포디프레임</NavList>
           </Link>
-          <Link to="/edu-etc">
+          <Link to="/education/game">
             <NavList>게임</NavList>
           </Link>
         </NavDetails>

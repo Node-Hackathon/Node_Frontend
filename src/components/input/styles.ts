@@ -184,6 +184,7 @@ export const InputMessage = styled(Label7)`
 export const ImageContainer = styled.div<ImageInputStyleType>`
   width: ${({ size }) => (size === 's' ? '10.3125rem' : '15.625rem')};
   height: ${({ size }) => (size === 's' ? '10.3125rem' : '15.625rem')};
+  min-width: ${({ size }) => (size === 's' ? '10.3125rem' : '15.625rem')};
   border-radius: 0.5rem;
   border: 1px solid ${({ $iserror }) => ($iserror ? theme.colors.error : theme.colors.textNormal)};
   display: flex;
@@ -203,6 +204,6 @@ export const ImageBox = styled.input`
 export const PreviewImage = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 0.5rem;
 `;

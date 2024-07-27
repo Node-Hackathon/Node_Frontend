@@ -1,24 +1,10 @@
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Header from '../components/header/Header';
-import { useEffect, useState } from 'react';
-import Footer from '../components/footer/Footer';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store/store';
-import { useDispatch } from 'react-redux';
-import { logout } from '../store/reducer/tokenSlice';
+import { useState } from 'react';
+import useTokenCheck from '../hooks/useTokenCheck';
 
 export default function Home() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const accessToken = useSelector((state: RootState) => state.token.accessToken);
-
-  useEffect(() => {
-    if (!accessToken) {
-      dispatch(logout());
-      alert('자동 로그아웃되었습니다!');
-      navigate('/signIn');
-    }
-  }, [accessToken, dispatch, navigate]);
+  useTokenCheck();
 
   // true -> Nav Open
   // false -> Nav Close
@@ -42,7 +28,6 @@ export default function Home() {
     <>
       <Header isHambergerOpen={isHambergerOpen} handleToggleHamberger={handleToggleHamberger} />
       <Outlet context={{ isHambergerOpen, $isClosing }} />
-      <Footer />
     </>
   );
 }

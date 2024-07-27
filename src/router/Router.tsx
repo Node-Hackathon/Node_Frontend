@@ -12,7 +12,8 @@ import ProgressTest from '../test/ProgressTest';
 import CenterListPage from '../pages/centerList/CenterListPage';
 import GuardianPage from '../pages/signUp/GuardianPage';
 import ModalTest from '../test/ModalTest';
-import FDFramePage from '../pages/4DFrame/FDFramePage';
+import FDFramePage from '../pages/education/FDFramePage';
+import BlockUploadPage from '../pages/4DFrame/BlockUploadPage';
 
 const router = createBrowserRouter([
   {
@@ -55,11 +56,20 @@ const router = createBrowserRouter([
         element: <MainPage />,
       },
       {
-        path: '4dFrame',
+        path: 'education',
         children: [
           {
-            path: '',
-            element: <FDFramePage />,
+            path: '4DFrame',
+            children: [
+              {
+                path: '',
+                element: <FDFramePage />,
+              },
+              {
+                path: 'block',
+                element: <BlockUploadPage />,
+              },
+            ],
           },
         ],
       },
