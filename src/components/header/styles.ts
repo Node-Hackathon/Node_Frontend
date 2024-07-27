@@ -9,8 +9,4 @@ export const HeaderContainer = styled.div`
   justify-content: space-between;
 
   padding: 1rem;
-
-  position: fixed;
-  z-index: 200;
-  width: 100%;
 `;

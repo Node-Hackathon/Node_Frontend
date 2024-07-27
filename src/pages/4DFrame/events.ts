@@ -7,11 +7,10 @@ export const use4DBlock = () => {
     register,
     handleSubmit,
     setValue: blockSetValue,
-
     formState: { errors },
   } = useForm<FDBlockFormType>();
 
-  const [blockPlay] = useBlockPlayMutation();
+  const [blockPlay, { isLoading, isSuccess, isError }] = useBlockPlayMutation();
 
   const on4DBlockHandler = async (data: FDBlockFormType) => {
     console.log(data.blockImage);
@@ -48,5 +47,8 @@ export const use4DBlock = () => {
     errors,
     on4DBlockHandler,
     blockSetValue,
+    isLoading,
+    isSuccess,
+    isError,
   };
 };

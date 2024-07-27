@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import Header from '../components/header/Header';
 import { useState } from 'react';
+import Footer from '../components/footer/Footer';
 import useTokenCheck from '../hooks/useTokenCheck';
 
 export default function Home() {
@@ -28,6 +29,7 @@ export default function Home() {
     <>
       <Header isHambergerOpen={isHambergerOpen} handleToggleHamberger={handleToggleHamberger} />
       <Outlet context={{ isHambergerOpen, $isClosing }} />
+      <Footer />
     </>
   );
 }

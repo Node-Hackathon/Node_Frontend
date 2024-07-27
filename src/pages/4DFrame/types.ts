@@ -7,7 +7,7 @@ import {
 } from 'react-hook-form';
 import { FDBlockFormType } from '../../services/4d/types';
 
-export interface UploadType {
+export interface BlockUploadType {
   question: string;
   buttonText: string;
   buttonEvent?: () => void;
