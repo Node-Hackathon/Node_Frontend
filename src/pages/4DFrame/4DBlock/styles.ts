@@ -53,7 +53,7 @@ export const UploadForm = styled.form`
   flex: 4;
 `;
 
-export const UploadContent = styled.div`
+export const UploadContent = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
