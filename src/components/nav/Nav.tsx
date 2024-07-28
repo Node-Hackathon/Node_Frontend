@@ -31,7 +31,7 @@ function Nav({ isClosing }: NavType) {
             <NavList>게임</NavList>
           </Link>
         </NavDetails>
-        <Link to="/consulting">
+        <Link to="/center">
           <NavContent>상담 센터</NavContent>
         </Link>
         <Link to="/mypage">

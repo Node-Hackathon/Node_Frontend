@@ -9,7 +9,7 @@ export default function BlockGraph({ name, accuracy }: BlockResultsType) {
     <ResultGraph>
       <ResultValue>
         <Label2 color={theme.colors.textNeutral}>{name}</Label2>
-        <Label6 color={theme.colors.primaryPoint}>{accuracy}% 정확해요</Label6>
+        <Label6 color={theme.colors.primaryHeavy}>{accuracy}% 정확해요</Label6>
       </ResultValue>
       <ProgressBar
         currentStep={parseFloat(accuracy)}

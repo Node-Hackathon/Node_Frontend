@@ -9,12 +9,12 @@ import SignUpPage from '../pages/signUp/SignUpPage';
 import Home from '../pages/Home';
 import MainPage from '../pages/main/MainPage';
 import ProgressTest from '../test/ProgressTest';
-import CenterListPage from '../pages/centerList/CenterListPage';
 import GuardianPage from '../pages/signUp/GuardianPage';
 import ModalTest from '../test/ModalTest';
 import FDFramePage from '../pages/education/FDFramePage';
 import BlockPage from '../pages/4DFrame/4DBlock/BlockPage';
 import CompositionPage from '../pages/4DFrame/4DComposition/CompositionPage';
+import CenterPage from '../pages/center/CenterPage';
 
 const router = createBrowserRouter([
   {
@@ -41,10 +41,6 @@ const router = createBrowserRouter([
             element: <GuardianPage />,
           },
         ],
-      },
-      {
-        path: 'list',
-        element: <CenterListPage />,
       },
     ],
   },
@@ -77,6 +73,10 @@ const router = createBrowserRouter([
             ],
           },
         ],
+      },
+      {
+        path: 'center',
+        element: <CenterPage />,
       },
     ],
   },

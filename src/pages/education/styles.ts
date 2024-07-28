@@ -4,8 +4,8 @@ import { styled } from 'styled-components';
 export const FDContainer = styled.section`
   height: 100%;
   width: 100%;
-  min-height: 40rem;
-  padding: 4rem 0;
+  min-height: 100%;
+  padding: 1.25rem 0;
   display: flex;
   justify-content: center;
   overflow-x: hidden;
