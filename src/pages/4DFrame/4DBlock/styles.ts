@@ -114,7 +114,7 @@ export const ResultButton = styled.div`
   min-width: 20rem;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   flex: 1;
 `;
 

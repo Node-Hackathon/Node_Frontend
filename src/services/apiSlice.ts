@@ -28,6 +28,7 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
   let result = await baseQuery(args, api, extraOption);
 
   if (result.error && result.error.status === 401) {
+    alert('로그인 후 다시 시도해주세요!');
     api.dispatch(logout());
   }
 

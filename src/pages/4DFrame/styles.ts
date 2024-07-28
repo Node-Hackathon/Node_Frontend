@@ -5,7 +5,7 @@ import { theme } from '../../styles/theme';
 export const FDContainer = styled.section`
   width: 100%;
   min-height: 100%;
-  padding: 3.375rem 0 1.6875rem;
+  padding: 1.25rem 0;
   display: flex;
   justify-content: center;
   overflow-x: hidden;
