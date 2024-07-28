@@ -10,9 +10,13 @@ function Footer() {
   return (
     <FooterContainer>
       <FooterLogo>
+
         <Link to={'/main'}>
           <Logo />
         </Link>
+
+        <Logo />
+
       </FooterLogo>
       <FooterInfo>
         <table>

@@ -8,6 +8,10 @@ import ButtonTest from '../test/ButtonTest';
 import SignUpPage from '../pages/signUp/SignUpPage';
 import Home from '../pages/Home';
 import MainPage from '../pages/main/MainPage';
+import ProgressTest from '../test/ProgressTest';
+import CenterListPage from '../pages/centerList/CenterListPage';
+import GuardianPage from '../pages/signUp/GuardianPage';
+import ModalTest from '../test/ModalTest';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +29,14 @@ const router = createBrowserRouter([
       {
         path: 'signUp',
         element: <SignUpPage />,
+      },
+      {
+        path: 'signUp-guardian',
+        element: <GuardianPage />,
+      },
+      {
+        path: 'list',
+        element: <CenterListPage />,
       },
     ],
   },
@@ -52,6 +64,14 @@ const router = createBrowserRouter([
       {
         path: 'button',
         element: <ButtonTest />,
+      },
+      {
+        path: 'progress',
+        element: <ProgressTest />,
+      },
+      {
+        path: 'modal',
+        element: <ModalTest />,
       },
     ],
   },
