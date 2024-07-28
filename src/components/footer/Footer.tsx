@@ -1,6 +1,7 @@
 import { FooterContainer, FooterCopyright, FooterInfo, FooterLogo } from './styles';
 import { ReactComponent as Logo } from '../../assets/images/Logo-s.svg';
 import { useOwnerInfo } from './events';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   const { ownerName, ownerEmail, ownerTel } = useOwnerInfo();
@@ -9,7 +10,9 @@ function Footer() {
   return (
     <FooterContainer>
       <FooterLogo>
-        <Logo />
+        <Link to={'/main'}>
+          <Logo />
+        </Link>
       </FooterLogo>
       <FooterInfo>
         <table>

@@ -1,4 +1,6 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export interface HeaderType {
   isHambergerOpen: boolean;
-  handleToggleHamberger: () => void;
+  setIsHambergerOpen: Dispatch<SetStateAction<boolean>>;
 }

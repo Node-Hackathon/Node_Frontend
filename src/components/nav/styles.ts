@@ -18,13 +18,13 @@ const fadeOut = keyframes`
     }
 `;
 
-export const NavContainer = styled.div<{ $isClosing: boolean }>`
+export const NavContainer = styled.div<{ isClosing: boolean }>`
   width: 100%;
   height: 100%;
 
-  padding-top: 2rem;
+  padding: 2rem 0rem;
 
-  animation: ${({ $isClosing }) => ($isClosing ? fadeIn : fadeOut)} 0.4s ease-in-out;
+  animation: ${({ isClosing }) => (isClosing ? fadeIn : fadeOut)} 0.4s ease-in-out;
 `;
 
 export const NavContent = styled.div`

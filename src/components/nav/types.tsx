@@ -1,3 +1,3 @@
 export interface NavType {
-  $isClosing: boolean;
+  isClosing: boolean;
 }
