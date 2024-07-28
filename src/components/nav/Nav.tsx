@@ -5,7 +5,7 @@ import { FaAngleUp } from 'react-icons/fa6';
 import { NavType } from './types';
 import { Link } from 'react-router-dom';
 
-function Nav({ $isClosing }: NavType) {
+function Nav({ isClosing }: NavType) {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
 
   const handleToggleDetails = () => {
@@ -14,7 +14,7 @@ function Nav({ $isClosing }: NavType) {
 
   return (
     <>
-      <NavContainer $isClosing={$isClosing}>
+      <NavContainer isClosing={isClosing}>
         <Link to="/check">
           <NavContent>치매 진단</NavContent>
         </Link>

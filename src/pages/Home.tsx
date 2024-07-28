@@ -23,25 +23,11 @@ export default function Home() {
   // true -> Nav Open
   // false -> Nav Close
   const [isHambergerOpen, setIsHambergerOpen] = useState(false);
-  const [$isClosing, setIsClosing] = useState(false);
-
-  // toggle
-  const handleToggleHamberger = () => {
-    if (isHambergerOpen) {
-      setIsClosing(true);
-      setTimeout(() => {
-        setIsHambergerOpen(false);
-        setIsClosing(false);
-      }, 300);
-    } else {
-      setIsHambergerOpen(true);
-    }
-  };
 
   return (
     <>
-      <Header isHambergerOpen={isHambergerOpen} handleToggleHamberger={handleToggleHamberger} />
-      <Outlet context={{ isHambergerOpen, $isClosing }} />
+      <Header isHambergerOpen={isHambergerOpen} setIsHambergerOpen={setIsHambergerOpen} />
+      {!isHambergerOpen && <Outlet />}
       <Footer />
     </>
   );
