@@ -12,6 +12,7 @@ import {
   SignUpMessageFormType,
   SignUpSecondFormType,
 } from '../../services/sign/types';
+import { FDBlockFormType, FDCompositionFormType } from '../../services/4d/types';
 
 export interface PasswordInputType {
   name: string;
@@ -66,7 +67,7 @@ export interface AddressInputType {
 }
 
 export interface ImageInputType {
-  name: keyof SignUpSecondFormType;
+  name: keyof SignUpSecondFormType | keyof FDBlockFormType | keyof FDCompositionFormType;
   register: any;
   errors: DeepMap<FieldValues, FieldError>;
   size?: 'l' | 's';
@@ -74,6 +75,8 @@ export interface ImageInputType {
   secondSetValue?: UseFormSetValue<SignUpSecondFormType>;
   secondClearErrors?: UseFormClearErrors<SignUpSecondFormType>;
   secondSetError?: UseFormSetError<SignUpSecondFormType>;
+  blockSetValue?: UseFormSetValue<FDBlockFormType>;
+  compositionSetValue?: UseFormSetValue<FDCompositionFormType>;
 }
 
 export interface InputType {

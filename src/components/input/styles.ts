@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Label5, Label7 } from '../text/Text';
 import { theme } from '../../styles/theme';
-import { ImageInputStyleType, InputStyleType } from './types';
 import { SecondaryButton } from '../button/Button';
 import 'react-calendar/dist/Calendar.css';
 
@@ -17,7 +16,11 @@ export const InputPlaceholder = styled(Label5).attrs({
   margin-left: 1rem;
 `;
 
-export const InputBox = styled.div<InputStyleType>`
+export const InputBox = styled.div<{
+  name?: string;
+  size?: 'l' | 's';
+  $iserror?: boolean;
+}>`
   width: ${({ size, name }) =>
     name === 'file'
       ? size === 'l'
@@ -29,7 +32,11 @@ export const InputBox = styled.div<InputStyleType>`
   position: relative;
 `;
 
-export const InputBase = styled.input<InputStyleType>`
+export const InputBase = styled.input<{
+  name?: string;
+  size?: 'l' | 's';
+  $iserror?: boolean;
+}>`
   width: ${({ size }) => (size === 'l' ? '20rem' : '9.6875rem')};
   height: 3.5rem;
   border-radius: 0.5rem;
@@ -181,9 +188,13 @@ export const InputMessage = styled(Label7)`
   margin-left: 0.38rem;
 `;
 
-export const ImageContainer = styled.div<ImageInputStyleType>`
+export const ImageContainer = styled.div<{
+  size?: 'l' | 's';
+  $iserror?: boolean;
+}>`
   width: ${({ size }) => (size === 's' ? '10.3125rem' : '15.625rem')};
   height: ${({ size }) => (size === 's' ? '10.3125rem' : '15.625rem')};
+  min-width: ${({ size }) => (size === 's' ? '10.3125rem' : '15.625rem')};
   border-radius: 0.5rem;
   border: 1px solid ${({ $iserror }) => ($iserror ? theme.colors.error : theme.colors.textNormal)};
   display: flex;
@@ -203,6 +214,6 @@ export const ImageBox = styled.input`
 export const PreviewImage = styled.img`
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 0.5rem;
 `;

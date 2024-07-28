@@ -8,6 +8,7 @@ import {
 import { UseFormClearErrors, UseFormSetError, UseFormSetValue } from 'react-hook-form';
 import { SelectedBirth } from './types';
 import { Address } from 'react-daum-postcode';
+import { FDBlockFormType, FDCompositionFormType } from '../../services/4d/types';
 
 // 비밀번호 인풋에서 사용
 export const useTogglePassword = () => {
@@ -134,10 +135,12 @@ export const useAddressInput = (
 
 // 이미지 인풋에서 사용
 export const useImageInput = (
-  name: keyof SignUpSecondFormType,
+  name: keyof SignUpSecondFormType | keyof FDBlockFormType | keyof FDCompositionFormType,
   secondSetValue: UseFormSetValue<SignUpSecondFormType> | undefined,
   secondSetError: UseFormSetError<SignUpSecondFormType> | undefined,
   secondClearErrors: UseFormClearErrors<SignUpSecondFormType> | undefined,
+  blockSetValue: UseFormSetValue<FDBlockFormType> | undefined,
+  compositionSetValue: UseFormSetValue<FDCompositionFormType> | undefined,
 ) => {
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
@@ -146,9 +149,21 @@ export const useImageInput = (
   // 수시로 이미지 파일 저장
   useEffect(() => {
     if (secondSetValue) {
-      secondSetValue(name, file);
+      if (name === 'file') {
+        secondSetValue(name, file);
+      }
     }
-  }, [file, name, secondSetValue]);
+    if (blockSetValue) {
+      if (name === 'blockImage') {
+        blockSetValue(name, file);
+      }
+    }
+    if (compositionSetValue) {
+      if (name === 'composition_image') {
+        compositionSetValue(name, file);
+      }
+    }
+  }, [file, name, secondSetValue, blockSetValue]);
 
   // 파일 상태 리셋 함수
   const resetFileState = () => {
@@ -168,16 +183,17 @@ export const useImageInput = (
           if (secondSetError) {
             secondSetError('file', {
               type: 'fileType',
-              message: '이미지만 선택할 수 있습니다',
+              message: '이미지만 등록할 수 있습니다',
             });
           }
           resetFileState();
           return;
         } else {
           // 에러 클리어
-          secondClearErrors?.(name);
-          secondSetValue?.(name, selectedFile);
-
+          if (name === 'file') {
+            secondClearErrors?.(name);
+            secondSetValue?.(name, selectedFile);
+          }
           // 파일을 비동기적으로 읽기
           const reader = new FileReader();
 

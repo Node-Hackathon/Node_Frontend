@@ -29,7 +29,7 @@ export const useSignUp = () => {
 
   const handleModalYes = () => {
     dispatch(closeModal());
-    navigate('/signUp-guardian', { replace: true });
+    navigate('/signUp/guardian', { replace: true });
   };
 
   const handleModalNo = () => {
