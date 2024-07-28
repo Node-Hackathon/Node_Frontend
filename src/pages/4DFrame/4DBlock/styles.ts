@@ -1,6 +1,5 @@
 import { keyframes, styled } from 'styled-components';
 import { Body2 } from '../../../components/text/Text';
-import { theme } from '../../../styles/theme';
 
 const loadingRotate = keyframes`
   from {
@@ -21,15 +20,6 @@ const loadingZoom = keyframes`
   100% {
     transform: scale(1);
   }
-`;
-
-export const BlockContainer = styled.section`
-  width: 100%;
-  min-height: 100%;
-  padding: 3.375rem 0 1.6875rem;
-  display: flex;
-  justify-content: center;
-  overflow-x: hidden;
 `;
 
 export const UploadBox = styled.div`
@@ -144,15 +134,6 @@ export const ResultGraphBox = styled.div`
   align-items: center;
   gap: 0.87rem;
   flex: 1;
-`;
-
-export const ResultImage = styled.img`
-  width: 15.625rem;
-  height: 15.625rem;
-  border-radius: 0.5rem;
-  border: 1px solid ${theme.colors.textNormal};
-  background-color: ${theme.colors.backgroundNormal};
-  object-fit: contain;
 `;
 
 export const ResultGraph = styled.div`

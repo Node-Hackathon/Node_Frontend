@@ -1,8 +1,8 @@
 import { use4DBlock } from './events';
-import { BlockContainer } from './styles';
-import BlockUpload from './BlockUpload';
+import { FDContainer } from '../styles';
 import BlockLoading from './BlockLoading';
 import BlockResult from './BlockResult';
+import Upload from '../Upload';
 
 export default function BlockPage() {
   const {
@@ -20,22 +20,23 @@ export default function BlockPage() {
   } = use4DBlock();
 
   return (
-    <BlockContainer>
+    <FDContainer>
       {isLoading && <BlockLoading />}
       {!isLoading && isSuccess && (
         <BlockResult data={blockData} handleReplay={handleReplay} handleNavigate={handleNavigate} />
       )}
       {!isLoading && (isError || !isSuccess) && (
-        <BlockUpload
+        <Upload
           question="비스듬, 계단 2개의 조합을 활용해 만들어주세요"
-          buttonText="분석 시작"
           register={register}
+          name="blockImage"
           handleSubmit={handleSubmit}
           errors={errors}
           onSubmitHandler={on4DBlockHandler}
           blockSetValue={blockSetValue}
+          manualLink="/education/4DFrame/manual/block"
         />
       )}
-    </BlockContainer>
+    </FDContainer>
   );
 }

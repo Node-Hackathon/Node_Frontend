@@ -8,7 +8,7 @@ import {
 import { UseFormClearErrors, UseFormSetError, UseFormSetValue } from 'react-hook-form';
 import { SelectedBirth } from './types';
 import { Address } from 'react-daum-postcode';
-import { FDBlockFormType } from '../../services/4d/types';
+import { FDBlockFormType, FDCompositionFormType } from '../../services/4d/types';
 
 // 비밀번호 인풋에서 사용
 export const useTogglePassword = () => {
@@ -135,11 +135,12 @@ export const useAddressInput = (
 
 // 이미지 인풋에서 사용
 export const useImageInput = (
-  name: keyof SignUpSecondFormType | keyof FDBlockFormType,
+  name: keyof SignUpSecondFormType | keyof FDBlockFormType | keyof FDCompositionFormType,
   secondSetValue: UseFormSetValue<SignUpSecondFormType> | undefined,
   secondSetError: UseFormSetError<SignUpSecondFormType> | undefined,
   secondClearErrors: UseFormClearErrors<SignUpSecondFormType> | undefined,
   blockSetValue: UseFormSetValue<FDBlockFormType> | undefined,
+  compositionSetValue: UseFormSetValue<FDCompositionFormType> | undefined,
 ) => {
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
@@ -155,6 +156,11 @@ export const useImageInput = (
     if (blockSetValue) {
       if (name === 'blockImage') {
         blockSetValue(name, file);
+      }
+    }
+    if (compositionSetValue) {
+      if (name === 'composition_image') {
+        compositionSetValue(name, file);
       }
     }
   }, [file, name, secondSetValue, blockSetValue]);

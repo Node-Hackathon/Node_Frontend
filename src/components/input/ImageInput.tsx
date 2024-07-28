@@ -14,6 +14,7 @@ export default function ImageInput({
   secondClearErrors,
   secondSetError,
   blockSetValue,
+  compositionSetValue,
 }: ImageInputType) {
   const { preview, handleFileChange, isFileLoaded } = useImageInput(
     name,
@@ -21,6 +22,7 @@ export default function ImageInput({
     secondSetError,
     secondClearErrors,
     blockSetValue,
+    compositionSetValue,
   );
 
   return (

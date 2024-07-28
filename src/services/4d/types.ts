@@ -12,3 +12,11 @@ export interface BlockReturnType {
   imageUrl: string;
   results: BlockResultsType[];
 }
+
+export interface FDCompositionFormType {
+  composition_image: File | null;
+}
+
+export interface CompositionReturnType {
+  image_url: string;
+}

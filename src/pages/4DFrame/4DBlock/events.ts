@@ -3,10 +3,13 @@ import { BlockReturnType, FDBlockFormType } from '../../../services/4d/types';
 import { useBlockPlayMutation } from '../../../services/4d/fdApi';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { use4DFrame } from '../events';
 
 export const use4DBlock = () => {
   const navigate = useNavigate();
   const [blockData, setBlockData] = useState<BlockReturnType | null>(null);
+  const { handleReplay } = use4DFrame();
+
   const [blockPlay, { isLoading, isSuccess, isError }] = useBlockPlayMutation();
 
   const {
@@ -15,8 +18,6 @@ export const use4DBlock = () => {
     setValue: blockSetValue,
     formState: { errors },
   } = useForm<FDBlockFormType>();
-
-  const handleReplay = () => navigate(0);
 
   const handleNavigate = () => navigate('/myPage/result/block');
 
@@ -33,7 +34,12 @@ export const use4DBlock = () => {
 
       try {
         const response = await blockPlay(formData).unwrap();
-        setBlockData(response);
+        if (response === null) {
+          alert('분석에 실패했습니다! 다시 시도해주세요.');
+          handleReplay();
+        } else {
+          setBlockData(response);
+        }
       } catch (error) {
         alert('사진 분석에 실패했습니다. 다시 시도해주세요.');
         console.error('폼 제출 오류:', error);

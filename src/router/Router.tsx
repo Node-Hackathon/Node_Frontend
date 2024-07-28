@@ -14,6 +14,7 @@ import GuardianPage from '../pages/signUp/GuardianPage';
 import ModalTest from '../test/ModalTest';
 import FDFramePage from '../pages/education/FDFramePage';
 import BlockPage from '../pages/4DFrame/4DBlock/BlockPage';
+import CompositionPage from '../pages/4DFrame/4DComposition/CompositionPage';
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
               {
                 path: 'block',
                 element: <BlockPage />,
+              },
+              {
+                path: 'composition',
+                element: <CompositionPage />,
               },
             ],
           },

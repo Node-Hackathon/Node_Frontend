@@ -15,8 +15,8 @@ const useTokenCheck = () => {
       const now = new Date().getTime();
 
       if (expiryTime && now >= expiryTime) {
-        dispatch(logout());
         alert('자동 로그아웃되었습니다!');
+        dispatch(logout());
         navigate('/signIn', { replace: true });
       }
     };

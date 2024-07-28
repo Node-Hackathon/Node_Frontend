@@ -1,5 +1,5 @@
 import apiSlice from '../apiSlice';
-import { BlockReturnType } from './types';
+import { BlockReturnType, CompositionReturnType } from './types';
 
 export const fdApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -10,9 +10,16 @@ export const fdApi = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    CompositionPlay: builder.mutation<CompositionReturnType, FormData>({
+      query: (data) => ({
+        url: '/4d-api/composition',
+        method: 'POST',
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useBlockPlayMutation } = fdApi;
+export const { useBlockPlayMutation, useCompositionPlayMutation } = fdApi;
 
 export default fdApi;
