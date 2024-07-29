@@ -22,7 +22,7 @@ function Header({ isHambergerOpen, setIsHambergerOpen }: HeaderType) {
         {!isHambergerOpen && <FaBars size={32} onClick={handleToggleHamberger} />}
         {isHambergerOpen && <FaXmark size={32} onClick={handleToggleHamberger} />}
       </HeaderContainer>
-      {isHambergerOpen && <Nav isClosing={isClosing} />}
+      {isHambergerOpen && <Nav isClosing={isClosing} setIsHambergerOpen={setIsHambergerOpen} />}
     </>
   );
 }
