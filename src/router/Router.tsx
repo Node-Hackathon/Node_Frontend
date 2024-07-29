@@ -15,7 +15,7 @@ import FDFramePage from '../pages/education/FDFramePage';
 import BlockPage from '../pages/4DFrame/4DBlock/BlockPage';
 import CompositionPage from '../pages/4DFrame/4DComposition/CompositionPage';
 import CenterPage from '../pages/center/CenterPage';
-
+import ChoiceNumGame from '../pages/choiceNumGame/choiceNumGame';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -31,16 +31,19 @@ const router = createBrowserRouter([
       },
       {
         path: 'signUp',
-        children: [
-          {
-            path: '',
-            element: <SignUpPage />,
-          },
-          {
-            path: 'guardian',
-            element: <GuardianPage />,
-          },
-        ],
+        element: <SignUpPage />,
+      },
+      {
+        path: 'signUp-guardian',
+        element: <GuardianPage />,
+      },
+      {
+        path: 'list',
+        element: <CenterListPage />,
+      },
+      {
+        path: 'game',
+        element: <ChoiceNumGame />,
       },
     ],
   },
