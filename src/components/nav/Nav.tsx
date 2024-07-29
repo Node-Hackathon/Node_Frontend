@@ -1,42 +1,37 @@
-import { useState } from 'react';
 import { NavContainer, NavDetails, NavSummary, NavList, NavContent, StateBtn } from './styles';
 import { FaAngleDown } from 'react-icons/fa6';
 import { FaAngleUp } from 'react-icons/fa6';
 import { NavType } from './types';
-import { Link } from 'react-router-dom';
+import { useNavEvents } from './events';
 
-function Nav({ isClosing }: NavType) {
-  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
-
-  const handleToggleDetails = () => {
-    setIsDetailsOpen((prevState) => !prevState);
-  };
+function Nav({ isClosing, setIsHambergerOpen }: NavType) {
+  const {
+    handleToggleDetails,
+    handleGoToCheck,
+    handleGoTo4DFrame,
+    handleGoToGame,
+    handleGoToCenter,
+    handleGoToMypage,
+    isDetailsOpen,
+  } = useNavEvents({
+    setIsHambergerOpen,
+  });
 
   return (
     <>
       <NavContainer isClosing={isClosing}>
-        <Link to="/check">
-          <NavContent>치매 진단</NavContent>
-        </Link>
+        <NavContent onClick={handleGoToCheck}>치매 진단</NavContent>
         <NavDetails onClick={handleToggleDetails}>
           <NavSummary>
             교육
             {!isDetailsOpen && <FaAngleDown />}
             {isDetailsOpen && <FaAngleUp />}
           </NavSummary>
-          <Link to="/education/4DFrame">
-            <NavList>포디프레임</NavList>
-          </Link>
-          <Link to="/education/game">
-            <NavList>게임</NavList>
-          </Link>
+          <NavList onClick={handleGoTo4DFrame}>포디프레임</NavList>
+          <NavList onClick={handleGoToGame}>게임</NavList>
         </NavDetails>
-        <Link to="/center">
-          <NavContent>상담 센터</NavContent>
-        </Link>
-        <Link to="/mypage">
-          <NavContent>마이페이지</NavContent>
-        </Link>
+        <NavContent onClick={handleGoToCenter}>상담 센터</NavContent>
+        <NavContent onClick={handleGoToMypage}>마이페이지</NavContent>
         <StateBtn>로그아웃</StateBtn>
       </NavContainer>
     </>
