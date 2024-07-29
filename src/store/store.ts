@@ -3,12 +3,14 @@ import apiSlice from '../services/apiSlice';
 import progressReducer from './reducer/progressSlice';
 import modalReducer from './reducer/modalSlice';
 import tokenReducer from './reducer/tokenSlice';
+import diagnosisReducer from './reducer/diagnosisSlice';
 
 export const store = configureStore({
   reducer: {
     progress: progressReducer,
     modal: modalReducer,
     token: tokenReducer,
+    diagnosis: diagnosisReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
     // 다른 슬라이스들도 추가 가능
   },

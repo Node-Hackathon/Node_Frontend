@@ -16,6 +16,9 @@ import BlockPage from '../pages/4DFrame/4DBlock/BlockPage';
 import CompositionPage from '../pages/4DFrame/4DComposition/CompositionPage';
 import CenterPage from '../pages/center/CenterPage';
 import ChoiceNumGame from '../pages/choiceNumGame/choiceNumGame';
+import DiagnosisPage from '../pages/diagnosis/DiagnosisPage';
+import DiagnosisResult from '../pages/diagnosis/DiagnosisResult';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -31,15 +34,16 @@ const router = createBrowserRouter([
       },
       {
         path: 'signUp',
-        element: <SignUpPage />,
-      },
-      {
-        path: 'signUp-guardian',
-        element: <GuardianPage />,
-      },
-      {
-        path: 'list',
-        element: <CenterPage />,
+        children: [
+          {
+            path: '',
+            element: <SignUpPage />,
+          },
+          {
+            path: 'guardian',
+            element: <GuardianPage />,
+          },
+        ],
       },
       {
         path: 'game',
@@ -80,6 +84,19 @@ const router = createBrowserRouter([
       {
         path: 'center',
         element: <CenterPage />,
+      },
+      {
+        path: 'diagnosis',
+        children: [
+          {
+            path: '',
+            element: <DiagnosisPage />,
+          },
+          {
+            path: 'result',
+            element: <DiagnosisResult />,
+          },
+        ],
       },
     ],
   },

@@ -28,7 +28,7 @@ export default function MainPage() {
           <Text>지금 시작하세요</Text>
           <Text>건강한 두뇌를 위한 첫 걸음</Text>
         </Description>
-        <Link to={'/check'}>
+        <Link to={'/diagnosis'}>
           <GoToCheck>바로 진단하러 가기</GoToCheck>
         </Link>
       </Banner>
@@ -41,7 +41,7 @@ export default function MainPage() {
             어렵게 생각하지 마세요, 노드가 매일 함께 할게요
           </Text>
         </Description>
-        <Link to={'/edu-4d/block'}>
+        <Link to={'/education/4DFrame/block'}>
           <GoToEdu>
             <EduType>
               <EduText>블록 쌓기</EduText>
@@ -56,7 +56,7 @@ export default function MainPage() {
             </EduImg>
           </GoToEdu>
         </Link>
-        <Link to={'/edu-4d/setting'}>
+        <Link to={'/education/4DFrame/composition'}>
           <GoToEdu>
             <EduType>
               <EduText>구성 놀이</EduText>

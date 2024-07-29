@@ -38,7 +38,10 @@ export default function AddressInput({
         onRequestClose={() => setIsPostOpen(false)}
         ariaHideApp={false}
       >
-        <DaumPostcode onComplete={completeHandler} style={{ height: '100%' }}></DaumPostcode>
+        <DaumPostcode
+          onComplete={completeHandler}
+          style={{ height: '100%', width: '100%', objectFit: 'contain' }}
+        ></DaumPostcode>
       </ReactModal>
     </>
   );

@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 export const FDContainer = styled.section`
-  height: 100%;
   width: 100%;
-  min-height: 100%;
+  height: calc(100% - 4.2rem);
+  min-height: calc(100% - 4.2rem);
   padding: 1.25rem 0;
   display: flex;
   justify-content: center;

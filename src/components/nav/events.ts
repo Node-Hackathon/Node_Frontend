@@ -14,7 +14,7 @@ export const useNavEvents = ({ setIsHambergerOpen }: EventsType) => {
   // "치매 진단" 클릭 시
   const handleGoToCheck = () => {
     setIsHambergerOpen((prevState) => !prevState);
-    navigate('/check');
+    navigate('/diagnosis');
   };
 
   // "교육 -> 포디프레임" 클릭 시
