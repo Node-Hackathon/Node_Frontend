@@ -2,6 +2,7 @@ import { styled } from 'styled-components';
 
 export const FooterContainer = styled.div`
   background-color: #5d5d5d;
+  overflow-x: hidden;
 `;
 
 export const FooterLogo = styled.div`
@@ -25,6 +26,8 @@ export const FooterInfo = styled.div`
   font-size: 16px;
   font-weight: 500;
   color: white;
+
+  white-space: nowrap;
 
   table {
     width: 100%;
@@ -51,4 +54,6 @@ export const FooterCopyright = styled.div`
   font-size: 12px;
   font-weight: 500;
   color: white;
+
+  white-space: nowrap;
 `;

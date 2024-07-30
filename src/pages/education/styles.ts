@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 
-export const FDContainer = styled.section`
+export const EducationContainer = styled.section`
   width: 100%;
   height: calc(100% - 4rem);
   min-height: calc(100% - 4rem);
@@ -11,20 +11,20 @@ export const FDContainer = styled.section`
   overflow-x: hidden;
 `;
 
-export const FDBox = styled.div`
+export const EducationBox = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
 `;
 
-export const FDPair = styled.div`
+export const EducationPair = styled.div`
   display: flex;
   flex-direction: column;
   flex: 4;
   justify-content: space-evenly;
 `;
 
-export const FDLink = styled(Link)`
+export const EducationLink = styled(Link)`
   display: flex;
   align-items: center;
   flex: 1;

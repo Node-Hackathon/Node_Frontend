@@ -24,6 +24,8 @@ import GuardianInfoPage from '../pages/guardianInfo/GuardianInfoPage';
 import GuardianPage from '../pages/signUp/GuardianPage';
 import GameResultPage from '../pages/gameResult/GameResultPage';
 import GameResultDetailPage from '../pages/gameResult/GameResultDetailPage';
+import GamePage from '../pages/education/GamePage';
+import ResultPage from '../pages/result/ResultPage';
 
 const router = createBrowserRouter([
   {
@@ -54,8 +56,14 @@ const router = createBrowserRouter([
           },
         ],
       },
+      // 교육 페이지 > 게임 페이지 > 카드 뒤집기 페이지
       {
-        path: 'game',
+        path: 'education/game/card',
+        element: <SelectCardGame />,
+      },
+      // 교육 페이지 > 게임 페이지 > 숫자 맞추기 페이지
+      {
+        path: 'education/game/number',
         element: <ChoiceNumGame />,
       },
     ],
@@ -97,14 +105,13 @@ const router = createBrowserRouter([
           {
             path: 'game',
             children: [
-              // 교육 페이지 > 게임 페이지 > 숫자 맞추기 페이지
               {
-                path: 'choiceNumGame',
-                element: <ChoiceNumGame />,
+                path: '',
+                element: <GamePage />,
               },
               {
-                path: 'selectCardGame',
-                element: <SelectCardGame />,
+                path: 'result',
+                element: <ResultPage />,
               },
             ],
           },
