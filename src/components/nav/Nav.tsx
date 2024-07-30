@@ -4,6 +4,7 @@ import { FaAngleUp } from 'react-icons/fa6';
 import { NavType } from './types';
 import { useNavEvents } from './events';
 import Modal from '../modal/Modal';
+import { useLogout } from '../../hooks/useLogout';
 
 function Nav({ isClosing, setIsHambergerOpen }: NavType) {
   const {
@@ -14,15 +15,11 @@ function Nav({ isClosing, setIsHambergerOpen }: NavType) {
     handleGoToCenter,
     handleGoToMypage,
     isDetailsOpen,
-    handleLogout,
-    handleModalYes,
-    handleModalNo,
-    isOpen,
-    question1,
-    question2,
   } = useNavEvents({
     setIsHambergerOpen,
   });
+
+  const { handleLogout, handleModalNo, handleModalYes, isOpen, question1, question2 } = useLogout();
 
   return (
     <NavContainer isClosing={isClosing}>
