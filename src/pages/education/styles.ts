@@ -3,8 +3,8 @@ import { styled } from 'styled-components';
 
 export const FDContainer = styled.section`
   width: 100%;
-  height: calc(100% - 4.25rem);
-  min-height: calc(100% - 4.25rem);
+  height: calc(100% - 4rem);
+  min-height: calc(100% - 4rem);
   padding: 1.25rem 0;
   display: flex;
   justify-content: center;

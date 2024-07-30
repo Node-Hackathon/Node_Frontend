@@ -1,3 +1,5 @@
+import Modal from '../../components/modal/Modal';
+import { useLogout } from '../../hooks/useLogout';
 import { useMyPageEvents } from './events';
 import { Container, Welcome, Text, Category, List, Quit } from './styles';
 import { FaUser, FaUsers, FaNoteSticky, FaCubesStacked, FaRightFromBracket } from 'react-icons/fa6';
@@ -5,6 +7,7 @@ import { FaUser, FaUsers, FaNoteSticky, FaCubesStacked, FaRightFromBracket } fro
 export default function MyPage() {
   const { handleGoToUserInfo, handleGoToGuardianInfoPage, handleGoToGameResultPage } =
     useMyPageEvents();
+  const { handleLogout, handleModalNo, handleModalYes, isOpen, question1, question2 } = useLogout();
 
   return (
     <Container>
@@ -30,7 +33,7 @@ export default function MyPage() {
           <FaCubesStacked color="5fcf89" />
           <Text>게임 누적 결과</Text>
         </List>
-        <List>
+        <List onClick={handleLogout}>
           <FaRightFromBracket color="5fcf89" />
           <Text>로그아웃</Text>
         </List>
@@ -40,6 +43,13 @@ export default function MyPage() {
           탈퇴하기
         </Text>
       </Quit>
+      <Modal
+        isOpen={isOpen}
+        question1={question1}
+        question2={question2}
+        onClickNo={handleModalNo}
+        onClickYes={handleModalYes}
+      />
     </Container>
   );
 }
