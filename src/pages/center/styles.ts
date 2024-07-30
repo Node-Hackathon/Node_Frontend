@@ -4,8 +4,8 @@ import { Label7, Title2 } from '../../components/text/Text';
 
 export const CenterContainer = styled.section`
   width: 100%;
-  height: 100%;
-  min-height: 100%;
+  height: calc(100% - 4.25rem);
+  min-height: calc(100% - 4.25rem);
   padding: 1.25rem;
   display: flex;
   justify-content: center;

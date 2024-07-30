@@ -1,5 +1,10 @@
 import apiSlice from '../apiSlice';
-import { BlockReturnType, CompositionReturnType } from './types';
+import {
+  BlockReturnType,
+  CompositionReturnType,
+  RadomCompositionSentenceReturnType,
+  RandomBlockSentenceReturnType,
+} from './types';
 
 export const fdApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -17,9 +22,26 @@ export const fdApi = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    getRandomBlockSentence: builder.mutation<RandomBlockSentenceReturnType, void>({
+      query: () => ({
+        url: '/4d-api/block-sentences',
+        method: 'POST',
+      }),
+    }),
+    getRandomCompositionSentence: builder.mutation<RadomCompositionSentenceReturnType, void>({
+      query: () => ({
+        url: '/4d-api/composition-sentences',
+        method: 'POST',
+      }),
+    }),
   }),
 });
 
-export const { useBlockPlayMutation, useCompositionPlayMutation } = fdApi;
+export const {
+  useBlockPlayMutation,
+  useCompositionPlayMutation,
+  useGetRandomBlockSentenceMutation,
+  useGetRandomCompositionSentenceMutation,
+} = fdApi;
 
 export default fdApi;

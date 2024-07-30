@@ -20,3 +20,11 @@ export interface FDCompositionFormType {
 export interface CompositionReturnType {
   image_url: string;
 }
+
+export interface RandomBlockSentenceReturnType {
+  RandomBlockSentence: string;
+}
+
+export interface RadomCompositionSentenceReturnType {
+  sentence: string;
+}

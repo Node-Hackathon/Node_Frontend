@@ -4,7 +4,7 @@ import { theme } from '../../styles/theme';
 
 export const FDContainer = styled.section`
   width: 100%;
-  min-height: 100%;
+  min-height: calc(100% - 4.25rem);
   padding: 1.25rem 0;
   display: flex;
   justify-content: center;
@@ -21,7 +21,7 @@ export const FDManual = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  flex: 1;
+  flex: 0.5;
 `;
 
 export const FDContent = styled.main`

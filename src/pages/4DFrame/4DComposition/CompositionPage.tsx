@@ -15,13 +15,15 @@ export default function CompositionPage() {
     isError,
     handleReplay,
     handleNavigate,
+    sentence,
+    sentenceIsSuccess,
   } = use4DComposition();
 
   return (
     <FDContainer>
-      {(isError || !isSuccess) && (
+      {(isError || !isSuccess) && sentenceIsSuccess && sentence && (
         <Upload
-          question={`블럭을 이용해 "부엉이"를 만들어주세요`}
+          question={sentence}
           register={register}
           name="composition_image"
           handleSubmit={handleSubmit}

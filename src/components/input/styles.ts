@@ -173,8 +173,8 @@ export const CalendarWrapper = styled.div`
 
 export const customStyles = {
   content: {
-    width: '70%',
-    height: '61%',
+    width: '90%',
+    height: '60%',
     top: '50%',
     left: '50%',
     right: 'auto',

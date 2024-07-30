@@ -136,4 +136,8 @@ export const GlobalStyle = styled.createGlobalStyle`
   h6 {
     font-size: 1rem;
   }
+
+  .ReactModal__Body--open {
+    overflow: hidden;
+  }
 `;

@@ -15,6 +15,8 @@ import BlockPage from '../pages/4DFrame/4DBlock/BlockPage';
 import CompositionPage from '../pages/4DFrame/4DComposition/CompositionPage';
 import CenterPage from '../pages/center/CenterPage';
 import ChoiceNumGame from '../pages/choiceNumGame/choiceNumGame';
+import DiagnosisPage from '../pages/diagnosis/DiagnosisPage';
+import DiagnosisResult from '../pages/diagnosis/DiagnosisResult';
 import SelectCardGame from '../pages/selectCardGame/selectCardGame';
 import MyPage from '../pages/mypage/MyPage';
 import UserInfoPage from '../pages/userInfo/UserInfoPage';
@@ -41,12 +43,20 @@ const router = createBrowserRouter([
       // 회원가입 페이지
       {
         path: 'signUp',
-        element: <SignUpPage />,
+        children: [
+          {
+            path: '',
+            element: <SignUpPage />,
+          },
+          {
+            path: 'guardian',
+            element: <GuardianPage />,
+          },
+        ],
       },
-      // 회원가입 페이지 > 보호자 정보 입력 페이지
       {
-        path: 'signUp-guardian',
-        element: <GuardianPage />,
+        path: 'game',
+        element: <ChoiceNumGame />,
       },
     ],
   },
@@ -104,6 +114,19 @@ const router = createBrowserRouter([
       {
         path: 'center',
         element: <CenterPage />,
+      },
+      {
+        path: 'diagnosis',
+        children: [
+          {
+            path: '',
+            element: <DiagnosisPage />,
+          },
+          {
+            path: 'result',
+            element: <DiagnosisResult />,
+          },
+        ],
       },
       // 마이 페이지
       {

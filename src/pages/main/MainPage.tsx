@@ -28,7 +28,7 @@ export default function MainPage() {
           <Text>지금 시작하세요</Text>
           <Text>건강한 두뇌를 위한 첫 걸음</Text>
         </Description>
-        <Link to={'/check'}>
+        <Link to={'/diagnosis'}>
           <GoToCheck>바로 진단하러 가기</GoToCheck>
         </Link>
       </Banner>

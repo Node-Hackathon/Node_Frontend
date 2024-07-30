@@ -1,7 +1,10 @@
 import { useForm } from 'react-hook-form';
 import { BlockReturnType, FDBlockFormType } from '../../../services/4d/types';
-import { useBlockPlayMutation } from '../../../services/4d/fdApi';
-import { useState } from 'react';
+import {
+  useBlockPlayMutation,
+  useGetRandomBlockSentenceMutation,
+} from '../../../services/4d/fdApi';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { use4DFrame } from '../events';
 
@@ -10,7 +13,21 @@ export const use4DBlock = () => {
   const [blockData, setBlockData] = useState<BlockReturnType | null>(null);
   const { handleReplay } = use4DFrame();
 
+  const [getBlockSentence, { data, isSuccess: sentenceIsSuccess }] =
+    useGetRandomBlockSentenceMutation();
   const [blockPlay, { isLoading, isSuccess, isError }] = useBlockPlayMutation();
+
+  useEffect(() => {
+    const fetchBlockSentence = async () => {
+      try {
+        await getBlockSentence().unwrap();
+      } catch (err) {
+        alert('질문 생성을 실패했습니다.');
+        console.log(err);
+      }
+    };
+    fetchBlockSentence();
+  }, [getBlockSentence]);
 
   const {
     register,
@@ -65,5 +82,7 @@ export const use4DBlock = () => {
     blockData,
     handleReplay,
     handleNavigate,
+    sentence: data?.RandomBlockSentence,
+    sentenceIsSuccess,
   };
 };
