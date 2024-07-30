@@ -71,7 +71,7 @@ export default function MainPage() {
             </EduImg>
           </GoToEdu>
         </Link>
-        <Link to={'/edu-etc/reversecard'}>
+        <Link to={'/education/game/selectCardGame'}>
           <GoToEdu>
             <EduType>
               <EduText>카드 뒤집기</EduText>
@@ -86,7 +86,7 @@ export default function MainPage() {
             </EduImg>
           </GoToEdu>
         </Link>
-        <Link to={'/edu-etc/findnumber'}>
+        <Link to={'/education/game/choiceNumGame'}>
           <GoToEdu>
             <EduType>
               <EduText>숫자 맞추기</EduText>

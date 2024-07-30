@@ -5,10 +5,9 @@ import { ReactComponent as Logo } from '../../assets/images/Logo-s.svg';
 import Nav from '../nav/Nav';
 import { useToggleHamberger } from './events';
 import { HeaderType } from './types';
-import { Link } from 'react-router-dom';
 
 function Header({ isHambergerOpen, setIsHambergerOpen }: HeaderType) {
-  const { isClosing, handleToggleHamberger } = useToggleHamberger({
+  const { isClosing, handleToggleHamberger, handleGoToMain } = useToggleHamberger({
     isHambergerOpen,
     setIsHambergerOpen,
   });
@@ -16,9 +15,7 @@ function Header({ isHambergerOpen, setIsHambergerOpen }: HeaderType) {
   return (
     <>
       <HeaderContainer>
-        <Link to="/main">
-          <Logo />
-        </Link>
+        <Logo onClick={handleGoToMain} />
         {!isHambergerOpen && <FaBars size={32} onClick={handleToggleHamberger} />}
         {isHambergerOpen && <FaXmark size={32} onClick={handleToggleHamberger} />}
       </HeaderContainer>

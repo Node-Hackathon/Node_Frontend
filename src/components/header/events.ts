@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { HeaderType } from './types';
+import { useNavigate } from 'react-router-dom';
 
 export const useToggleHamberger = ({ isHambergerOpen, setIsHambergerOpen }: HeaderType) => {
+  const navigate = useNavigate();
   const [isClosing, setIsClosing] = useState(false);
 
   // toggle
@@ -17,5 +19,10 @@ export const useToggleHamberger = ({ isHambergerOpen, setIsHambergerOpen }: Head
     }
   };
 
-  return { isHambergerOpen, isClosing, handleToggleHamberger };
+  const handleGoToMain = () => {
+    setIsHambergerOpen(false);
+    navigate('/main');
+  };
+
+  return { isHambergerOpen, isClosing, handleToggleHamberger, handleGoToMain };
 };
