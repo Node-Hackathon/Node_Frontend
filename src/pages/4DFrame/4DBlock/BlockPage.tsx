@@ -18,6 +18,7 @@ export default function BlockPage() {
     handleReplay,
     handleNavigate,
     sentence,
+    sentenceIsSuccess,
   } = use4DBlock();
 
   return (
@@ -26,7 +27,7 @@ export default function BlockPage() {
       {!isLoading && isSuccess && (
         <BlockResult data={blockData} handleReplay={handleReplay} handleNavigate={handleNavigate} />
       )}
-      {!isLoading && (isError || !isSuccess) && sentence && (
+      {!isLoading && (isError || !isSuccess) && sentenceIsSuccess && sentence && (
         <Upload
           question={sentence}
           register={register}
