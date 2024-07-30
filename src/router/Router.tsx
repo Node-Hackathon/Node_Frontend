@@ -9,7 +9,6 @@ import SignUpPage from '../pages/signUp/SignUpPage';
 import Home from '../pages/Home';
 import MainPage from '../pages/main/MainPage';
 import ProgressTest from '../test/ProgressTest';
-import GuardianPage from '../pages/signUp/GuardianPage';
 import ModalTest from '../test/ModalTest';
 import FDFramePage from '../pages/education/FDFramePage';
 import BlockPage from '../pages/4DFrame/4DBlock/BlockPage';
@@ -17,6 +16,12 @@ import CompositionPage from '../pages/4DFrame/4DComposition/CompositionPage';
 import CenterPage from '../pages/center/CenterPage';
 import ChoiceNumGame from '../pages/choiceNumGame/choiceNumGame';
 import SelectCardGame from '../pages/selectCardGame/selectCardGame';
+import MyPage from '../pages/mypage/MyPage';
+import UserInfoPage from '../pages/userInfo/UserInfoPage';
+import GuardianInfoPage from '../pages/guardianInfo/GuardianInfoPage';
+import GuardianPage from '../pages/signUp/GuardianPage';
+import GameResultPage from '../pages/gameResult/GameResultPage';
+import GameResultDetailPage from '../pages/gameResult/GameResultDetailPage';
 
 const router = createBrowserRouter([
   {
@@ -99,6 +104,31 @@ const router = createBrowserRouter([
       {
         path: 'center',
         element: <CenterPage />,
+      },
+      // 마이 페이지
+      {
+        path: 'mypage',
+        element: <MyPage />,
+      },
+      // 내 정보 페이지
+      {
+        path: 'mypage/userInfo',
+        element: <UserInfoPage />,
+      },
+      // 보호자 정보 페이지
+      {
+        path: 'mypage/guardianInfo',
+        element: <GuardianInfoPage />,
+      },
+      // 게임 누적 결과 페이지
+      {
+        path: 'mypage/gameResult',
+        element: <GameResultPage />,
+      },
+      // 게임 누적 결과 디테일 페이지
+      {
+        path: 'mypage/gameResultDetail',
+        element: <GameResultDetailPage />,
       },
     ],
   },
