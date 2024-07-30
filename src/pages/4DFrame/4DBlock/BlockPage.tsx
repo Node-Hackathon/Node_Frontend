@@ -17,6 +17,7 @@ export default function BlockPage() {
     blockData,
     handleReplay,
     handleNavigate,
+    sentence,
   } = use4DBlock();
 
   return (
@@ -25,9 +26,9 @@ export default function BlockPage() {
       {!isLoading && isSuccess && (
         <BlockResult data={blockData} handleReplay={handleReplay} handleNavigate={handleNavigate} />
       )}
-      {!isLoading && (isError || !isSuccess) && (
+      {!isLoading && (isError || !isSuccess) && sentence && (
         <Upload
-          question="비스듬, 계단 2개의 조합을 활용해 만들어주세요"
+          question={sentence}
           register={register}
           name="blockImage"
           handleSubmit={handleSubmit}

@@ -98,24 +98,25 @@ export const ResultContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   overflow-y: auto;
 `;
 
 export const ResultBox = styled.div`
+  height: 85%;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
-  flex: 6;
+  justify-content: space-evenly;
 `;
 
 export const ResultButton = styled.div`
+  height: 15%;
   min-width: 20rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex: 1;
 `;
 
 export const ResultContent = styled.div`
@@ -123,17 +124,17 @@ export const ResultContent = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  flex: 1.5;
+  gap: 1rem;
 `;
 
 export const ResultGraphBox = styled.div`
-  max-height: 50%;
+  min-height: 40%;
+  max-height: 40%;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.87rem;
-  flex: 1;
 `;
 
 export const ResultGraph = styled.div`

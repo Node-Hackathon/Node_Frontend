@@ -1,16 +1,36 @@
 import { useForm } from 'react-hook-form';
 import { CompositionReturnType, FDCompositionFormType } from '../../../services/4d/types';
-import { useState } from 'react';
-import { useCompositionPlayMutation } from '../../../services/4d/fdApi';
+import { useEffect, useState } from 'react';
+import {
+  useCompositionPlayMutation,
+  useGetRandomCompositionSentenceMutation,
+} from '../../../services/4d/fdApi';
 import { use4DFrame } from '../events';
 import { useNavigate } from 'react-router-dom';
 
 export const use4DComposition = () => {
   const navigate = useNavigate();
+
   const [compositionData, setCompositionData] = useState<CompositionReturnType | null>(null);
+
   const { handleReplay } = use4DFrame();
 
   const [compositionPlay, { isSuccess, isError }] = useCompositionPlayMutation();
+
+  const [getCompositionSentence, { data, isSuccess: sentenceIsSuccess }] =
+    useGetRandomCompositionSentenceMutation();
+
+  useEffect(() => {
+    const fetchCompositionSentence = async () => {
+      try {
+        await getCompositionSentence().unwrap();
+      } catch (err) {
+        alert('질문 생성을 실패했습니다.');
+        console.log(err);
+      }
+    };
+    fetchCompositionSentence();
+  }, [getCompositionSentence]);
 
   const {
     register,
@@ -64,5 +84,7 @@ export const use4DComposition = () => {
     isError,
     handleReplay,
     handleNavigate,
+    sentence: data?.sentence,
+    sentenceIsSuccess,
   };
 };
