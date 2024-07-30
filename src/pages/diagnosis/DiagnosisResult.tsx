@@ -43,10 +43,7 @@ export default function DiagnosisResult() {
             <>
               <PiHandsClapping size={100} color={theme.colors.primaryStrong} />
               <Body2>축하합니다! 정상입니다.</Body2>
-              <ResultTitlePair style={{ opacity: 0 }}>
-                <Body4>병원에 방문하셔서</Body4>
-                <Body4> 정밀 검사를 받아 보시는 걸 추천드려요.</Body4>
-              </ResultTitlePair>
+              <ResultTitlePair style={{ opacity: 0 }}></ResultTitlePair>
             </>
           )}
         </ResultContent>

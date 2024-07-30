@@ -43,12 +43,9 @@ const progressSlice = createSlice({
     setCurrentStep(state, action: PayloadAction<number>) {
       state.currentStep = action.payload;
     },
-    setIsForward(state, action: PayloadAction<boolean>) {
-      state.isForward = action.payload;
-    },
   },
 });
 
-export const { nextStep, prevStep, setTotalSteps, setStepReset, setCurrentStep, setIsForward } =
+export const { nextStep, prevStep, setTotalSteps, setStepReset, setCurrentStep } =
   progressSlice.actions;
 export default progressSlice.reducer;

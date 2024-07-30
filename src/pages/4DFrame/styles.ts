@@ -21,7 +21,7 @@ export const FDManual = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  flex: 1;
+  flex: 0.5;
 `;
 
 export const FDContent = styled.main`

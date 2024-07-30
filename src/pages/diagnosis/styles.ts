@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 import checkboxBefore from '../../assets/images/CheckBox-before.svg';
 import checkboxAfter from '../../assets/images/CheckBox-after.svg';
+import { theme } from '../../styles/theme';
 
 export const DiagnosisContainer = styled.section`
   width: 100%;
@@ -24,11 +25,6 @@ export const DiagnosisContent = styled.main`
   flex: 1;
 `;
 
-export const ResultContent = styled(DiagnosisContent)`
-  align-items: center;
-  justify-content: space-evenly;
-`;
-
 export const DiagnosisTitle = styled.div`
   max-width: 20rem;
   display: flex;
@@ -43,7 +39,7 @@ export const DiagnosisTitle = styled.div`
 
 export const ProgressBarBox = styled.div`
   display: flex;
-  margin: 1.25rem 0 1.5rem 0;
+  margin: 1.25rem 0 1.56rem 0;
 `;
 
 export const CheckBoxContainer = styled.div`
@@ -52,7 +48,7 @@ export const CheckBoxContainer = styled.div`
   gap: 1.25rem;
 `;
 
-export const CheckBoxInput = styled.input.attrs({ type: 'checkbox', id: 'check' })`
+export const CheckBoxInput = styled.input.attrs({ type: 'checkbox' })`
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -91,8 +87,16 @@ export const DiagnosisButton = styled.div`
   flex: 1;
 `;
 
+export const ResultContent = styled(DiagnosisContent)`
+  align-items: center;
+  justify-content: space-evenly;
+`;
+
 export const ResultTitlePair = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  span {
+    color: ${theme.colors.textNeutral};
+  }
 `;

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useGetAllDiagnosesQuery } from '../../services/diagnosis/diagnosisApi';
 import {
@@ -32,38 +32,26 @@ export const useDiagnosis = () => {
     if (data) {
       dispatch(setTotalSteps(data.length)); // 총 스텝 수 설정
 
-      if (currentStep) {
-        const nextUnansweredStep = findNextUnansweredStep(); // 다음 미답변 질문 찾기
-        if (nextUnansweredStep > 1) {
-          // 미답변 질문이 있을 경우 모달 열기
-          dispatch(
-            openModal({
-              question1: '검사를 이어서',
-              question2: '진행하시겠습니까?',
-            }),
-          );
-        } else {
-          dispatch(setCurrentStep(Number(currentStep))); // 현재 스텝 설정
-        }
+      const nextUnansweredStep = findNextUnansweredStep(); // 다음 미답변 질문 찾기
+
+      if (currentStep && nextUnansweredStep > 1) {
+        // 미답변 질문이 있을 경우 모달 열기
+        dispatch(
+          openModal({
+            question1: '검사를 이어서',
+            question2: '진행하시겠습니까?',
+          }),
+        );
       } else {
         dispatch(setStepReset()); // 초기화
       }
     }
-
-    // 로컬에 저장된 체크된 값들 불러오기
-    const storedValues = localStorage.getItem('checkedValues');
-    if (storedValues) {
-      const parsedValues = JSON.parse(storedValues);
-      Object.entries(parsedValues).forEach(([step, value]) => {
-        dispatch(setCheckedValue({ step: Number(step), value: Number(value) })); // 체크된 값 설정
-      });
-    }
   }, [dispatch, data]);
 
   // 다음 미답변 질문 찾기
-  const findNextUnansweredStep = () => {
+  const findNextUnansweredStep = useCallback(() => {
     return Object.keys(checkedValues).length + 1; // 체크된 값 개수 기반으로 다음 스텝 계산
-  };
+  }, [checkedValues]);
 
   // 체크박스 값 변경 처리
   const handleChange = (step: number, value: number) => {
@@ -71,48 +59,43 @@ export const useDiagnosis = () => {
   };
 
   // 다음 질문으로 이동
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (checkedValues[currentStep] === undefined) {
-      alert('질문에 대한 답변을 선택해주세요.'); ///답변 미선택 시
+      alert('질문에 대한 답변을 선택해주세요.');
       return;
     }
-    // 마지막 질문인 경우
     if (currentStep === totalSteps) {
       const totalScore = Object.values(checkedValues).reduce((acc, value) => acc + value, 0);
       console.log(`총 점수: ${totalScore}`);
       dispatch(setStepReset());
       dispatch(resetAnswers());
-      navigate(`result?score=${totalScore}`); // 결과 페이지로 이동
+      navigate(`result?score=${totalScore}`);
     } else {
-      dispatch(nextStep()); // 다음 스텝으로 이동
+      dispatch(nextStep());
     }
-  };
+  }, [checkedValues, currentStep, totalSteps, dispatch, navigate]);
 
   // 이전 질문으로 이동
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     if (currentStep > 1) {
       dispatch(prevStep());
     } else {
       alert('첫 번째 질문입니다.');
     }
-  };
+  }, [currentStep, dispatch]);
 
   // 모달에서 계속하기 버튼 처리
-  const handleContinue = () => {
-    const nextUnansweredStep = findNextUnansweredStep();
-    if (nextUnansweredStep !== undefined) {
-      dispatch(setCurrentStep(nextUnansweredStep));
-    }
+  const handleContinue = useCallback(() => {
+    dispatch(setCurrentStep(findNextUnansweredStep()));
     dispatch(closeModal());
-  };
+  }, [dispatch, findNextUnansweredStep]);
 
   // 모달에서 재시작 버튼 처리
-  const handleRestart = () => {
+  const handleRestart = useCallback(() => {
     dispatch(setStepReset());
     dispatch(resetAnswers());
-    localStorage.removeItem('checkedValues');
     dispatch(closeModal());
-  };
+  }, [dispatch]);
 
   return {
     isSuccess,
@@ -140,39 +123,36 @@ export const useDiagnosisResult = () => {
   const { isOpen, question1, question2 } = useSelector((state: RootState) => state.modal);
 
   // URL 파라미터에서 점수 가져오기
-  const queryParams = new URLSearchParams(location.search);
-  const score = parseInt(queryParams.get('score') || '0', 10);
+  const score = useMemo(
+    () => parseInt(new URLSearchParams(location.search).get('score') || '0', 10),
+    [location.search],
+  );
 
   // 재시작 처리
-  const handleRestart = () => {
+  const handleRestart = useCallback(() => {
     navigate('/diagnosis', { replace: true });
-  };
+  }, [navigate]);
 
   // 결과 확인 처리
-  const handleConfirm = () => {
+  const handleConfirm = useCallback(() => {
     if (score >= 7) {
-      dispatch(
-        openModal({
-          question1: '전문 상담 센터를',
-          question2: '보러 이동하시겠습니까?',
-        }),
-      );
+      dispatch(openModal({ question1: '전문 상담 센터를', question2: '보러 이동하시겠습니까?' }));
     } else {
       navigate('/main', { replace: true });
     }
-  };
+  }, [score, dispatch, navigate]);
 
   // 모달 내 '아니오' 버튼
-  const handleModalNo = () => {
+  const handleModalNo = useCallback(() => {
     navigate('/main', { replace: true });
     dispatch(closeModal());
-  };
+  }, [dispatch, navigate]);
 
   // 모달 내 '네' 버튼
-  const handleModalYes = () => {
+  const handleModalYes = useCallback(() => {
     navigate('/center', { replace: true });
     dispatch(closeModal());
-  };
+  }, [dispatch, navigate]);
 
   return {
     score,

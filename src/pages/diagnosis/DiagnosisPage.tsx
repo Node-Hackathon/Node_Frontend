@@ -60,6 +60,7 @@ export default function DiagnosisPage() {
             <CheckBoxContainer>
               <CheckBox
                 id={`check-${currentStep}-0`}
+                name={`radio-${currentStep}`}
                 checked={checkedValues[currentStep] === 0}
                 onChange={() => handleChange(currentStep, 0)}
               >
@@ -67,6 +68,7 @@ export default function DiagnosisPage() {
               </CheckBox>
               <CheckBox
                 id={`check-${currentStep}-1`}
+                name={`radio-${currentStep}`}
                 checked={checkedValues[currentStep] === 1}
                 onChange={() => handleChange(currentStep, 1)}
               >
