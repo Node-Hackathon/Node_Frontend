@@ -24,6 +24,7 @@ import GuardianInfoPage from '../pages/guardianInfo/GuardianInfoPage';
 import GuardianPage from '../pages/signUp/GuardianPage';
 import GameResultPage from '../pages/gameResult/GameResultPage';
 import GameResultDetailPage from '../pages/gameResult/GameResultDetailPage';
+import DiagnosisTotalReslutPage from '../pages/diagnosisTotalReslut/DiagnosisTotalReslutPage';
 
 const router = createBrowserRouter([
   {
@@ -152,6 +153,11 @@ const router = createBrowserRouter([
       {
         path: 'mypage/gameResultDetail',
         element: <GameResultDetailPage />,
+      },
+      // 누적 진단 결과 페이지
+      {
+        path: 'mypage/totalReslut',
+        element: <DiagnosisTotalReslutPage />,
       },
     ],
   },
