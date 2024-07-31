@@ -12,6 +12,8 @@ import { resetAnswers, setCheckedValue } from '../../store/reducer/diagnosisSlic
 import { RootState } from '../../store/store';
 import { closeModal, openModal } from '../../store/reducer/modalSlice';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useCreateSurveyMutation } from '../../services/survey/surveyApi';
+import { SurveyType } from '../../services/survey/types';
 
 export const useDiagnosis = () => {
   const dispatch = useDispatch();
@@ -27,6 +29,7 @@ export const useDiagnosis = () => {
 
   // API 호출
   const { data, isSuccess } = useGetAllDiagnosesQuery();
+  const [createSurvey] = useCreateSurveyMutation();
 
   useEffect(() => {
     if (data) {
@@ -66,10 +69,7 @@ export const useDiagnosis = () => {
     }
     if (currentStep === totalSteps) {
       const totalScore = Object.values(checkedValues).reduce((acc, value) => acc + value, 0);
-      console.log(`총 점수: ${totalScore}`);
-      dispatch(setStepReset());
-      dispatch(resetAnswers());
-      navigate(`result?score=${totalScore}`);
+      handleSurveySubmit({ score: totalScore });
     } else {
       dispatch(nextStep());
     }
@@ -85,17 +85,31 @@ export const useDiagnosis = () => {
   }, [currentStep, dispatch]);
 
   // 모달에서 계속하기 버튼 처리
-  const handleContinue = useCallback(() => {
+  const handleContinue = () => {
     dispatch(setCurrentStep(findNextUnansweredStep()));
     dispatch(closeModal());
-  }, [dispatch, findNextUnansweredStep]);
+  };
 
   // 모달에서 재시작 버튼 처리
-  const handleRestart = useCallback(() => {
+  const handleRestart = () => {
     dispatch(setStepReset());
     dispatch(resetAnswers());
     dispatch(closeModal());
-  }, [dispatch]);
+  };
+
+  // 치매 진단 결과 서버에 전달
+  const handleSurveySubmit = async (data: SurveyType) => {
+    try {
+      const response = await createSurvey(data).unwrap();
+      const { score } = response;
+      dispatch(setStepReset());
+      dispatch(resetAnswers());
+      navigate('result', { state: score });
+    } catch (error) {
+      console.error(error);
+      alert('결과 전송에 실패했습니다.');
+    }
+  };
 
   return {
     isSuccess,
@@ -122,11 +136,8 @@ export const useDiagnosisResult = () => {
 
   const { isOpen, question1, question2 } = useSelector((state: RootState) => state.modal);
 
-  // URL 파라미터에서 점수 가져오기
-  const score = useMemo(
-    () => parseInt(new URLSearchParams(location.search).get('score') || '0', 10),
-    [location.search],
-  );
+  // URL에서 점수 가져오기
+  const score = useMemo(() => location.state || 0, [location.state]);
 
   // 재시작 처리
   const handleRestart = useCallback(() => {

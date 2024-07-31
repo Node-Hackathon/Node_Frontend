@@ -31,6 +31,7 @@ export const tokenSlice = createSlice({
       localStorage.removeItem('accessToken');
       localStorage.removeItem('expiryTime');
       localStorage.removeItem('checkedValues');
+      localStorage.removeItem('name');
     },
   },
 });
