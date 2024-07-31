@@ -1,5 +1,8 @@
+import { useSelector } from 'react-redux';
 import { PrimaryButton, SecondaryButton } from '../../components/button/Button';
 import { Title3 } from '../../components/text/Text';
+import { GameReturnType } from '../../services/game/types';
+import { formatDate, useResult } from './events';
 import ResultGraph from './ResultGraph';
 import {
   ResultButton,
@@ -10,30 +13,41 @@ import {
   ResultTitle,
   ResultText,
 } from './styles';
+import { ResultType } from './types';
+import { RootState } from '../../store/store';
 
-export default function ResultPage() {
+export default function ResultPage({ game, graphData }: ResultType) {
+  const { handleReplay, handleGoResult } = useResult();
+  const name = useSelector((state: RootState) => state.user.name);
+
   return (
     <ResultContainer>
       <ResultBox>
         <ResultTitle>
-          <Title3>민욱님의</Title3>
-          <Title3>카드 뒤집기 결과입니다</Title3>
+          <Title3>{name}님의</Title3>
+          <Title3>{game} 결과입니다</Title3>
         </ResultTitle>
         <ResultContent>
           <ResultGraphBox>
-            <ResultGraph count={3} date="05.03" />
-            <ResultGraph count={6} date="05.03" />
-            <ResultGraph count={2} date="05.03" />
-            <ResultGraph count={5} date="05.03" />
-            <ResultGraph count={10} date="05.03" />
+            {graphData
+              .slice()
+              .reverse()
+              .map((result: GameReturnType, index) => (
+                <ResultGraph
+                  key={result.id}
+                  count={result.stage}
+                  date={formatDate(result.date)}
+                  isToday={index === graphData.length - 1}
+                />
+              ))}
           </ResultGraphBox>
           <ResultText>저번 게임과 동일한 점수를 기록했어요</ResultText>
         </ResultContent>
         <ResultButton>
-          <SecondaryButton size="m" onClick={() => {}}>
+          <SecondaryButton size="m" onClick={handleReplay}>
             다시하기
           </SecondaryButton>
-          <PrimaryButton size="m" onClick={() => {}}>
+          <PrimaryButton size="m" onClick={handleGoResult}>
             누적 결과 보기
           </PrimaryButton>
         </ResultButton>

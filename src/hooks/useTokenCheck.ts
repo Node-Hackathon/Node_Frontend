@@ -3,11 +3,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/reducer/tokenSlice';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../store/store';
+import { useGetUserByIdQuery } from '../services/myPage/myPageApi';
+import { setUserName } from '../store/reducer/userSlice';
 
 const useTokenCheck = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const expiryTime = useSelector((state: RootState) => state.token.expiryTime);
+  const accessToken = useSelector((state: RootState) => state.token.accessToken);
+
+  // 사용자 정보를 가져오는 query 훅
+  const {
+    data: userData,
+    isSuccess: isUserSuccess,
+    isError: isUserError,
+  } = useGetUserByIdQuery(undefined, {
+    skip: !accessToken, // 토큰이 없으면 쿼리 요청을 생략
+  });
 
   useEffect(() => {
     // 토큰 만료 시간 체크
@@ -26,6 +38,14 @@ const useTokenCheck = () => {
 
     return () => clearInterval(intervalId);
   }, [dispatch, expiryTime, navigate]);
+
+  useEffect(() => {
+    if (isUserSuccess && userData) {
+      dispatch(setUserName(userData.name));
+    } else if (isUserError) {
+      console.error('사용자 정보를 가져오는데 싪했습니다.');
+    }
+  }, [isUserSuccess, userData, dispatch]);
 };
 
 export default useTokenCheck;

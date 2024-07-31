@@ -57,13 +57,17 @@ export const ProgressGradient = styled.div<{
 
 export const GameProgressGradient = styled.div<{
   $height: number;
+  $isForward: boolean;
 }>`
-  ${({ $height }) => css`
+  ${({ $height, $isForward }) => css`
     height: ${$height}%;
     width: 0.875rem;
     border-radius: 0.625rem;
     margin: 1rem 0 0.25rem 0;
     background: linear-gradient(0deg, #30caa1 0%, #30ca7d 100%);
-    animation: ${gameAnimation($height)} 1s ease-in-out forwards;
+    ${$isForward &&
+    css`
+      animation: ${gameAnimation($height)} 1s ease-in-out forwards;
+    `}
   `}
 `;

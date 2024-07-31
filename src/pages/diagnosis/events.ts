@@ -85,17 +85,17 @@ export const useDiagnosis = () => {
   }, [currentStep, dispatch]);
 
   // 모달에서 계속하기 버튼 처리
-  const handleContinue = useCallback(() => {
+  const handleContinue = () => {
     dispatch(setCurrentStep(findNextUnansweredStep()));
     dispatch(closeModal());
-  }, [dispatch, findNextUnansweredStep]);
+  };
 
   // 모달에서 재시작 버튼 처리
-  const handleRestart = useCallback(() => {
+  const handleRestart = () => {
     dispatch(setStepReset());
     dispatch(resetAnswers());
     dispatch(closeModal());
-  }, [dispatch]);
+  };
 
   // 치매 진단 결과 서버에 전달
   const handleSurveySubmit = async (data: SurveyType) => {
@@ -107,7 +107,7 @@ export const useDiagnosis = () => {
       navigate('result', { state: score });
     } catch (error) {
       console.error(error);
-      alert('회원 정보 전송에 실패했습니다.');
+      alert('결과 전송에 실패했습니다.');
     }
   };
 

@@ -20,6 +20,7 @@ export const ResultTitle = styled.div`
   height: 15%;
   display: flex;
   flex-direction: column;
+  gap: 0.25rem;
 `;
 
 export const ResultContent = styled.main`

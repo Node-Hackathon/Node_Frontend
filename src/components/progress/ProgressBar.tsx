@@ -15,7 +15,7 @@ export default function ProgressBar({
   return (
     <>
       {type === 'game' ? (
-        <GameProgressGradient $height={progressWidth} />
+        <GameProgressGradient $height={progressWidth} $isForward={isForward} />
       ) : (
         <ProgressContainer type={type}>
           <ProgressGradient
