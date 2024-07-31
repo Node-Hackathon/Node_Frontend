@@ -21,6 +21,66 @@ export const useGameResultEvents = () => {
       date: '2024-07-18',
       result: '40%',
     },
+    game07: {
+      date: '2024-07-18',
+      result: '40%',
+    },
+    game08: {
+      date: '2024-07-18',
+      result: '40%',
+    },
+    game09: {
+      date: '2024-07-18',
+      result: '40%',
+    },
+    game10: {
+      date: '2024-07-18',
+      result: '40%',
+    },
+    game11: {
+      date: '2024-07-18',
+      result: '40%',
+    },
+    game12: {
+      date: '2024-07-18',
+      result: '40%',
+    },
+    game13: {
+      date: '2024-07-18',
+      result: '40%',
+    },
+    game14: {
+      date: '2024-07-18',
+      result: '40%',
+    },
+    game15: {
+      date: '2024-07-18',
+      result: '40%',
+    },
+    game16: {
+      date: '2024-07-18',
+      result: '40%',
+    },
+    game17: {
+      date: '2024-07-18',
+      result: '40%',
+    },
+    game18: {
+      date: '2024-07-18',
+      result: '40%',
+    },
+    game19: {
+      date: '2024-07-18',
+      result: '40%',
+    },
+    game20: {
+      date: '2024-07-18',
+      result: '40%',
+    },
+    game21: {
+      date: '2024-07-18',
+      result: '40%',
+    },
   };
 
   const CompositionGame = {

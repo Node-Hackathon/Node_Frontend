@@ -13,10 +13,20 @@ export const useMyPageEvents = () => {
     navigate('./guardianInfo');
   };
 
+  // 진단 결과 클릭 시
+  const handleGoToDiagnosisTotalResult = () => {
+    navigate('./totalReslut');
+  };
+
   // 게임 누적 결과 클릭 시
   const handleGoToGameResultPage = () => {
     navigate('./gameResult');
   };
 
-  return { handleGoToUserInfo, handleGoToGuardianInfoPage, handleGoToGameResultPage };
+  return {
+    handleGoToUserInfo,
+    handleGoToGuardianInfoPage,
+    handleGoToDiagnosisTotalResult,
+    handleGoToGameResultPage,
+  };
 };
