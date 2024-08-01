@@ -22,7 +22,7 @@ function Nav({ isClosing, setIsHambergerOpen }: NavType) {
   const { handleLogout, handleModalNo, handleModalYes, isOpen, question1, question2 } = useLogout();
 
   return (
-    <NavContainer isClosing={isClosing}>
+    <NavContainer $isClosing={isClosing}>
       <NavContent onClick={handleGoToCheck}>치매 진단</NavContent>
       <NavDetails onClick={handleToggleDetails}>
         <NavSummary>

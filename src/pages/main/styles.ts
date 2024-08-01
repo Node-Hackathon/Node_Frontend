@@ -15,11 +15,11 @@ export const Description = styled.div`
   flex-direction: column;
 `;
 
-export const Text = styled.div<{ fontSize?: string; marginTop?: string }>`
+export const Text = styled.div<{ fontSize?: string; $marginTop?: string }>`
   color: white;
   font-weight: 700;
   font-size: ${(props) => props.fontSize || '28px'};
-  margin-top: ${(props) => props.marginTop || '0rem'};
+  margin-top: ${(props) => props.$marginTop || '0rem'};
   text-align: center;
 `;
 

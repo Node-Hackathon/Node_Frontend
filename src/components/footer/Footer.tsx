@@ -16,18 +16,20 @@ function Footer() {
       </FooterLogo>
       <FooterInfo>
         <table>
-          <tr>
-            <td className="info">대표: </td>
-            <td>{ownerName}</td>
-          </tr>
-          <tr>
-            <td className="info">E-mail: </td>
-            <td>{ownerEmail}</td>
-          </tr>
-          <tr>
-            <td className="info">Tel: </td>
-            <td>{ownerTel}</td>
-          </tr>
+          <tbody>
+            <tr>
+              <td className="info">대표: </td>
+              <td>{ownerName}</td>
+            </tr>
+            <tr>
+              <td className="info">E-mail: </td>
+              <td>{ownerEmail}</td>
+            </tr>
+            <tr>
+              <td className="info">Tel: </td>
+              <td>{ownerTel}</td>
+            </tr>
+          </tbody>
         </table>
       </FooterInfo>
       <FooterCopyright>Copyright© {currentYear} Node All Rights Reserved.</FooterCopyright>
