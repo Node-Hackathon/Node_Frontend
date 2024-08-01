@@ -16,7 +16,7 @@ import CompositionPage from '../pages/4DFrame/4DComposition/CompositionPage';
 import CenterPage from '../pages/center/CenterPage';
 import DiagnosisPage from '../pages/diagnosis/DiagnosisPage';
 import DiagnosisResult from '../pages/diagnosis/DiagnosisResult';
-import SelectCardGame from '../pages/game/card/selectCardGame';
+import CardGame from '../pages/game/card/CardGame';
 import MyPage from '../pages/mypage/MyPage';
 import UserInfoPage from '../pages/userInfo/UserInfoPage';
 import GuardianInfoPage from '../pages/guardianInfo/GuardianInfoPage';
@@ -25,7 +25,7 @@ import GameResultPage from '../pages/gameResult/GameResultPage';
 import GameResultDetailPage from '../pages/gameResult/GameResultDetailPage';
 import StartGame from '../pages/game/card/start';
 import GamePage from '../pages/education/GamePage';
-import NumberPage from '../pages/game/number/NumberPage';
+import NumberGame from '../pages/game/number/NumberGame';
 import NumberResultPage from '../pages/result/NumberResultPage';
 import DiagnosisTotalReslutPage from '../pages/diagnosisTotalReslut/DiagnosisTotalReslutPage';
 import CardResultPage from '../pages/result/CardResultPage';
@@ -69,12 +69,12 @@ const router = createBrowserRouter([
           },
           {
             path: 'card',
-            element: <SelectCardGame />,
+            element: <CardGame />,
           },
           // 교육 페이지 > 게임 페이지 > 숫자 맞추기 페이지
           {
             path: 'number',
-            element: <NumberPage />,
+            element: <NumberGame />,
           },
         ],
       },

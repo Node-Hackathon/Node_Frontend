@@ -186,27 +186,27 @@ export const useNumberGame = () => {
     }
   }, [level]);
 
-  const handleGoResult = () => {
+  const handleGoResult = async () => {
     const data = {
       stage: isGameClear ? level : level - 1,
     };
-    handleSubmitAndNavigate(data, 'result');
+    await handleSubmitAndNavigate(data, 'result');
   };
 
-  const handleModalYes = () => {
+  const handleModalYes = async () => {
     dispatch(closeModal());
     const data = {
       stage: level,
     };
-    handleSubmitAndNavigate(data, 'result');
+    await handleSubmitAndNavigate(data, 'result');
   };
 
-  const handleModalNo = () => {
+  const handleModalNo = async () => {
     dispatch(closeModal());
     const data = {
       stage: level,
     };
-    handleSubmitAndNavigate(data, -1);
+    await handleSubmitAndNavigate(data, -1);
   };
 
   return {

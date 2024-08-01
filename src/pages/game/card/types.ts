@@ -6,6 +6,19 @@ export interface Card {
 
 export type GameState = 'start' | 'idle' | 'playing' | 'won' | 'lost'; // 'lost' 상태 추가
 
+export interface IdleType {
+  timeLeft: number;
+}
+
+export interface PlayingType {
+  totalTimeLeft: number;
+}
+
+export interface WonType {
+  handleNextStage: () => void;
+  handleQuit: () => void;
+}
+
 export interface LostType {
   handleGoResult: () => void;
 }

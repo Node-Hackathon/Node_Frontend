@@ -1,11 +1,8 @@
 import React from 'react';
 import { Message } from './styles';
+import { IdleType } from './types';
 
-interface IdleProps {
-  timeLeft: number;
-}
-
-const Idle: React.FC<IdleProps> = ({ timeLeft }) => {
+const Idle: React.FC<IdleType> = ({ timeLeft }) => {
   return <Message>{timeLeft} 초</Message>;
 };
 

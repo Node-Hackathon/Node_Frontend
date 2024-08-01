@@ -17,7 +17,7 @@ import { useNumberGame } from './events';
 import { PrimaryButton, SecondaryButton } from '../../../components/button/Button';
 import Modal from '../../../components/modal/Modal';
 
-export default function NumberPage() {
+export default function NumberGame() {
   const {
     level,
     grid,

@@ -1,13 +1,9 @@
 import React from 'react';
 import { Message, ButtonContainer } from './styles';
 import { PrimaryButton, SecondaryButton } from '../../../components/button/Button';
+import { WonType } from './types';
 
-interface WonProps {
-  handleNextStage: () => void;
-  handleQuit: () => void;
-}
-
-const Won: React.FC<WonProps> = ({ handleNextStage, handleQuit }) => {
+const Won: React.FC<WonType> = ({ handleNextStage, handleQuit }) => {
   return (
     <>
       <Message type="won">잘하셨습니다! 다 맞추셨어요!</Message>
