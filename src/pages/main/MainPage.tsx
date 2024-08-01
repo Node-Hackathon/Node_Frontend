@@ -37,7 +37,7 @@ export default function MainPage() {
         <Description>
           <Text>치매 예방 교육과 함께</Text>
           <Text>기억의 힘을 키워보세요</Text>
-          <Text fontSize="15px" marginTop="1rem">
+          <Text fontSize="15px" $marginTop="1rem">
             어렵게 생각하지 마세요, 노드가 매일 함께 할게요
           </Text>
         </Description>
@@ -107,7 +107,7 @@ export default function MainPage() {
         <Description>
           <Text>Node는 여러분들의</Text>
           <Text>연락을 기다리고 있습니다.</Text>
-          <Text fontSize="15px" marginTop="1rem">
+          <Text fontSize="15px" $marginTop="1rem">
             Node의 미래에
             <br />
             여러분들의 서비스를 추가할 수 있습니다

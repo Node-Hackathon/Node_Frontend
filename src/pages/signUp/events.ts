@@ -23,6 +23,8 @@ export const useSignUp = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [requestGuardianSignUp] = useGuardianSignUpMutation();
+
   useEffect(() => {
     dispatch(setTotalSteps(3));
   }, [dispatch]);
@@ -34,7 +36,21 @@ export const useSignUp = () => {
 
   const handleModalNo = () => {
     dispatch(closeModal());
-    navigate('/signIn', { replace: true });
+    onGuardianSubmit({
+      guardian_address: '',
+      guardian_name: '',
+      guardian_phone_num: '',
+    });
+  };
+
+  const onGuardianSubmit = async (data: GuardianFormType) => {
+    try {
+      await requestGuardianSignUp(data).unwrap();
+      navigate('/signIn', { replace: true });
+    } catch (error) {
+      console.error(error);
+      alert('회원가입에 실패했습니다.');
+    }
   };
 
   // SignUpMessage에서 사용
@@ -101,7 +117,8 @@ export const useSignUp = () => {
     data: SignUpMessageFormType,
   ) => {
     try {
-      await requestMessage(data.phone).unwrap();
+      const response = await requestMessage(data.phone).unwrap();
+      console.log(response);
       alert('인증번호 전송이 완료되었습니다.');
       setIsPhoneVerified(true);
       resetCountdown();
