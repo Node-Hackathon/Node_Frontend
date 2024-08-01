@@ -21,6 +21,7 @@ export default function NumberPage() {
     level,
     grid,
     revealed,
+    isCountdownActive,
     countdownTime,
     gameStarted,
     gameTimeLeft,
@@ -49,7 +50,7 @@ export default function NumberPage() {
             <NumberRound>
               <NumberLevel>{level}단계</NumberLevel>
               <Body3 color={theme.colors.textPoint}>
-                {gameTimeLeft > 0 ? gameTimeLeft : countdownTime}초
+                남은 시간 : {gameTimeLeft > 0 ? gameTimeLeft : countdownTime}초
               </Body3>
             </NumberRound>
             <NumberGrid>
@@ -65,7 +66,17 @@ export default function NumberPage() {
               ))}
             </NumberGrid>
             <Title4 color={theme.colors.textNeutral}>
-              {isGameOver && '게임 종료!'}
+              {isCountdownActive &&
+                !gameStarted &&
+                !isGameOver &&
+                !isGameClear &&
+                '숫자의 위치를 순서대로 외워주세요!'}
+              {!isCountdownActive &&
+                gameStarted &&
+                !isGameOver &&
+                !isGameClear &&
+                '숫자의 위치를 순서대로 클릭해주세요!'}
+              {isGameOver && (gameTimeLeft < 1 ? '게임 시간 종료!' : '게임 종료!')}
               {isGameClear && '모든 단계 성공!'}
             </Title4>
           </NumberContent>
