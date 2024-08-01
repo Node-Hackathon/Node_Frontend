@@ -36,7 +36,7 @@ export const List = styled.div`
   height: fit-content;
 
   padding: 1rem 1rem;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.5rem;
 
   display: flex;
   align-items: center;

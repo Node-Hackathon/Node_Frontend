@@ -7,8 +7,6 @@ export const Container = styled.div`
 
   padding: 0rem 2rem;
   padding-bottom: 1.5rem;
-
-  background-color: whitesmoke;
 `;
 
 export const Details = styled.details<{ isFirst: boolean; isLast: boolean; isOpen: boolean }>`
