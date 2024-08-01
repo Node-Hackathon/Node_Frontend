@@ -5,3 +5,7 @@ export interface Card {
 }
 
 export type GameState = 'start' | 'idle' | 'playing' | 'won' | 'lost'; // 'lost' 상태 추가
+
+export interface LostType {
+  handleGoResult: () => void;
+}

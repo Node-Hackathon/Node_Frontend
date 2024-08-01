@@ -12,6 +12,7 @@ const BaseButton = styled.button<ButtonType>`
   padding: 0 1.47rem;
   border-radius: 0.5rem;
   cursor: pointer;
+  white-space: nowrap;
 `;
 
 const PrimaryButton = styled(BaseButton)`

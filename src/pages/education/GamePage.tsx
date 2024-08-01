@@ -9,7 +9,7 @@ export default function GamePage() {
       secondImage={numberImage}
       firstText="카드 뒤집기"
       secondText="숫자 맞추기"
-      firstLink="card"
+      firstLink="cardStart"
       secondLink="number"
     />
   );

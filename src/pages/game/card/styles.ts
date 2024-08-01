@@ -1,33 +1,44 @@
 import styled from 'styled-components';
-import { theme } from '../../styles/theme';
-import { Title1 } from '../../components/text/Text';
+import { theme } from '../../../styles/theme';
+import { Title1 } from '../../../components/text/Text';
+
+export const GameContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  padding: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  overflow-x: hidden;
+`;
 
 export const GameTitle = styled(Title1)`
-  flex: 1;
+  display: flex;
+  align-items: center;
+  flex: 0.25;
   text-align: center;
-  margin-top: 40px;
-  margin-bottom: 40px;
 `;
 
 export const GameBoard = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  max-width: 400px;
-  margin-left: 20px;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  gap: 0.5rem;
+  width: 20rem;
+  height: 29.375rem;
 `;
 
 export const Card = styled.div`
-  width: 70px;
-  height: 110px;
+  width: 4.375rem;
+  height: 6.875rem;
   background-color: #5fcf89;
   border: 1px solid #5fcf89;
-  border-radius: 8px;
+  border-radius: 0.4375rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0.5rem;
   cursor: pointer;
 
   &.flipped {
@@ -36,13 +47,13 @@ export const Card = styled.div`
 
   img,
   svg {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
   }
 
   img.logo {
-    width: 54px;
-    height: 26px;
+    width: 3.125rem;
+    height: 1.625rem;
   }
 `;
 
@@ -71,50 +82,63 @@ export const Modal = styled.div`
 
 export const ButtonContainer = styled.div`
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
+  width: 20rem;
+  justify-content: space-between;
 `;
+
 export const CenteredContainer = styled.div`
+  height: 100%;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  gap: 2rem;
 `;
+
 export const Stage = styled.div`
   font-size: 2rem;
   font-weight: 600;
   color: ${theme.colors.textNeutral};
   display: flex;
   align-items: center;
-  margin-left: 1rem;
 `;
 
-export const Message = styled.div`
-  font-size: 1.5rem;
-  margin-left: 1rem;
+export const Message = styled.div<{ type?: string }>`
+  font-size: ${({ type }) => (type === 'won' || type === 'lost' ? '1.375rem' : '1.125rem')};
+  font-weight: ${({ type }) => (type === 'won' || type === 'lost' ? 700 : 600)};
   text-align: center;
-  margin-right: 1rem;
+  color: ${({ type }) =>
+    type === 'won' || type === 'lost' ? theme.colors.textNeutral : theme.colors.textPoint};
+  white-space: nowrap;
 `;
 
 export const CommentMessage = styled.div`
-  font-size: 1.5rem;
-  margin-top: 20px;
+  font-size: 1.375rem;
+  font-weight: 700;
   text-align: center;
+  color: ${theme.colors.textNeutral};
 `;
 
 export const CardContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1rem;
-  /* 카드 스타일이 여기에 추가될 수 있습니다 */
 `;
 
 export const Header = styled.div`
+  width: 100%;
+  max-width: 320px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  white-space: nowrap;
+  flex: 0.25;
+`;
+
+export const GameResult = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex: 0.5;
 `;

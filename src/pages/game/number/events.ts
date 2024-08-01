@@ -74,7 +74,7 @@ export const useNumberGame = () => {
 
   const startGame = useCallback(() => {
     const newGrid = Array(GRID_SIZE).fill(null);
-    const numberCount = NUMBER_COUNT + (level - 1) * 2;
+    const numberCount = NUMBER_COUNT + (level - 1);
     const numbers = Array.from({ length: numberCount }, (_, i) => (i % numberCount) + 1);
     const indices = getRandomIndices(numberCount);
 

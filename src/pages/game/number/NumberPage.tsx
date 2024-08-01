@@ -8,6 +8,7 @@ import {
   NumberTitle,
   NumberButtonPair,
   NumberBeforeBox,
+  NumberButton,
 } from './styles';
 import Number from './Number';
 import { Body3, Title1, Title4 } from '../../../components/text/Text';
@@ -80,21 +81,23 @@ export default function NumberPage() {
               {isGameClear && '모든 단계 성공!'}
             </Title4>
           </NumberContent>
-          {showNextLevelButton && (
-            <NumberButtonPair>
-              <SecondaryButton size="m" onClick={handleQuit}>
-                그만하기
-              </SecondaryButton>
-              <PrimaryButton size="m" onClick={handleNextLevel}>
-                다음 단계로
+          <NumberButton>
+            {showNextLevelButton && (
+              <NumberButtonPair>
+                <SecondaryButton size="m" onClick={handleQuit}>
+                  그만하기
+                </SecondaryButton>
+                <PrimaryButton size="m" onClick={handleNextLevel}>
+                  다음 단계로
+                </PrimaryButton>
+              </NumberButtonPair>
+            )}
+            {(isGameOver || isGameClear) && (
+              <PrimaryButton size="l" onClick={handleGoResult}>
+                결과 보기
               </PrimaryButton>
-            </NumberButtonPair>
-          )}
-          {(isGameOver || isGameClear) && (
-            <PrimaryButton size="l" onClick={handleGoResult}>
-              결과 보기
-            </PrimaryButton>
-          )}
+            )}
+          </NumberButton>
         </NumberBox>
       ) : (
         <NumberBeforeBox>

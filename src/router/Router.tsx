@@ -16,42 +16,25 @@ import CompositionPage from '../pages/4DFrame/4DComposition/CompositionPage';
 import CenterPage from '../pages/center/CenterPage';
 import DiagnosisPage from '../pages/diagnosis/DiagnosisPage';
 import DiagnosisResult from '../pages/diagnosis/DiagnosisResult';
-import SelectCardGame from '../pages/selectCardGame/selectCardGame';
+import SelectCardGame from '../pages/game/card/selectCardGame';
 import MyPage from '../pages/mypage/MyPage';
 import UserInfoPage from '../pages/userInfo/UserInfoPage';
 import GuardianInfoPage from '../pages/guardianInfo/GuardianInfoPage';
 import GuardianPage from '../pages/signUp/GuardianPage';
 import GameResultPage from '../pages/gameResult/GameResultPage';
 import GameResultDetailPage from '../pages/gameResult/GameResultDetailPage';
-import StartGame from '../pages/selectCardGame/start';
+import StartGame from '../pages/game/card/start';
 import GamePage from '../pages/education/GamePage';
 import NumberPage from '../pages/game/number/NumberPage';
 import NumberResultPage from '../pages/result/NumberResultPage';
 import DiagnosisTotalReslutPage from '../pages/diagnosisTotalReslut/DiagnosisTotalReslutPage';
+import CardResultPage from '../pages/result/CardResultPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
     children: [
-      {
-        path: 'game',
-        children: [
-          // 교육 페이지 > 게임 페이지 > 숫자 맞추기 페이지
-          {
-            path: 'choiceNumGame',
-            element: <ChoiceNumGame />,
-          },
-          {
-            path: 'selectCardGameStart',
-            element: <StartGame />,
-          },
-          {
-            path: 'selectCardGame',
-            element: <SelectCardGame />,
-          },
-        ],
-      },
       // 랜딩 페이지
       {
         path: '',
@@ -76,15 +59,24 @@ const router = createBrowserRouter([
           },
         ],
       },
-      // 교육 페이지 > 게임 페이지 > 카드 뒤집기 페이지
       {
-        path: 'education/game/card',
-        element: <SelectCardGame />,
-      },
-      // 교육 페이지 > 게임 페이지 > 숫자 맞추기 페이지
-      {
-        path: 'education/game/number',
-        element: <NumberPage />,
+        path: 'education/game',
+        children: [
+          // 교육 페이지 > 게임 페이지 > 카드 맞추기 페이지
+          {
+            path: 'cardStart',
+            element: <StartGame />,
+          },
+          {
+            path: 'card',
+            element: <SelectCardGame />,
+          },
+          // 교육 페이지 > 게임 페이지 > 숫자 맞추기 페이지
+          {
+            path: 'number',
+            element: <NumberPage />,
+          },
+        ],
       },
     ],
   },
@@ -132,6 +124,10 @@ const router = createBrowserRouter([
               {
                 path: 'number/result',
                 element: <NumberResultPage />,
+              },
+              {
+                path: 'card/result',
+                element: <CardResultPage />,
               },
             ],
           },

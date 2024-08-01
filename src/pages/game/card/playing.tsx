@@ -6,7 +6,7 @@ interface PlayingProps {
 }
 
 const Playing: React.FC<PlayingProps> = ({ totalTimeLeft }) => {
-  return <Message>남은 시간: {totalTimeLeft} 초</Message>;
+  return <Message>남은 시간 : {totalTimeLeft} 초</Message>;
 };
 
 export default Playing;

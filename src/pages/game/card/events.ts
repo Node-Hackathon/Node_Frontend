@@ -1,13 +1,13 @@
 import { Dispatch, SetStateAction } from 'react';
 import { Card, GameState } from './types';
-import AirplaneGame from '../../assets/images/AirplaneGame.png';
-import AlienGame from '../../assets/images/AlienGame.png';
-import CarGame from '../../assets/images/CarGame.png';
-import FireGame from '../../assets/images/FireGame.png';
-import HeartGame from '../../assets/images/HeartGame.png';
-import LightningGame from '../../assets/images/LightningGame.png';
-import SmileGame from '../../assets/images/SmileGame.png';
-import StarGame from '../../assets/images/StarGame.png';
+import AirplaneGame from '../../../assets/images/AirplaneGame.png';
+import AlienGame from '../../../assets/images/AlienGame.png';
+import CarGame from '../../../assets/images/CarGame.png';
+import FireGame from '../../../assets/images/FireGame.png';
+import HeartGame from '../../../assets/images/HeartGame.png';
+import LightningGame from '../../../assets/images/LightningGame.png';
+import SmileGame from '../../../assets/images/SmileGame.png';
+import StarGame from '../../../assets/images/StarGame.png';
 
 const imageList = [
   AirplaneGame,
