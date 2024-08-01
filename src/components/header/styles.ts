@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const HeaderContainer = styled.div`
   width: 100%;
+  height: 4rem;
 
   background: rgba(255, 255, 255);
 

@@ -5,8 +5,12 @@ import { Container, Welcome, Text, Category, List, Quit } from './styles';
 import { FaUser, FaUsers, FaNoteSticky, FaCubesStacked, FaRightFromBracket } from 'react-icons/fa6';
 
 export default function MyPage() {
-  const { handleGoToUserInfo, handleGoToGuardianInfoPage, handleGoToGameResultPage } =
-    useMyPageEvents();
+  const {
+    handleGoToUserInfo,
+    handleGoToGuardianInfoPage,
+    handleGoToDiagnosisTotalResult,
+    handleGoToGameResultPage,
+  } = useMyPageEvents();
   const { handleLogout, handleModalNo, handleModalYes, isOpen, question1, question2 } = useLogout();
 
   return (
@@ -25,7 +29,7 @@ export default function MyPage() {
           <FaUsers color="5fcf89" />
           <Text>보호자 정보</Text>
         </List>
-        <List>
+        <List onClick={handleGoToDiagnosisTotalResult}>
           <FaNoteSticky color="5fcf89" />
           <Text>진단 결과</Text>
         </List>
