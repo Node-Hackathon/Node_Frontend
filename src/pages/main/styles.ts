@@ -86,6 +86,8 @@ export const EduType = styled.div`
   align-items: start;
   justify-content: space-between;
   flex-direction: column;
+
+  white-space: nowrap;
 `;
 
 export const EduText = styled.div<{ fontSize?: string; fontWeight?: string }>`

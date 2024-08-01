@@ -9,14 +9,16 @@ import {
   TableCell,
 } from '../userInfo/styles';
 import defaultProfile from '../../assets/images/DefaultProfile.png';
-import { useGuardianInfoEvents } from './events';
 import NotExistGuardianInfoPage from './NotExistGuardianInfoPage';
+import guardianApi from '../../services/myPage/guardianApi';
 
 export default function GuardianInfoPage() {
-  const { guardianObj, isGuardianExist } = useGuardianInfoEvents();
+  // 보호자 정보 조회
+  const { data: guardianData } = guardianApi.useGetGuardianInfoByIdQuery();
+  console.log(guardianData);
 
   // 보호자 정보가 없을 경우
-  if (!isGuardianExist || !guardianObj) {
+  if (!guardianData) {
     return <NotExistGuardianInfoPage />;
   }
 
@@ -28,7 +30,7 @@ export default function GuardianInfoPage() {
       </Profile>
       <Name>
         <Text fontSize="24px" fontWeight="700">
-          {guardianObj.guardianName} 님
+          {guardianData.guardian_name} 님
         </Text>
       </Name>
       <Info>
@@ -36,13 +38,13 @@ export default function GuardianInfoPage() {
           <TableRow>
             <TableCell>전화번호</TableCell>
             <TableCell width="70%" color="black">
-              {guardianObj.guardianPhone}
+              {guardianData.guardian_phone_num}
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>주소</TableCell>
             <TableCell width="70%" color="black">
-              {guardianObj.guardianAddress}
+              {guardianData.guardian_address}
             </TableCell>
           </TableRow>
         </Table>

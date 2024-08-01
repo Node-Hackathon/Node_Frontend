@@ -2,7 +2,8 @@ import { styled } from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  height: calc(100% - 4rem);
+  min-height: calc(100% - 4rem);
+  height: fit-content;
   padding: 2rem 1rem;
 `;
 
@@ -14,6 +15,18 @@ export const Text = styled.span<{
   color: ${(props) => props.color || 'black'};
   font-size: ${(props) => props.fontSize || '16px'};
   font-weight: ${(props) => props.fontWeight || '400'};
+`;
+
+export const Input = styled.input.attrs({
+  type: 'text',
+})`
+  width: 100%;
+  height: fit-content;
+
+  padding: 0.3rem 0.5rem;
+
+  border: 1px solid gray;
+  border-radius: 5px;
 `;
 
 export const Profile = styled.div`

@@ -1,5 +1,6 @@
 import Modal from '../../components/modal/Modal';
 import { useLogout } from '../../hooks/useLogout';
+import myPageApi from '../../services/myPage/myPageApi';
 import { useMyPageEvents } from './events';
 import { Container, Welcome, Text, Category, List, Quit } from './styles';
 import { FaUser, FaUsers, FaNoteSticky, FaCubesStacked, FaRightFromBracket } from 'react-icons/fa6';
@@ -13,11 +14,15 @@ export default function MyPage() {
   } = useMyPageEvents();
   const { handleLogout, handleModalNo, handleModalYes, isOpen, question1, question2 } = useLogout();
 
+  // 유저 정보 조회
+  const { data: userData } = myPageApi.useGetUserByIdQuery();
+  console.log('유저 정보 조회', userData);
+
   return (
     <Container>
       <Welcome>
         <Text color="black" fontSize="24px" fontWeight="700" marginLeft="0px">
-          김유성님, 안녕하세요 !
+          {userData?.name}님, 안녕하세요 !
         </Text>
       </Welcome>
       <Category>
