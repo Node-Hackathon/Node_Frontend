@@ -71,7 +71,7 @@ export default function MainPage() {
             </EduImg>
           </GoToEdu>
         </Link>
-        <Link to={'/education/game/selectCardGame'}>
+        <Link to={'/game/selectCardGameStart'}>
           <GoToEdu>
             <EduType>
               <EduText>카드 뒤집기</EduText>

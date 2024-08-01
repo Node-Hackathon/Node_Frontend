@@ -24,12 +24,31 @@ import GuardianInfoPage from '../pages/guardianInfo/GuardianInfoPage';
 import GuardianPage from '../pages/signUp/GuardianPage';
 import GameResultPage from '../pages/gameResult/GameResultPage';
 import GameResultDetailPage from '../pages/gameResult/GameResultDetailPage';
+import StartGame from '../pages/selectCardGame/start';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
     children: [
+      {
+        path: 'game',
+        children: [
+          // 교육 페이지 > 게임 페이지 > 숫자 맞추기 페이지
+          {
+            path: 'choiceNumGame',
+            element: <ChoiceNumGame />,
+          },
+          {
+            path: 'selectCardGameStart',
+            element: <StartGame />,
+          },
+          {
+            path: 'selectCardGame',
+            element: <SelectCardGame />,
+          },
+        ],
+      },
       // 랜딩 페이지
       {
         path: '',
@@ -94,20 +113,6 @@ const router = createBrowserRouter([
             ],
           },
           // 교육 페이지 > 게임 페이지
-          {
-            path: 'game',
-            children: [
-              // 교육 페이지 > 게임 페이지 > 숫자 맞추기 페이지
-              {
-                path: 'choiceNumGame',
-                element: <ChoiceNumGame />,
-              },
-              {
-                path: 'selectCardGame',
-                element: <SelectCardGame />,
-              },
-            ],
-          },
         ],
       },
       // 상담 센터 페이지
