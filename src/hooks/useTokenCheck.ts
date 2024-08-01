@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { RootState } from '../store/store';
 import { useGetUserByIdQuery } from '../services/myPage/myPageApi';
 import { setUserName } from '../store/reducer/userSlice';
+import apiSlice from '../services/apiSlice';
 
 const useTokenCheck = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ const useTokenCheck = () => {
       if (expiryTime && now >= expiryTime) {
         alert('자동 로그아웃되었습니다!');
         dispatch(logout());
+        dispatch(apiSlice.util.resetApiState());
         navigate('/signIn', { replace: true });
       }
     };
@@ -43,7 +45,7 @@ const useTokenCheck = () => {
     if (isUserSuccess && userData) {
       dispatch(setUserName(userData.name));
     } else if (isUserError) {
-      console.error('사용자 정보를 가져오는데 싪했습니다.');
+      console.error('사용자 정보를 가져오는데 실패했습니다.');
     }
   }, [isUserSuccess, userData, dispatch]);
 };

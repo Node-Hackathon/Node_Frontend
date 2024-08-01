@@ -3,6 +3,7 @@ import { closeModal, openModal } from '../store/reducer/modalSlice';
 import { logout } from '../store/reducer/tokenSlice';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../store/store';
+import apiSlice from '../services/apiSlice';
 
 export const useLogout = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ export const useLogout = () => {
   const handleModalYes = () => {
     dispatch(closeModal());
     dispatch(logout());
+    dispatch(apiSlice.util.resetApiState());
     navigate('/', { replace: true });
   };
 
