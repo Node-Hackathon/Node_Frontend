@@ -8,13 +8,19 @@ export const FrameContainer = styled.div`
   align-items: center;
 `;
 
-export const FrameBox = styled.div`
-  width: 10.9375rem;
-  height: 10.9375rem;
+export const FrameBox = styled.div<{ size?: 'l' | 's' }>`
+  width: ${({ size }) => (size === 'l' ? '10.9375rem' : '9.375rem')};
+  height: ${({ size }) => (size === 'l' ? '10.9375rem' : '9.375rem')};
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 0.625rem;
   border: 2px solid ${theme.colors.primaryStrong};
   background-color: ${theme.colors.backgroundNormal};
+
+  img {
+    width: ${({ size }) => (size === 'l' ? '10.9375rem' : '9.375rem')};
+    height: ${({ size }) => (size === 'l' ? '10.9375rem' : '9.375rem')};
+    object-fit: contain;
+  }
 `;

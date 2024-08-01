@@ -30,7 +30,7 @@ export default function CompositionPage() {
           errors={errors}
           onSubmitHandler={on4DCompositionHandler}
           compositionSetValue={compositionSetValue}
-          manualLink="/education/4DFrame/manual/composition"
+          manualLink="/education/manual/composition"
         />
       )}
       {isSuccess && (
