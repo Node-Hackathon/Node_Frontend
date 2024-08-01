@@ -16,8 +16,9 @@ import {
 import { ResultType } from './types';
 import { RootState } from '../../store/store';
 
-export default function ResultPage({ game, graphData }: ResultType) {
+export default function ResultPage({ game, graphData, messageData }: ResultType) {
   const { handleReplay, handleGoResult } = useResult();
+
   const name = useSelector((state: RootState) => state.user.name);
 
   return (
@@ -41,7 +42,7 @@ export default function ResultPage({ game, graphData }: ResultType) {
                 />
               ))}
           </ResultGraphBox>
-          <ResultText>저번 게임과 동일한 점수를 기록했어요</ResultText>
+          <ResultText>{messageData.message}</ResultText>
         </ResultContent>
         <ResultButton>
           <SecondaryButton size="m" onClick={handleReplay}>

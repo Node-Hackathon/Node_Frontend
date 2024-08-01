@@ -5,7 +5,7 @@ export const EducationContainer = styled.section`
   width: 100%;
   height: calc(100% - 4rem);
   min-height: calc(100% - 4rem);
-  padding: 1.25rem 0;
+  padding: 2.5rem 0;
   display: flex;
   justify-content: center;
   overflow-x: hidden;

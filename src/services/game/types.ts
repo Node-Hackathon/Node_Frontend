@@ -8,3 +8,7 @@ export interface GameReturnType {
   stage: number;
   userId: number;
 }
+
+export interface GameCompareReturnType {
+  message: string;
+}

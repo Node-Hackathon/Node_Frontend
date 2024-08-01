@@ -4,9 +4,9 @@ import { Body2, Title1 } from '../../../components/text/Text';
 
 export const NumberContainer = styled.section`
   width: 100%;
-  height: calc(100% - 4rem);
-  min-height: calc(100% - 4rem);
-  padding: 3.75rem 0;
+  height: 100%;
+  min-height: 100%;
+  padding: 2.5rem 0;
   display: flex;
   justify-content: center;
   overflow-x: hidden;
@@ -28,6 +28,8 @@ export const NumberBox = styled.div`
 `;
 
 export const NumberTitle = styled(Title1)`
+  display: flex;
+  align-items: center;
   flex: 1;
 `;
 
@@ -35,7 +37,7 @@ export const NumberContent = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex: 4;
+  flex: 3;
   gap: 1.5rem;
 `;
 
@@ -82,6 +84,12 @@ export const NumberItemBox = styled.div<{ revealed: boolean; gameStarted: boolea
 
 export const NumberItemText = styled(Body2)<{ revealed: boolean; gameStarted: boolean }>`
   opacity: ${(props) => (props.gameStarted && !props.revealed ? 0 : 1)};
+`;
+
+export const NumberButton = styled.div`
+  display: flex;
+  align-items: center;
+  flex: 1;
 `;
 
 export const NumberButtonPair = styled.div`

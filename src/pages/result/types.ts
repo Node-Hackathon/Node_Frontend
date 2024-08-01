@@ -1,4 +1,4 @@
-import { GameReturnType } from '../../services/game/types';
+import { GameCompareReturnType, GameReturnType } from '../../services/game/types';
 
 export interface GraphType {
   count: number;
@@ -9,4 +9,5 @@ export interface GraphType {
 export interface ResultType {
   game: string;
   graphData: GameReturnType[];
+  messageData: GameCompareReturnType;
 }

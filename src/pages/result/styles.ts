@@ -20,6 +20,7 @@ export const ResultTitle = styled.div`
   height: 15%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 0.25rem;
 `;
 
@@ -46,7 +47,7 @@ export const ResultText = styled(Body2)`
 `;
 
 export const ResultButton = styled.div`
-  height: 20%;
+  height: 10%;
   min-width: 20rem;
   display: flex;
   justify-content: space-between;
