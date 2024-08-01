@@ -144,7 +144,7 @@ const SelectCardGame: React.FC = () => {
     const data = {
       stage: stage + 1,
     };
-    handleSubmitAndNavigate(data, -1);
+    handleSubmitAndNavigate(data, -2);
   };
 
   return (
