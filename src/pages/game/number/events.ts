@@ -96,10 +96,12 @@ export const useNumberGame = () => {
 
   const getRandomIndices = useCallback((count: number) => {
     const indices = Array.from(Array(GRID_SIZE).keys());
+
     for (let i = indices.length - 1; i > indices.length - count - 1; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [indices[i], indices[j]] = [indices[j], indices[i]];
     }
+
     return indices.slice(-count);
   }, []);
 
@@ -108,11 +110,14 @@ export const useNumberGame = () => {
       if (isGameOver || revealed[index] || !gameStarted) return;
 
       const clickedNumber = grid[index];
+
       if (clickedNumber !== null) {
         const newSequence = [...correctSequence];
+
         if (clickedNumber === newSequence[0]) {
           newSequence.shift();
           setCorrectSequence(newSequence);
+
           if (newSequence.length === 0) {
             setGameStarted(false);
             if (level >= MAX_LEVEL) {
@@ -125,6 +130,7 @@ export const useNumberGame = () => {
           setIsGameOver(true);
         }
       }
+
       setRevealed((prevRevealed) => {
         const newRevealed = [...prevRevealed];
         newRevealed[index] = true;
@@ -143,8 +149,7 @@ export const useNumberGame = () => {
 
   const handleStageSubmit = async (data: GameFormType) => {
     try {
-      const response = await createNumberGameResult(data).unwrap();
-      console.log(response);
+      await createNumberGameResult(data).unwrap();
       return true;
     } catch (error) {
       console.error(error);
@@ -185,7 +190,6 @@ export const useNumberGame = () => {
     const data = {
       stage: isGameClear ? level : level - 1,
     };
-    console.log(data);
     handleSubmitAndNavigate(data, 'result');
   };
 
@@ -210,6 +214,7 @@ export const useNumberGame = () => {
     grid,
     revealed,
     countdownTime,
+    isCountdownActive,
     gameStarted,
     gameTimeLeft,
     start,
