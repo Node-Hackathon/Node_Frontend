@@ -23,6 +23,7 @@ import GuardianInfoPage from '../pages/guardianInfo/GuardianInfoPage';
 import GuardianPage from '../pages/signUp/GuardianPage';
 import GameResultPage from '../pages/gameResult/GameResultPage';
 import GameResultDetailPage from '../pages/gameResult/GameResultDetailPage';
+import StartGame from '../pages/selectCardGame/start';
 import GamePage from '../pages/education/GamePage';
 import NumberPage from '../pages/game/number/NumberPage';
 import NumberResultPage from '../pages/result/NumberResultPage';
@@ -33,6 +34,24 @@ const router = createBrowserRouter([
     path: '/',
     element: <Root />,
     children: [
+      {
+        path: 'game',
+        children: [
+          // 교육 페이지 > 게임 페이지 > 숫자 맞추기 페이지
+          {
+            path: 'choiceNumGame',
+            element: <ChoiceNumGame />,
+          },
+          {
+            path: 'selectCardGameStart',
+            element: <StartGame />,
+          },
+          {
+            path: 'selectCardGame',
+            element: <SelectCardGame />,
+          },
+        ],
+      },
       // 랜딩 페이지
       {
         path: '',
