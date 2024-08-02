@@ -7,6 +7,9 @@ import {
 } from '@reduxjs/toolkit/query/react';
 import { RootState } from '../store/store';
 import { logout } from '../store/reducer/tokenSlice';
+import { setStepReset } from '../store/reducer/progressSlice';
+import { resetAnswers } from '../store/reducer/diagnosisSlice';
+import { clearUserName } from '../store/reducer/userSlice';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: process.env.REACT_APP_API_URL,
@@ -30,6 +33,9 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
   if (result.error && result.error.status === 401) {
     alert('로그인 후 다시 시도해주세요!');
     api.dispatch(logout());
+    api.dispatch(setStepReset());
+    api.dispatch(resetAnswers());
+    api.dispatch(clearUserName());
     api.dispatch(apiSlice.util.resetApiState());
   }
 

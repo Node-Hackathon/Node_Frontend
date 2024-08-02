@@ -4,8 +4,10 @@ import { logout } from '../store/reducer/tokenSlice';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../store/store';
 import { useGetUserByIdQuery } from '../services/myPage/myPageApi';
-import { setUserName } from '../store/reducer/userSlice';
+import { clearUserName, setUserName } from '../store/reducer/userSlice';
 import apiSlice from '../services/apiSlice';
+import { setStepReset } from '../store/reducer/progressSlice';
+import { resetAnswers } from '../store/reducer/diagnosisSlice';
 
 const useTokenCheck = () => {
   const dispatch = useDispatch();
@@ -30,6 +32,9 @@ const useTokenCheck = () => {
       if (expiryTime && now >= expiryTime) {
         alert('자동 로그아웃되었습니다!');
         dispatch(logout());
+        dispatch(setStepReset());
+        dispatch(resetAnswers());
+        dispatch(clearUserName());
         dispatch(apiSlice.util.resetApiState());
         navigate('/signIn', { replace: true });
       }

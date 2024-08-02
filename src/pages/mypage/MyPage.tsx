@@ -11,7 +11,14 @@ export default function MyPage() {
     handleGoToGuardianInfoPage,
     handleGoToDiagnosisTotalResult,
     handleGoToGameResultPage,
+    handleQuit,
+    quitIsOpen,
+    quitQuestion1,
+    quitQuestion2,
+    handleQuitYes,
+    handleQuitNo,
   } = useMyPageEvents();
+
   const { handleLogout, handleModalNo, handleModalYes, isOpen, question1, question2 } = useLogout();
 
   // 유저 정보 조회
@@ -47,7 +54,7 @@ export default function MyPage() {
           <Text>로그아웃</Text>
         </List>
       </Category>
-      <Quit>
+      <Quit onClick={handleQuit}>
         <Text color="gray" fontSize="12px" fontWeight="400">
           탈퇴하기
         </Text>
@@ -58,6 +65,13 @@ export default function MyPage() {
         question2={question2}
         onClickNo={handleModalNo}
         onClickYes={handleModalYes}
+      />
+      <Modal
+        isOpen={quitIsOpen}
+        question1={quitQuestion1}
+        question2={quitQuestion2}
+        onClickNo={handleQuitNo}
+        onClickYes={handleQuitYes}
       />
     </Container>
   );
