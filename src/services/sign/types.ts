@@ -25,7 +25,17 @@ export interface SignUpSecondFormType {
 }
 
 export interface GuardianFormType {
-  guardian_name: string;
-  guardian_address: string;
-  guardian_phone_num: string;
+  guardian_name: string | null;
+  guardian_address: string | null;
+  guardian_phone_num: string | null;
+}
+
+export interface ErrorType {
+  data: {
+    code: number;
+    detailMessage: string;
+    msg: string;
+    success: boolean;
+  };
+  status: number;
 }

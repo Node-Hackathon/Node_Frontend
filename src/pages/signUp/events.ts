@@ -37,9 +37,9 @@ export const useSignUp = () => {
   const handleModalNo = () => {
     dispatch(closeModal());
     onGuardianSubmit({
-      guardian_address: '',
-      guardian_name: '',
-      guardian_phone_num: '',
+      guardian_address: null,
+      guardian_name: null,
+      guardian_phone_num: null,
     });
   };
 
@@ -117,8 +117,7 @@ export const useSignUp = () => {
     data: SignUpMessageFormType,
   ) => {
     try {
-      const response = await requestMessage(data.phone).unwrap();
-      console.log(response);
+      await requestMessage(data.phone).unwrap();
       alert('인증번호 전송이 완료되었습니다.');
       setIsPhoneVerified(true);
       resetCountdown();
@@ -139,20 +138,21 @@ export const useSignUp = () => {
       return;
     }
     try {
-      const response = await requestVerify(data.code).unwrap();
-      if (response.status === 400) {
+      await requestVerify(data.code).unwrap();
+
+      dispatch(nextStep());
+      messageReset();
+    } catch (error: any) {
+      if (error.status === 400) {
         messageSetError(
           'code',
           { message: '인증번호가 일치하지 않습니다.' },
           { shouldFocus: true },
         );
       } else {
-        dispatch(nextStep());
-        messageReset();
+        alert('인증번호 인증이 실패했습니다.');
       }
-    } catch (error) {
       console.error(error);
-      alert('인증번호 인증이 실패했습니다.');
     }
   };
 
@@ -221,23 +221,24 @@ export const useSignUp = () => {
       formData.append('file', file);
 
       try {
-        const response = await requestSecondSignUp(formData).unwrap();
-        if (response.status === 400) {
+        await requestSecondSignUp(formData).unwrap();
+        dispatch(
+          openModal({
+            question1: '보호자 정보를',
+            question2: '입력하시겠습니까?',
+          }),
+        );
+        dispatch(setStepReset());
+        secondReset();
+      } catch (error: any) {
+        if (error.status === 400) {
           secondSetError('userId', {
             type: 'manual',
-            message: '이미 존재하는 아이디입니다.',
+            message: '아이디가 중복되었습니다.',
           });
         } else {
-          dispatch(
-            openModal({
-              question1: '보호자 정보를',
-              question2: '입력하시겠습니까?',
-            }),
-          );
-          dispatch(setStepReset());
-          secondReset();
+          alert(error.data.detailMessage);
         }
-      } catch (error) {
         console.error('폼 제출 오류:', error);
       }
     } else if (file) {
