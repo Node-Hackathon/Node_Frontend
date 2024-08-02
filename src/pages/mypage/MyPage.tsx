@@ -16,7 +16,6 @@ export default function MyPage() {
 
   // 유저 정보 조회
   const { data: userData } = myPageApi.useGetUserByIdQuery();
-  console.log('유저 정보 조회', userData);
 
   return (
     <Container>
