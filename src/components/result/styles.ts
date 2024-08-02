@@ -45,3 +45,32 @@ export const ResultDetail = styled.div`
     font-weight: 500;
   }
 `;
+
+export const ImageBtn = styled.span`
+  width: fit-content;
+  height: fit-content;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.1rem 0.4rem;
+
+  // background-color: #5fcf89;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  font-size: 10px;
+`;
+
+export const customStyles = {
+  content: {
+    width: 'fit-content',
+    height: 'fit-content',
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};

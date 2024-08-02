@@ -1,12 +1,20 @@
 import { FaAngleDown } from 'react-icons/fa6';
 import { Welcome, Text } from '../../pages/mypage/styles';
 import { Container, Details, List, Summary } from './styles';
-import { CustomDetailsType } from './types';
+import { DiagnosisType } from '../../services/myPage/types';
 import { useState } from 'react';
+import NoExistResult from '../../pages/diagnosisTotalReslut/NoExistResult';
 
-export const CustomDetails = ({ Diagnosis }: CustomDetailsType) => {
-  const checks = Object.keys(Diagnosis);
+interface CustomDetailsProps {
+  Diagnosis: DiagnosisType[];
+}
+
+export const CustomDetails = ({ Diagnosis }: CustomDetailsProps) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  if (Diagnosis.length === 0) {
+    return <NoExistResult />;
+  }
 
   return (
     <Container>
@@ -15,24 +23,40 @@ export const CustomDetails = ({ Diagnosis }: CustomDetailsType) => {
           치매 진단 결과
         </Text>
       </Welcome>
-      {checks.map((key, index) => {
+      {Diagnosis.map((item, index) => {
         const isFirst = index === 0;
-        const isLast = index === checks.length - 1;
+        const isLast = index === Diagnosis.length - 1;
         const handleToggle = () => {
           if (isLast) {
             setIsOpen((prevState) => !prevState);
           }
         };
         return (
-          <Details key={key} isFirst={isFirst} isLast={isLast} isOpen={isOpen}>
+          <Details key={item.id} isFirst={isFirst} isLast={isLast} isOpen={isOpen}>
             <Summary onClick={handleToggle}>
               <div>
                 <span style={{ color: '#5d5d5d' }}>날짜: </span>
-                <span>{Diagnosis[key as keyof typeof Diagnosis].date}</span>
+                <span>{item.date}</span>
               </div>
               <FaAngleDown />
             </Summary>
-            <List>{Diagnosis[key as keyof typeof Diagnosis].result}</List>
+            <List>
+              {item.score >= 7 ? (
+                <>
+                  치매가 의심됩니다!
+                  <br />
+                  병원에 방문하셔서
+                  <br />
+                  정밀 검사를 받아 보시는 걸 추천드려요.
+                </>
+              ) : (
+                <>
+                  축하합니다!
+                  <br />
+                  정상입니다.
+                </>
+              )}
+            </List>
           </Details>
         );
       })}
