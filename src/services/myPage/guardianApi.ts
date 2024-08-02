@@ -9,9 +9,16 @@ export const guardianApi = apiSlice.injectEndpoints({
         method: 'GET',
       }),
     }),
+    updateGuardianInfo: builder.mutation<void, Partial<guardianInfoPageRefurnType>>({
+      query: (body) => ({
+        url: '/mypage-api/guardian-update',
+        method: 'PUT',
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useGetGuardianInfoByIdQuery } = guardianApi;
+export const { useGetGuardianInfoByIdQuery, useUpdateGuardianInfoMutation } = guardianApi;
 
 export default guardianApi;
