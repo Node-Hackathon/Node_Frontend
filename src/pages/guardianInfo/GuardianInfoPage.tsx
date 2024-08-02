@@ -18,7 +18,11 @@ export default function GuardianInfoPage() {
   console.log(guardianData);
 
   // 보호자 정보가 없을 경우
-  if (!guardianData) {
+  if (
+    !guardianData?.guardian_name &&
+    !guardianData?.guardian_address &&
+    !guardianData?.guardian_phone_num
+  ) {
     return <NotExistGuardianInfoPage />;
   }
 
@@ -30,7 +34,7 @@ export default function GuardianInfoPage() {
       </Profile>
       <Name>
         <Text fontSize="24px" fontWeight="700">
-          {guardianData.guardian_name} 님
+          {guardianData?.guardian_name} 님
         </Text>
       </Name>
       <Info>
@@ -38,13 +42,13 @@ export default function GuardianInfoPage() {
           <TableRow>
             <TableCell>전화번호</TableCell>
             <TableCell width="70%" color="black">
-              {guardianData.guardian_phone_num}
+              {guardianData?.guardian_phone_num}
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>주소</TableCell>
             <TableCell width="70%" color="black">
-              {guardianData.guardian_address}
+              {guardianData?.guardian_address}
             </TableCell>
           </TableRow>
         </Table>

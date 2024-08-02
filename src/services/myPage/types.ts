@@ -15,3 +15,10 @@ export interface guardianInfoPageRefurnType {
   guardian_phone_num: string;
   guardian_address: string;
 }
+
+export interface DiagnosisType {
+  id: number;
+  score: number;
+  date: string;
+  userId: number;
+}

@@ -168,7 +168,7 @@ export default function UserInfoPage() {
           {userData?.name} 님
         </Text>
         <Text fontWeight="400" color="8A8A8A">
-          보호자 ∙ {userData?.guardian_name}님
+          {userData?.guardian_name && <>보호자 ∙ {userData?.guardian_name}님</>}
         </Text>
       </Name>
       <Info>

@@ -1,8 +1,13 @@
-import { useTotalReslutEvents } from './events';
 import { CustomDetails } from '../../components/details/CustomDetails';
+import { useGetDiagnosisByIdQuery } from '../../services/myPage/diagnosisApi';
+import { useEffect } from 'react';
 
 export default function DiagnosisTotalReslutPage() {
-  const { Diagnosis } = useTotalReslutEvents();
+  const { data: DiagnosisData, refetch } = useGetDiagnosisByIdQuery();
 
-  return <CustomDetails Diagnosis={Diagnosis} />;
+  useEffect(() => {
+    refetch();
+  }, []);
+
+  return <CustomDetails Diagnosis={DiagnosisData || []} />;
 }
