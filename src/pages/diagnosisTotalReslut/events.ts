@@ -1,6 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import { DiagnosisType } from '../../components/details/types';
 
 export const useTotalReslutEvents = () => {
+  const navigate = useNavigate();
+
   const Diagnosis: DiagnosisType = {
     Check01: {
       date: '2024-07-11',
@@ -40,5 +43,9 @@ export const useTotalReslutEvents = () => {
     },
   };
 
-  return { Diagnosis };
+  const handleGoToCheck = () => {
+    navigate('/diagnosis');
+  };
+
+  return { Diagnosis, handleGoToCheck };
 };

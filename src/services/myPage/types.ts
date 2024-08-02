@@ -22,3 +22,29 @@ export interface DiagnosisType {
   date: string;
   userId: number;
 }
+
+export interface BlockGameResult {
+  id: number;
+  imageUrl: string;
+  createdAt: string;
+}
+
+export interface CompositionGameResult {
+  id: number;
+  imageUrl: string;
+  createdAt: string;
+}
+
+export interface CardGameResult {
+  id: number;
+  stage: number;
+  date: string;
+  userId: number;
+}
+
+export interface NumberGameResult {
+  id: number;
+  stage: number;
+  date: string;
+  userId: number;
+}
