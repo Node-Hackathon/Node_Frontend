@@ -4,6 +4,9 @@ import { logout } from '../store/reducer/tokenSlice';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../store/store';
 import apiSlice from '../services/apiSlice';
+import { setStepReset } from '../store/reducer/progressSlice';
+import { resetAnswers } from '../store/reducer/diagnosisSlice';
+import { clearUserName } from '../store/reducer/userSlice';
 
 export const useLogout = () => {
   const dispatch = useDispatch();
@@ -24,6 +27,9 @@ export const useLogout = () => {
   const handleModalYes = () => {
     dispatch(closeModal());
     dispatch(logout());
+    dispatch(setStepReset());
+    dispatch(resetAnswers());
+    dispatch(clearUserName());
     dispatch(apiSlice.util.resetApiState());
     navigate('/', { replace: true });
   };

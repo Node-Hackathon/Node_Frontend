@@ -52,6 +52,12 @@ export const signApi = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    signSecession: builder.mutation({
+      query: () => ({
+        url: '/sign-api/sign-secession',
+        method: 'DELETE',
+      }),
+    }),
   }),
 });
 
@@ -62,6 +68,7 @@ export const {
   useSecondSignUpMutation,
   useGuardianSignUpMutation,
   useSignInMutation,
+  useSignSecessionMutation,
 } = signApi;
 
 export default signApi;

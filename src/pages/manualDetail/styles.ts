@@ -18,12 +18,10 @@ export const ManualDetailWrapper = styled.div`
 `;
 
 export const ManualDetailTitle = styled(Title1)`
-  width: 100%;
   min-width: 20rem;
 `;
 
 export const ManualDetailList = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,8 +29,7 @@ export const ManualDetailList = styled.div`
 `;
 
 export const ManualDetailBox = styled.div`
-  width: 100%;
-  min-width: 20rem;
+  width: 20rem;
   height: auto;
   border-radius: 0.5rem;
   border: 1px solid ${theme.colors.primaryNormal};
@@ -42,12 +39,12 @@ export const ManualDetailBox = styled.div`
   padding: 1.25rem 1.25rem 1.5rem;
 `;
 
-export const ManualDetailImage = styled.div`
+export const ManualDetailImage = styled.div<{ isFirst?: boolean }>`
   display: flex;
   justify-content: center;
 
   img {
-    width: 8.75rem;
+    width: ${({ isFirst }) => (isFirst ? '16rem' : '8.75rem')};
   }
 `;
 
