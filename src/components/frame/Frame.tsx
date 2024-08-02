@@ -4,11 +4,11 @@ import { Body2 } from '../text/Text';
 import { FrameBox, FrameContainer } from './styles';
 import { FrameType } from './types';
 
-export default function Frame({ src, text, to }: FrameType) {
+export default function Frame({ src, text, to, size = 'l' }: FrameType) {
   return (
     <FrameContainer>
       <Link to={to}>
-        <FrameBox>
+        <FrameBox size={size}>
           <img src={src} alt={text} />
         </FrameBox>
       </Link>

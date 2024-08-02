@@ -29,6 +29,8 @@ import NumberGame from '../pages/game/number/NumberGame';
 import NumberResultPage from '../pages/result/NumberResultPage';
 import DiagnosisTotalReslutPage from '../pages/diagnosisTotalReslut/DiagnosisTotalReslutPage';
 import CardResultPage from '../pages/result/CardResultPage';
+import ManualPage from '../pages/manual/ManualPage';
+import ManualDetailPage from '../pages/manualDetail/ManualDetailPage';
 
 const router = createBrowserRouter([
   {
@@ -128,6 +130,19 @@ const router = createBrowserRouter([
               {
                 path: 'card/result',
                 element: <CardResultPage />,
+              },
+            ],
+          },
+          {
+            path: 'manual',
+            children: [
+              {
+                path: '',
+                element: <ManualPage />,
+              },
+              {
+                path: ':section',
+                element: <ManualDetailPage />,
               },
             ],
           },

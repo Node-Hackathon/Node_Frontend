@@ -36,7 +36,7 @@ export default function BlockPage() {
           errors={errors}
           onSubmitHandler={on4DBlockHandler}
           blockSetValue={blockSetValue}
-          manualLink="/education/4DFrame/manual/block"
+          manualLink="/education/manual/block"
         />
       )}
     </FDContainer>
