@@ -5,6 +5,8 @@ import { NavType } from './types';
 import { useNavEvents } from './events';
 import Modal from '../modal/Modal';
 import { useLogout } from '../../hooks/useLogout';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store/store';
 
 function Nav({ isClosing, setIsHambergerOpen }: NavType) {
   const {
@@ -15,11 +17,14 @@ function Nav({ isClosing, setIsHambergerOpen }: NavType) {
     handleGoToCenter,
     handleGoToMypage,
     isDetailsOpen,
+    handleLogin,
   } = useNavEvents({
     setIsHambergerOpen,
   });
 
   const { handleLogout, handleModalNo, handleModalYes, isOpen, question1, question2 } = useLogout();
+
+  const accessToken = useSelector((state: RootState) => state.token.accessToken);
 
   return (
     <NavContainer $isClosing={isClosing}>
@@ -35,7 +40,9 @@ function Nav({ isClosing, setIsHambergerOpen }: NavType) {
       </NavDetails>
       <NavContent onClick={handleGoToCenter}>상담 센터</NavContent>
       <NavContent onClick={handleGoToMypage}>마이페이지</NavContent>
-      <StateBtn onClick={handleLogout}>로그아웃</StateBtn>
+      <StateBtn onClick={accessToken ? handleLogout : handleLogin}>
+        {accessToken ? '로그아웃' : '로그인'}
+      </StateBtn>
       <Modal
         isOpen={isOpen}
         question1={question1}

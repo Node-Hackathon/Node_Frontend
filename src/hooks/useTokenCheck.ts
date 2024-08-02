@@ -36,7 +36,7 @@ const useTokenCheck = () => {
     };
 
     checkTokenExpiry();
-    const intervalId = setInterval(checkTokenExpiry, 5 * 60 * 1000); // 5분
+    const intervalId = setInterval(checkTokenExpiry, 60 * 1000); // 1분
 
     return () => clearInterval(intervalId);
   }, [dispatch, expiryTime, navigate]);

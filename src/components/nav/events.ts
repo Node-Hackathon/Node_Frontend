@@ -42,6 +42,12 @@ export const useNavEvents = ({ setIsHambergerOpen }: EventsType) => {
     navigate('/mypage');
   };
 
+  // '로그인' 클릭 시
+  const handleLogin = () => {
+    setIsHambergerOpen((prevState) => !prevState);
+    navigate('/signIn', { replace: true });
+  };
+
   return {
     handleToggleDetails,
     handleGoToCheck,
@@ -50,5 +56,6 @@ export const useNavEvents = ({ setIsHambergerOpen }: EventsType) => {
     handleGoToMypage,
     handleGoToGame,
     isDetailsOpen,
+    handleLogin,
   };
 };
