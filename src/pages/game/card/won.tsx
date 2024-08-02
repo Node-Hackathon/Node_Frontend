@@ -8,12 +8,12 @@ const Won: React.FC<WonType> = ({ handleNextStage, handleQuit }) => {
     <>
       <Message type="won">잘하셨습니다! 다 맞추셨어요!</Message>
       <ButtonContainer>
-        <PrimaryButton size="m" onClick={handleQuit}>
+        <SecondaryButton size="m" onClick={handleQuit}>
           그만하기
-        </PrimaryButton>
-        <SecondaryButton size="m" onClick={handleNextStage}>
-          다음 단계로
         </SecondaryButton>
+        <PrimaryButton size="m" onClick={handleNextStage}>
+          다음 단계로
+        </PrimaryButton>
       </ButtonContainer>
     </>
   );

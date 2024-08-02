@@ -92,6 +92,12 @@ export const NumberButton = styled.div`
   flex: 1;
 `;
 
+export const MessageButtonBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+`;
 export const NumberButtonPair = styled.div`
   min-width: 20rem;
   display: flex;

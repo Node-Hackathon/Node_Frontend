@@ -120,14 +120,19 @@ export const useCardGame = () => {
       return;
     }
 
+    // 현재 뒤집힌 카드의 수 확인
+    const flippedCards = newCards.filter((card: CardType) => card.isFlipped && !card.isMatched);
+    if (flippedCards.length >= 2) {
+      return;
+    }
+
     newCards[index].isFlipped = true;
     setCards(newCards);
 
-    const flippedCards = newCards.filter((card: CardType) => card.isFlipped && !card.isMatched);
-    if (flippedCards.length === 2) {
-      if (flippedCards[0].value === flippedCards[1].value) {
+    if (flippedCards.length === 1) {
+      if (flippedCards[0].value === newCards[index].value) {
         flippedCards[0].isMatched = true;
-        flippedCards[1].isMatched = true;
+        newCards[index].isMatched = true;
         setCards([...newCards]);
 
         // 모든 카드가 맞춰졌는지 확인
@@ -138,7 +143,7 @@ export const useCardGame = () => {
         // 카드가 뒤집히는 동안 다른 클릭 방지
         setTimeout(() => {
           flippedCards[0].isFlipped = false;
-          flippedCards[1].isFlipped = false;
+          newCards[index].isFlipped = false;
           setCards([...newCards]);
         }, 1000);
       }

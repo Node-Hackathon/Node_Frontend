@@ -9,6 +9,7 @@ import {
   NumberButtonPair,
   NumberBeforeBox,
   NumberButton,
+  MessageButtonBox,
 } from './styles';
 import Number from './Number';
 import { Body3, Title1, Title4 } from '../../../components/text/Text';
@@ -83,14 +84,19 @@ export default function NumberGame() {
           </NumberContent>
           <NumberButton>
             {showNextLevelButton && (
-              <NumberButtonPair>
-                <SecondaryButton size="m" onClick={handleQuit}>
-                  그만하기
-                </SecondaryButton>
-                <PrimaryButton size="m" onClick={handleNextLevel}>
-                  다음 단계로
-                </PrimaryButton>
-              </NumberButtonPair>
+              <>
+                <MessageButtonBox>
+                  <Title4 color={theme.colors.textNeutral}>잘하셨습니다! 다 맞추셨어요!</Title4>
+                  <NumberButtonPair>
+                    <SecondaryButton size="m" onClick={handleQuit}>
+                      그만하기
+                    </SecondaryButton>
+                    <PrimaryButton size="m" onClick={handleNextLevel}>
+                      다음 단계로
+                    </PrimaryButton>
+                  </NumberButtonPair>
+                </MessageButtonBox>
+              </>
             )}
             {(isGameOver || isGameClear) && (
               <PrimaryButton size="l" onClick={handleGoResult}>
