@@ -44,6 +44,7 @@ export const List = styled.div`
 
   border: 1px solid #5fcf89;
   border-radius: 10px;
+  white-space: nowrap;
 `;
 
 export const Quit = styled.div`

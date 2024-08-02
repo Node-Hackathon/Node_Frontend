@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import {
   Container,
   Info,
@@ -15,7 +15,6 @@ import {
 import defaultProfile from '../../assets/images/DefaultProfile.png';
 import myPageApi from '../../services/myPage/myPageApi';
 import { useUserInfoEvents } from './events';
-import { useState } from 'react';
 import DaumPostcode from 'react-daum-postcode';
 import Modal from 'react-modal';
 
@@ -40,6 +39,9 @@ export default function UserInfoPage() {
   const [newWeight, setNewWeight] = useState(userData?.weight || '');
   const [newPhoneNum, setNewPhoneNum] = useState(userData?.phoneNum || '');
   const [newAddress, setNewAddress] = useState(userData?.address || '');
+  const [newProfileImage, setNewProfileImage] = useState(
+    userData?.profile_image_url || defaultProfile,
+  );
 
   // 수정 모드 토글
   const toggleEditMode = async () => {
@@ -47,6 +49,7 @@ export default function UserInfoPage() {
       // 수정 모드 종료 시 업데이트 API 호출
       const updatedData = {
         ...userData,
+        profile_image_url: newProfileImage,
         height: Number(newHeight),
         weight: Number(newWeight),
         phoneNum: newPhoneNum,
@@ -97,26 +100,65 @@ export default function UserInfoPage() {
     setNewPhoneNum(numericValue);
   };
 
+  // 파일 입력을 위한 ref
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // 파일 입력창 클릭 시
+  const handleAddProfileClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  // 파일 선택 시
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setNewProfileImage(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+      // 파일 업로드 로직 추가 (예: 서버에 업로드)
+    }
+  };
+
+  console.log('새로 선택한 이미지', newProfileImage);
+
   return (
     <Container>
       <Profile>
         <img
-          src={userData?.profile_image_url || defaultProfile}
+          src={newProfileImage}
           alt="Profile"
-          style={{ width: '100px', height: '100px', objectFit: 'cover', borderRadius: '50%' }}
+          style={{
+            width: '100px',
+            height: '100px',
+            objectFit: 'cover',
+            borderRadius: '50%',
+            border: '1px solid gray',
+          }}
         />
         {isEditMode ? (
-          <AddProfile
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <circle cx="12" cy="12" r="12" fill="#30CA7D" />
-            <path d="M6 12H18" stroke="white" strokeWidth="3" />
-            <path d="M12 18L12 6" stroke="white" strokeWidth="3" />
-          </AddProfile>
+          <>
+            <AddProfile
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              onClick={handleAddProfileClick}
+              style={{ cursor: 'pointer' }}
+            >
+              <circle cx="12" cy="12" r="12" fill="#30CA7D" />
+              <path d="M6 12H18" stroke="white" strokeWidth="3" />
+              <path d="M12 18L12 6" stroke="white" strokeWidth="3" />
+            </AddProfile>
+            <input
+              type="file"
+              ref={fileInputRef}
+              style={{ display: 'none' }}
+              onChange={handleFileChange}
+            />
+          </>
         ) : (
           <></>
         )}
