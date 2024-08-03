@@ -18,9 +18,16 @@ export const myPageApi = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    updateImage: builder.mutation({
+      query: (data) => ({
+        url: '/mypage-api/mypage-update-profile-image',
+        method: 'PUT',
+        body: data,
+      }),
+    }),
   }),
 });
 
-export const { useGetUserByIdQuery, useUpdateUserMutation } = myPageApi;
+export const { useGetUserByIdQuery, useUpdateUserMutation, useUpdateImageMutation } = myPageApi;
 
 export default myPageApi;
