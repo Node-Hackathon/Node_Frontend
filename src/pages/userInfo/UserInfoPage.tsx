@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Container,
   Info,
@@ -20,6 +20,7 @@ import Modal from 'react-modal';
 export default function UserInfoPage() {
   const { data: userData, refetch } = myPageApi.useGetUserByIdQuery();
   const [updateUser] = myPageApi.useUpdateUserMutation();
+  const [updateImage] = myPageApi.useUpdateImageMutation();
   const { handleCalcAge } = useUserInfoEvents();
 
   const [isEditMode, setIsEditMode] = useState(false);
@@ -29,6 +30,10 @@ export default function UserInfoPage() {
   const [newWeight, setNewWeight] = useState(0);
   const [newPhoneNum, setNewPhoneNum] = useState('');
   const [newAddress, setNewAddress] = useState('');
+  const [profileImage, setProfileImage] = useState('');
+  const [profileFile, setProfileFile] = useState<File | null>(null);
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (userData) {
@@ -36,6 +41,7 @@ export default function UserInfoPage() {
       setNewWeight(userData.weight || 0);
       setNewPhoneNum(userData.phoneNum || '');
       setNewAddress(userData.address || '');
+      setProfileImage(userData.profile_image_url || '');
     }
   }, [userData]);
 
@@ -52,6 +58,14 @@ export default function UserInfoPage() {
       try {
         await updateUser(updatedData).unwrap();
         console.log('수정된 정보:', updatedData);
+
+        if (profileFile) {
+          const formData = new FormData();
+          formData.append('profileImage', profileFile);
+
+          await updateImage(formData).unwrap();
+        }
+
         await refetch();
       } catch (error) {
         console.error('업데이트 실패:', error);
@@ -88,11 +102,29 @@ export default function UserInfoPage() {
     setNewPhoneNum(numericValue);
   };
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setProfileFile(file);
+      const reader = new FileReader();
+      reader.onload = () => {
+        if (typeof reader.result === 'string') {
+          setProfileImage(reader.result);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleProfileClick = () => {
+    fileInputRef.current?.click();
+  };
+
   return (
     <Container>
       <Profile>
         <img
-          src={userData?.profile_image_url}
+          src={profileImage}
           alt="Profile"
           style={{
             width: '100px',
@@ -101,20 +133,31 @@ export default function UserInfoPage() {
             borderRadius: '50%',
             border: '1px solid gray',
           }}
+          onClick={handleProfileClick}
         />
         {isEditMode ? (
-          <AddProfile
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            style={{ cursor: 'pointer' }}
-          >
-            <circle cx="12" cy="12" r="12" fill="#30CA7D" />
-            <path d="M6 12H18" stroke="white" strokeWidth="3" />
-            <path d="M12 18L12 6" stroke="white" strokeWidth="3" />
-          </AddProfile>
+          <>
+            <AddProfile
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              style={{ cursor: 'pointer' }}
+              onClick={handleProfileClick}
+            >
+              <circle cx="12" cy="12" r="12" fill="#30CA7D" />
+              <path d="M6 12H18" stroke="white" strokeWidth="3" />
+              <path d="M12 18L12 6" stroke="white" strokeWidth="3" />
+            </AddProfile>
+            <input
+              type="file"
+              style={{ display: 'none' }}
+              ref={fileInputRef}
+              onChange={handleFileChange}
+              accept="image/*"
+            />
+          </>
         ) : null}
       </Profile>
       <Name>

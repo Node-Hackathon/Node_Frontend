@@ -16,6 +16,10 @@ export interface guardianInfoPageReturnType {
   guardian_address: string;
 }
 
+export interface ImageUpdateType {
+  profileImage: File | null;
+}
+
 export interface DiagnosisType {
   id: number;
   score: number;
