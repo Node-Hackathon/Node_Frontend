@@ -54,7 +54,6 @@ export const use4DComposition = () => {
 
       try {
         const response = await compositionPlay(formData).unwrap();
-        console.log(response);
         if (response === null) {
           alert('분석에 실패했습니다! 다시 시도해주세요.');
           handleReplay();
