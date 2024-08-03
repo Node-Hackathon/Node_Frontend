@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const SignUpContainer = styled.section`
-  height: 100%;
+  height: auto;
   padding: 4.19rem 0 5rem;
   display: flex;
   flex-direction: column;

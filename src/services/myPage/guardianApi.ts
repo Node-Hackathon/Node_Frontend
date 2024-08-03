@@ -8,6 +8,7 @@ export const guardianApi = apiSlice.injectEndpoints({
         url: '/mypage-api/guardianpage-inquiry',
         method: 'GET',
       }),
+      providesTags: ['Guardian'],
     }),
     updateGuardianInfo: builder.mutation({
       query: (data: GuardianFormType) => ({
@@ -15,6 +16,7 @@ export const guardianApi = apiSlice.injectEndpoints({
         method: 'PUT',
         body: data,
       }),
+      invalidatesTags: ['Guardian'],
     }),
   }),
 });
