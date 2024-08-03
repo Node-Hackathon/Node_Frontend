@@ -9,9 +9,9 @@ export const Container = styled.div`
   padding-bottom: 1.5rem;
 `;
 
-export const Details = styled.details<{ isFirst: boolean; isLast: boolean; isOpen: boolean }>`
-  ${({ isFirst }) =>
-    isFirst &&
+export const Details = styled.details<{ $isFirst: boolean; $isLast: boolean; $isOpen: boolean }>`
+  ${({ $isFirst }) =>
+    $isFirst &&
     `
     summary {
       border-top-left-radius: 10px;
@@ -19,12 +19,12 @@ export const Details = styled.details<{ isFirst: boolean; isLast: boolean; isOpe
     }
   `}
 
-  ${({ isLast, isOpen }) =>
-    isLast &&
+  ${({ $isLast, $isOpen }) =>
+    $isLast &&
     `
     summary {
-      ${isOpen ? 'border-bottom-left-radius: 0px;' : 'border-bottom-left-radius: 10px;'}
-      ${isOpen ? 'border-bottom-right-radius: 0px;' : 'border-bottom-right-radius: 10px;'}
+      ${$isOpen ? 'border-bottom-left-radius: 0px;' : 'border-bottom-left-radius: 10px;'}
+      ${$isOpen ? 'border-bottom-right-radius: 0px;' : 'border-bottom-right-radius: 10px;'}
     },
     ul {
       border-bottom-left-radius: 10px;

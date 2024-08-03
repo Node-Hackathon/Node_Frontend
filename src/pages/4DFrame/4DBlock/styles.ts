@@ -103,7 +103,7 @@ export const ResultContainer = styled.div`
 `;
 
 export const ResultBox = styled.div`
-  height: 85%;
+  height: 90%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -112,7 +112,7 @@ export const ResultBox = styled.div`
 `;
 
 export const ResultButton = styled.div`
-  height: 15%;
+  height: 10%;
   min-width: 20rem;
   display: flex;
   justify-content: space-between;
@@ -129,7 +129,7 @@ export const ResultContent = styled.div`
 
 export const ResultGraphBox = styled.div`
   min-height: 40%;
-  max-height: 40%;
+  max-height: 50%;
   overflow-y: auto;
   display: flex;
   flex-direction: column;

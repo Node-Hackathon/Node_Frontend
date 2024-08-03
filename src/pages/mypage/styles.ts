@@ -11,12 +11,12 @@ export const Text = styled.span<{
   color?: string;
   fontSize?: string;
   fontWeight?: string;
-  marginLeft?: string;
+  $marginLeft?: string;
 }>`
   color: ${(props) => props.color || 'black'};
   font-size: ${(props) => props.fontSize || '16px'};
   font-weight: ${(props) => props.fontWeight || '500'};
-  margin-left: ${(props) => props.marginLeft || '10px'};
+  margin-left: ${(props) => props.$marginLeft || '10px'};
 `;
 
 export const Welcome = styled.div`

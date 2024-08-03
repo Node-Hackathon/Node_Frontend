@@ -19,7 +19,7 @@ export const CustomDetails = ({ Diagnosis }: CustomDetailsProps) => {
   return (
     <Container>
       <Welcome>
-        <Text color="black" fontSize="24px" fontWeight="700" marginLeft="0px">
+        <Text color="black" fontSize="24px" fontWeight="700" $marginLeft="0px">
           치매 진단 결과
         </Text>
       </Welcome>
@@ -32,7 +32,7 @@ export const CustomDetails = ({ Diagnosis }: CustomDetailsProps) => {
           }
         };
         return (
-          <Details key={item.id} isFirst={isFirst} isLast={isLast} isOpen={isOpen}>
+          <Details key={item.id} $isFirst={isFirst} $isLast={isLast} $isOpen={isOpen}>
             <Summary onClick={handleToggle}>
               <div>
                 <span style={{ color: '#5d5d5d' }}>날짜: </span>
