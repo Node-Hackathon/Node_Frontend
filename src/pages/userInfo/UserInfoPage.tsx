@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Container,
   Info,
@@ -12,44 +12,37 @@ import {
   EditBtn,
   Input,
 } from './styles';
-import defaultProfile from '../../assets/images/DefaultProfile.png';
 import myPageApi from '../../services/myPage/myPageApi';
 import { useUserInfoEvents } from './events';
 import DaumPostcode from 'react-daum-postcode';
 import Modal from 'react-modal';
 
 export default function UserInfoPage() {
-  // 유저 정보 조회
   const { data: userData, refetch } = myPageApi.useGetUserByIdQuery();
-
-  // 유저 정보 수정
   const [updateUser] = myPageApi.useUpdateUserMutation();
-
-  // 만 나이 계산 로직
   const { handleCalcAge } = useUserInfoEvents();
 
-  // 수정 모드 상태
   const [isEditMode, setIsEditMode] = useState(false);
-
-  // 우편번호 입력창 show & hide
   const [isPostcodeOpen, setIsPostcodeOpen] = useState(false);
 
-  // 수정한 키, 몸무게, 전화번호, 주소 상태
-  const [newHeight, setNewHeight] = useState(userData?.height || '');
-  const [newWeight, setNewWeight] = useState(userData?.weight || '');
-  const [newPhoneNum, setNewPhoneNum] = useState(userData?.phoneNum || '');
-  const [newAddress, setNewAddress] = useState(userData?.address || '');
-  const [newProfileImage, setNewProfileImage] = useState(
-    userData?.profile_image_url || defaultProfile,
-  );
+  const [newHeight, setNewHeight] = useState(0);
+  const [newWeight, setNewWeight] = useState(0);
+  const [newPhoneNum, setNewPhoneNum] = useState('');
+  const [newAddress, setNewAddress] = useState('');
 
-  // 수정 모드 토글
+  useEffect(() => {
+    if (userData) {
+      setNewHeight(userData.height || 0);
+      setNewWeight(userData.weight || 0);
+      setNewPhoneNum(userData.phoneNum || '');
+      setNewAddress(userData.address || '');
+    }
+  }, [userData]);
+
   const toggleEditMode = async () => {
     if (isEditMode) {
-      // 수정 모드 종료 시 업데이트 API 호출
       const updatedData = {
         ...userData,
-        profile_image_url: newProfileImage,
         height: Number(newHeight),
         weight: Number(newWeight),
         phoneNum: newPhoneNum,
@@ -59,8 +52,6 @@ export default function UserInfoPage() {
       try {
         await updateUser(updatedData).unwrap();
         console.log('수정된 정보:', updatedData);
-
-        // 유저 정보 새로고침
         await refetch();
       } catch (error) {
         console.error('업데이트 실패:', error);
@@ -69,65 +60,39 @@ export default function UserInfoPage() {
     setIsEditMode(!isEditMode);
   };
 
-  // 주소 입력창 클릭 시
   const handleOutputLog = () => {
     setIsPostcodeOpen(true);
   };
 
-  // 주소 검색 선택 시
   const handleAddressComplete = (data: { address: any }) => {
     const addr = data.address;
     setNewAddress(addr);
     setIsPostcodeOpen(false);
   };
 
-  // 유효성 검사 함수
   const handleValidateHeight = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    const numericValue = value.replace(/[^0-9]/g, '').slice(0, 3); // 숫자만 허용
-    setNewHeight(numericValue);
+    const numericValue = value.replace(/[^0-9]/g, '').slice(0, 3);
+    setNewHeight(Number(numericValue));
   };
 
   const handleValidateWeight = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    const numericValue = value.replace(/[^0-9]/g, '').slice(0, 3); // 숫자만 허용
-    setNewWeight(numericValue);
+    const numericValue = value.replace(/[^0-9]/g, '').slice(0, 3);
+    setNewWeight(Number(numericValue));
   };
 
   const handleValidatePhoneNum = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    const numericValue = value.replace(/[^0-9-]/g, '').slice(0, 15); // 숫자만 허용
+    const numericValue = value.replace(/[^0-9-]/g, '').slice(0, 15);
     setNewPhoneNum(numericValue);
   };
-
-  // 파일 입력을 위한 ref
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  // 파일 입력창 클릭 시
-  const handleAddProfileClick = () => {
-    fileInputRef.current?.click();
-  };
-
-  // 파일 선택 시
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setNewProfileImage(reader.result as string);
-      };
-      reader.readAsDataURL(file);
-      // 파일 업로드 로직 추가 (예: 서버에 업로드)
-    }
-  };
-
-  console.log('새로 선택한 이미지', newProfileImage);
 
   return (
     <Container>
       <Profile>
         <img
-          src={newProfileImage}
+          src={userData?.profile_image_url}
           alt="Profile"
           style={{
             width: '100px',
@@ -138,30 +103,19 @@ export default function UserInfoPage() {
           }}
         />
         {isEditMode ? (
-          <>
-            <AddProfile
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              onClick={handleAddProfileClick}
-              style={{ cursor: 'pointer' }}
-            >
-              <circle cx="12" cy="12" r="12" fill="#30CA7D" />
-              <path d="M6 12H18" stroke="white" strokeWidth="3" />
-              <path d="M12 18L12 6" stroke="white" strokeWidth="3" />
-            </AddProfile>
-            <input
-              type="file"
-              ref={fileInputRef}
-              style={{ display: 'none' }}
-              onChange={handleFileChange}
-            />
-          </>
-        ) : (
-          <></>
-        )}
+          <AddProfile
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            style={{ cursor: 'pointer' }}
+          >
+            <circle cx="12" cy="12" r="12" fill="#30CA7D" />
+            <path d="M6 12H18" stroke="white" strokeWidth="3" />
+            <path d="M12 18L12 6" stroke="white" strokeWidth="3" />
+          </AddProfile>
+        ) : null}
       </Profile>
       <Name>
         <Text fontSize="24px" fontWeight="700">
