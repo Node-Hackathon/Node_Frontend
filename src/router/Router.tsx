@@ -181,6 +181,10 @@ const router = createBrowserRouter([
         path: 'mypage/guardianInfo',
         element: <GuardianInfoPage />,
       },
+      {
+        path: 'mypage/guardianInfo/update',
+        element: <GuardianPage />,
+      },
       // 게임 누적 결과 페이지
       {
         path: 'mypage/gameResult',

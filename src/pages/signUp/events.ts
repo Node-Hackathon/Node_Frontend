@@ -16,7 +16,8 @@ import {
   useSendMessageMutation,
   useVerifyMessageMutation,
 } from '../../services/sign/signApi';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useUpdateGuardianInfoMutation } from '../../services/myPage/guardianApi';
 
 export const useSignUp = () => {
   // SignUpPage에서 사용
@@ -117,7 +118,8 @@ export const useSignUp = () => {
     data: SignUpMessageFormType,
   ) => {
     try {
-      await requestMessage(data.phone).unwrap();
+      const response = await requestMessage(data.phone).unwrap();
+      console.log(response);
       alert('인증번호 전송이 완료되었습니다.');
       setIsPhoneVerified(true);
       resetCountdown();
@@ -294,6 +296,8 @@ export const useSignUp = () => {
 
 export const useGuardianSignUp = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const isUpdate = location.pathname === '/mypage/guardianInfo/update';
 
   const {
     register: guardianRegister,
@@ -305,12 +309,31 @@ export const useGuardianSignUp = () => {
   } = useForm<GuardianFormType>();
 
   const [requestGuardianSignUp] = useGuardianSignUpMutation();
+  const [updateGuardianInfo] = useUpdateGuardianInfoMutation();
 
-  const onGuardianSubmit = async (data: GuardianFormType) => {
+  /*const onGuardianSubmit = async (data: GuardianFormType) => {
     try {
       await requestGuardianSignUp(data).unwrap();
       navigate('/signIn', { replace: true });
       guardianReset();
+    } catch (error) {
+      console.error(error);
+      alert('보호자 정보 입력에 실패했습니다.');
+    }
+  };*/
+
+  const onGuardianSubmit = async (data: GuardianFormType) => {
+    try {
+      if (isUpdate) {
+        const response = await updateGuardianInfo(data).unwrap();
+        console.log(response);
+        navigate('/mypage/guardianInfo', { replace: true });
+        guardianReset();
+      } else {
+        await requestGuardianSignUp(data).unwrap();
+        navigate('/signIn', { replace: true });
+        guardianReset();
+      }
     } catch (error) {
       console.error(error);
       alert('보호자 정보 입력에 실패했습니다.');

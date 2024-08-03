@@ -1,5 +1,5 @@
 import cardImage from '../../assets/images/card.png';
-import numberImage from '../../assets/images/number.svg';
+import numberImage from '../../assets/images/number.png';
 import EducationPage from './EducationPage';
 
 export default function GamePage() {

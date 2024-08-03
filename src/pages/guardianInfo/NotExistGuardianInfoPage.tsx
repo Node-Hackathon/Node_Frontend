@@ -7,7 +7,7 @@ export default function NotExistGuardianInfoPage() {
   const navigate = useNavigate();
 
   const handleGoToGuardian = () => {
-    navigate('/signUp/guardian');
+    navigate('/mypage/guardianInfo/update');
   };
 
   return (

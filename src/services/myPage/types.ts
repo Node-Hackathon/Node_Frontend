@@ -10,7 +10,7 @@ export interface myPageReturnType {
   weight: number; // 몸무게
 }
 
-export interface guardianInfoPageRefurnType {
+export interface guardianInfoPageReturnType {
   guardian_name: string;
   guardian_phone_num: string;
   guardian_address: string;
