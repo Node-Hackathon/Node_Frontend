@@ -10,7 +10,7 @@ export default function GameResultDetailPage() {
   const gameType = location.state.gameType as string;
 
   if (GameResult.length === 0) {
-    return <NoExistResult />;
+    return <NoExistResult type={gameType} />;
   }
 
   return (
