@@ -118,8 +118,7 @@ export const useSignUp = () => {
     data: SignUpMessageFormType,
   ) => {
     try {
-      const response = await requestMessage(data.phone).unwrap();
-      console.log(response);
+      await requestMessage(data.phone).unwrap();
       alert('인증번호 전송이 완료되었습니다.');
       setIsPhoneVerified(true);
       resetCountdown();
