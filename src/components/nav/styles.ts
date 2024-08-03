@@ -56,7 +56,7 @@ export const NavList = styled.ul`
   align-items: center;
   justify-content: start;
 
-  padding: 1.5rem 2.5rem;
+  padding: 1rem 2.5rem;
   font-size: 16px;
   font-weight: 500;
   color: #333;

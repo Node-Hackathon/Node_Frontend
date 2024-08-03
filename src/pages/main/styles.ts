@@ -108,11 +108,20 @@ export const EduImg = styled.div`
 `;
 
 export const Promotion = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
   width: 100%;
 
   padding: 2rem 0rem;
 
   background-color: #d9d9d9;
+
+  span {
+    padding-right: 0.5rem;
+    text-align: right;
+  }
 `;
 
 export const PromotionImg = styled.div`
