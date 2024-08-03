@@ -32,7 +32,7 @@ export const NavContent = styled.div`
   align-items: center;
   justify-content: start;
 
-  padding: 1.5rem 3rem;
+  padding: 1.5rem 1.88rem;
   font-weight: 600;
   font-size: 20px;
   color: #000;
@@ -45,7 +45,7 @@ export const NavSummary = styled.summary`
   align-items: center;
   justify-content: space-between;
 
-  padding: 1.5rem 3rem;
+  padding: 1.5rem 1.88rem;
   font-weight: 600;
   font-size: 20px;
   color: #000;
@@ -56,14 +56,14 @@ export const NavList = styled.ul`
   align-items: center;
   justify-content: start;
 
-  padding: 0.5rem 3.5rem;
+  padding: 1.5rem 2.5rem;
   font-size: 16px;
   font-weight: 500;
   color: #333;
 `;
 
 export const StateBtn = styled.div`
-  padding: 1rem 3rem;
+  padding: 1rem 1.88rem;
   font-size: 13px;
   font-weight: 500;
   color: #5d5d5d;
