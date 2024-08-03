@@ -120,34 +120,36 @@ export default function GuardianInfoPage() {
       </Name>
       <Info>
         <Table>
-          <TableRow>
-            <TableCell>전화번호</TableCell>
-            <TableCell width="70%" color="black">
-              {isEditMode ? (
-                <Input
-                  placeholder="전화번호를 입력하세요"
-                  value={newPhoneNum}
-                  onChange={handleValidatePhoneNum}
-                />
-              ) : (
-                guardianData?.guardian_phone_num
-              )}
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>주소</TableCell>
-            <TableCell width="70%" color="black">
-              {isEditMode ? (
-                <Input
-                  placeholder="주소를 입력하세요"
-                  value={newAddress}
-                  onClick={handleOpenPostCode}
-                />
-              ) : (
-                guardianData?.guardian_address
-              )}
-            </TableCell>
-          </TableRow>
+          <tbody>
+            <TableRow>
+              <TableCell>전화번호</TableCell>
+              <TableCell width="70%" color="black">
+                {isEditMode ? (
+                  <Input
+                    placeholder="전화번호를 입력하세요"
+                    value={newPhoneNum}
+                    onChange={handleValidatePhoneNum}
+                  />
+                ) : (
+                  guardianData?.guardian_phone_num
+                )}
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>주소</TableCell>
+              <TableCell width="70%" color="black">
+                {isEditMode ? (
+                  <Input
+                    placeholder="주소를 입력하세요"
+                    value={newAddress}
+                    onClick={handleOpenPostCode}
+                  />
+                ) : (
+                  guardianData?.guardian_address
+                )}
+              </TableCell>
+            </TableRow>
+          </tbody>
         </Table>
         <Modal
           isOpen={isPostcodeOpen}

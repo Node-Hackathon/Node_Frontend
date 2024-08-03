@@ -127,74 +127,76 @@ export default function UserInfoPage() {
       </Name>
       <Info>
         <Table>
-          <TableRow>
-            <TableCell>성별</TableCell>
-            <TableCell width="70%" color="black">
-              {userData?.gender}
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>나이</TableCell>
-            <TableCell width="70%" color="black">
-              만 {userData ? handleCalcAge(userData?.birth) : ''}세
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>키</TableCell>
-            <TableCell width="70%" color="black">
-              {isEditMode ? (
-                <Input
-                  value={newHeight}
-                  onChange={handleValidateHeight}
-                  placeholder="키를 입력하세요"
-                />
-              ) : (
-                `${userData?.height}cm`
-              )}
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>몸무게</TableCell>
-            <TableCell width="70%" color="black">
-              {isEditMode ? (
-                <Input
-                  value={newWeight}
-                  onChange={handleValidateWeight}
-                  placeholder="몸무게를 입력하세요"
-                />
-              ) : (
-                `${userData?.weight}kg`
-              )}
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>전화번호</TableCell>
-            <TableCell width="70%" color="black">
-              {isEditMode ? (
-                <Input
-                  value={newPhoneNum}
-                  onChange={handleValidatePhoneNum}
-                  placeholder="전화번호를 입력하세요"
-                />
-              ) : (
-                userData?.phoneNum
-              )}
-            </TableCell>
-          </TableRow>
-          <TableRow>
-            <TableCell>주소</TableCell>
-            <TableCell width="70%" color="black">
-              {isEditMode ? (
-                <Input
-                  value={newAddress}
-                  onClick={handleOutputLog}
-                  placeholder="주소를 입력하세요"
-                />
-              ) : (
-                userData?.address
-              )}
-            </TableCell>
-          </TableRow>
+          <tbody>
+            <TableRow>
+              <TableCell>성별</TableCell>
+              <TableCell width="70%" color="black">
+                {userData?.gender}
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>나이</TableCell>
+              <TableCell width="70%" color="black">
+                만 {userData ? handleCalcAge(userData?.birth) : ''}세
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>키</TableCell>
+              <TableCell width="70%" color="black">
+                {isEditMode ? (
+                  <Input
+                    value={newHeight}
+                    onChange={handleValidateHeight}
+                    placeholder="키를 입력하세요"
+                  />
+                ) : (
+                  `${userData?.height}cm`
+                )}
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>몸무게</TableCell>
+              <TableCell width="70%" color="black">
+                {isEditMode ? (
+                  <Input
+                    value={newWeight}
+                    onChange={handleValidateWeight}
+                    placeholder="몸무게를 입력하세요"
+                  />
+                ) : (
+                  `${userData?.weight}kg`
+                )}
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>전화번호</TableCell>
+              <TableCell width="70%" color="black">
+                {isEditMode ? (
+                  <Input
+                    value={newPhoneNum}
+                    onChange={handleValidatePhoneNum}
+                    placeholder="전화번호를 입력하세요"
+                  />
+                ) : (
+                  userData?.phoneNum
+                )}
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>주소</TableCell>
+              <TableCell width="70%" color="black">
+                {isEditMode ? (
+                  <Input
+                    value={newAddress}
+                    onClick={handleOutputLog}
+                    placeholder="주소를 입력하세요"
+                  />
+                ) : (
+                  userData?.address
+                )}
+              </TableCell>
+            </TableRow>
+          </tbody>
         </Table>
         <Modal
           isOpen={isPostcodeOpen}

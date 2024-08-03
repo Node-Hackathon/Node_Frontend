@@ -27,7 +27,7 @@ export default function MyPage() {
   return (
     <Container>
       <Welcome>
-        <Text color="black" fontSize="24px" fontWeight="700" marginLeft="0px">
+        <Text color="black" fontSize="24px" fontWeight="700" $marginLeft="0px">
           {userData?.name}님, 안녕하세요 !
         </Text>
       </Welcome>
