@@ -67,23 +67,23 @@ export const NumberGrid = styled.div`
   border: 0.5px solid ${theme.colors.primaryHeavy};
 `;
 
-export const NumberItemBox = styled.div<{ revealed: boolean; gameStarted: boolean }>`
+export const NumberItemBox = styled.div<{ $revealed: boolean; $gameStarted: boolean }>`
   width: 100%;
   height: 100%;
   background-color: ${(props) =>
-    props.revealed
+    props.$revealed
       ? theme.colors.backgroundNormal
-      : props.gameStarted
+      : props.$gameStarted
         ? theme.colors.primaryStrong
         : theme.colors.backgroundNormal};
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: ${(props) => (props.gameStarted && !props.revealed ? 'pointer' : 'default')};
+  cursor: ${(props) => (props.$gameStarted && !props.$revealed ? 'pointer' : 'default')};
 `;
 
-export const NumberItemText = styled(Body2)<{ revealed: boolean; gameStarted: boolean }>`
-  opacity: ${(props) => (props.gameStarted && !props.revealed ? 0 : 1)};
+export const NumberItemText = styled(Body2)<{ $revealed: boolean; $gameStarted: boolean }>`
+  opacity: ${(props) => (props.$gameStarted && !props.$revealed ? 0 : 1)};
 `;
 
 export const NumberButton = styled.div`

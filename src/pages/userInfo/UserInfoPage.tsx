@@ -160,6 +160,7 @@ export default function UserInfoPage() {
       </Name>
       <Info>
         <Table>
+          <tbody>
           <TableRow>
             <TableCell>성별</TableCell>
             <TableCell width="70%" color="black">
@@ -221,6 +222,7 @@ export default function UserInfoPage() {
               )}
             </TableCell>
           </TableRow>
+        </tbody>
         </Table>
         <Modal
           isOpen={isPostcodeOpen}
