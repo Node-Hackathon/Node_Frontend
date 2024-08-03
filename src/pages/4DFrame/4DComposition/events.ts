@@ -39,7 +39,7 @@ export const use4DComposition = () => {
     formState: { errors },
   } = useForm<FDCompositionFormType>();
 
-  const handleNavigate = () => navigate('/myPage/result/composition');
+  const handleNavigate = () => navigate('/mypage/gameResult');
 
   const on4DCompositionHandler = async (data: FDCompositionFormType) => {
     const { composition_image } = data;
@@ -54,6 +54,7 @@ export const use4DComposition = () => {
 
       try {
         const response = await compositionPlay(formData).unwrap();
+        console.log(response);
         if (response === null) {
           alert('분석에 실패했습니다! 다시 시도해주세요.');
           handleReplay();

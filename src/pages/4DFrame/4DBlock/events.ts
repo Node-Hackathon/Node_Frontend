@@ -36,7 +36,7 @@ export const use4DBlock = () => {
     formState: { errors },
   } = useForm<FDBlockFormType>();
 
-  const handleNavigate = () => navigate('/myPage/result/block');
+  const handleNavigate = () => navigate('/mypage/gameResult');
 
   const on4DBlockHandler = async (data: FDBlockFormType) => {
     const { blockImage } = data;

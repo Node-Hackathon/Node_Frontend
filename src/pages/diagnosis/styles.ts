@@ -84,7 +84,7 @@ export const DiagnosisButton = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  flex: 1.5;
+  flex: 1;
 `;
 
 export const ResultContent = styled(DiagnosisContent)`

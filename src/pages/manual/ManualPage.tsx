@@ -3,7 +3,7 @@ import { ManualBox, ManualContainer, ManualContent, ManualGrid, ManualTitle } fr
 import blockImage from '../../assets/images/block.png';
 import compositionImage from '../../assets/images/composition.svg';
 import cardImage from '../../assets/images/card.png';
-import numberImage from '../../assets/images/number.svg';
+import numberImage from '../../assets/images/number.png';
 
 export default function ManualPage() {
   return (

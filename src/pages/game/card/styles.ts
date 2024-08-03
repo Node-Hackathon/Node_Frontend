@@ -4,7 +4,7 @@ import { Title1 } from '../../../components/text/Text';
 
 export const GameContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: auto;
   min-height: 100%;
   padding: 2.5rem 0;
   display: flex;

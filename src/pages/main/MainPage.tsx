@@ -18,6 +18,8 @@ import ReverseCardGame from '../../assets/images/ReverseCardGame.png';
 import FindNumberGame from '../../assets/images/FindNumberGame.png';
 import HandShake from '../../assets/images/HandShake.png';
 import { Link } from 'react-router-dom';
+import { Label7 } from '../../components/text/Text';
+import { theme } from '../../styles/theme';
 
 export default function MainPage() {
   return (
@@ -118,6 +120,7 @@ export default function MainPage() {
         <PromotionImg>
           <img src={HandShake} width={'100%'} />
         </PromotionImg>
+        <Label7 color={theme.colors.backgroundNormal}>출처 freepik</Label7>
       </Promotion>
     </MainContainer>
   );
