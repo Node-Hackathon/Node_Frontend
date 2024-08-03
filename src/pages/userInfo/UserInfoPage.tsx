@@ -28,7 +28,6 @@ export default function UserInfoPage() {
 
   const [newHeight, setNewHeight] = useState(0);
   const [newWeight, setNewWeight] = useState(0);
-  const [newPhoneNum, setNewPhoneNum] = useState('');
   const [newAddress, setNewAddress] = useState('');
   const [profileImage, setProfileImage] = useState('');
   const [profileFile, setProfileFile] = useState<File | null>(null);
@@ -39,7 +38,6 @@ export default function UserInfoPage() {
     if (userData) {
       setNewHeight(userData.height || 0);
       setNewWeight(userData.weight || 0);
-      setNewPhoneNum(userData.phoneNum || '');
       setNewAddress(userData.address || '');
       setProfileImage(userData.profile_image_url || '');
     }
@@ -51,7 +49,6 @@ export default function UserInfoPage() {
         ...userData,
         height: Number(newHeight),
         weight: Number(newWeight),
-        phoneNum: newPhoneNum,
         address: newAddress,
       };
 
@@ -65,11 +62,10 @@ export default function UserInfoPage() {
 
           await updateImage(formData).unwrap();
         }
-
-        await refetch();
       } catch (error) {
         console.error('업데이트 실패:', error);
       }
+      await refetch();
     }
     setIsEditMode(!isEditMode);
   };
@@ -94,12 +90,6 @@ export default function UserInfoPage() {
     const value = e.target.value;
     const numericValue = value.replace(/[^0-9]/g, '').slice(0, 3);
     setNewWeight(Number(numericValue));
-  };
-
-  const handleValidatePhoneNum = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    const numericValue = value.replace(/[^0-9-]/g, '').slice(0, 15);
-    setNewPhoneNum(numericValue);
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -183,6 +173,12 @@ export default function UserInfoPage() {
             </TableCell>
           </TableRow>
           <TableRow>
+            <TableCell>전화번호</TableCell>
+            <TableCell width="70%" color="black">
+              {userData?.phoneNum}
+            </TableCell>
+          </TableRow>
+          <TableRow>
             <TableCell>키</TableCell>
             <TableCell width="70%" color="black">
               {isEditMode ? (
@@ -210,20 +206,7 @@ export default function UserInfoPage() {
               )}
             </TableCell>
           </TableRow>
-          <TableRow>
-            <TableCell>전화번호</TableCell>
-            <TableCell width="70%" color="black">
-              {isEditMode ? (
-                <Input
-                  value={newPhoneNum}
-                  onChange={handleValidatePhoneNum}
-                  placeholder="전화번호를 입력하세요"
-                />
-              ) : (
-                userData?.phoneNum
-              )}
-            </TableCell>
-          </TableRow>
+
           <TableRow>
             <TableCell>주소</TableCell>
             <TableCell width="70%" color="black">
