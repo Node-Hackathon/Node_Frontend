@@ -15,8 +15,8 @@ export const Description = styled.div`
   flex-direction: column;
 `;
 
-export const Text = styled.div<{ fontSize?: string; $marginTop?: string }>`
-  color: white;
+export const Text = styled.div<{ fontSize?: string; $marginTop?: string; color?: string }>`
+  color: ${(props) => props.color || 'white'};
   font-weight: 700;
   font-size: ${(props) => props.fontSize || '28px'};
   margin-top: ${(props) => props.$marginTop || '0rem'};
@@ -105,6 +105,30 @@ export const EduImg = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+export const Diary = styled.div`
+  width: 100%;
+  height: 10rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: row;
+
+  padding: 0rem 1rem;
+
+  background-color: rgb(79, 161, 230);
+`;
+
+export const Wrapper = styled.div`
+  width: fit-content;
+  height: fit-content;
+
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
 `;
 
 export const Promotion = styled.div`

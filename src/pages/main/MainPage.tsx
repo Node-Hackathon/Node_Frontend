@@ -11,6 +11,8 @@ import {
   EduText,
   Promotion,
   PromotionImg,
+  Diary,
+  Wrapper,
 } from './styles';
 import BlockGame from '../../assets/images/BlockGame.png';
 import SettingGame from '../../assets/images/SettingGame.png';
@@ -20,8 +22,12 @@ import HandShake from '../../assets/images/HandShake.png';
 import { Link } from 'react-router-dom';
 import { Label7 } from '../../components/text/Text';
 import { theme } from '../../styles/theme';
+import { RiBook3Line } from 'react-icons/ri';
+import { useGetUserByIdQuery } from '../../services/myPage/myPageApi';
 
 export default function MainPage() {
+  const { data: userData } = useGetUserByIdQuery();
+
   return (
     <MainContainer>
       {/* 배너 */}
@@ -104,6 +110,26 @@ export default function MainPage() {
           </GoToEdu>
         </Link>
       </Education>
+      <Diary>
+        <Wrapper>
+          <Text>{userData?.name}님의 일기장</Text>
+          <Text fontSize="15px" $marginTop="1rem">
+            오늘의 감정 기록하러 가기
+          </Text>
+        </Wrapper>
+        <div
+          style={{
+            border: '1px solid white',
+            borderRadius: '30%',
+            padding: '1rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <RiBook3Line color="white" size={'3rem'} />
+        </div>
+      </Diary>
       {/* 홍보 */}
       <Promotion>
         <Description>
