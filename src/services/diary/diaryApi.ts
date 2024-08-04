@@ -1,5 +1,5 @@
 import apiSlice from '../apiSlice';
-import { DiaryFormType, DiaryWrittenType } from './types';
+import { DiaryFormType, DiaryResultType, DiaryWrittenType } from './types';
 
 export const diaryApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -18,9 +18,16 @@ export const diaryApi = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ['Diary'],
     }),
+    getDiaryResult: builder.query<DiaryResultType[], void>({
+      query: () => ({
+        url: '/diary-api/result-list',
+        method: 'GET',
+      }),
+    }),
   }),
 });
 
-export const { useHasWrittenDiaryTodayQuery, useCreateDiaryMutation } = diaryApi;
+export const { useHasWrittenDiaryTodayQuery, useCreateDiaryMutation, useGetDiaryResultQuery } =
+  diaryApi;
 
 export default diaryApi;

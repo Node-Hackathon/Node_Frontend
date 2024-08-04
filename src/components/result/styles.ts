@@ -21,7 +21,7 @@ export const ResultType = styled.div`
   font-weight: 700;
 `;
 
-export const ResultDetail = styled.div`
+export const ResultDetail = styled.div<{ justifyContent?: string }>`
   width: 100%;
   height: fit-content;
 

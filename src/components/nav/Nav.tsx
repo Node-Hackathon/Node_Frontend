@@ -10,14 +10,17 @@ import { RootState } from '../../store/store';
 
 function Nav({ isClosing, setIsHambergerOpen }: NavType) {
   const {
-    handleToggleDetails,
+    handleToggle4dDetails,
+    handleToggleDiaryDetails,
     handleGoToCheck,
     handleGoToDiary,
+    handleGoToDiaryResult,
     handleGoTo4DFrame,
     handleGoToGame,
     handleGoToCenter,
     handleGoToMypage,
-    isDetailsOpen,
+    is4dDetailsOpen,
+    isDiaryDetailsOpen,
     handleLogin,
   } = useNavEvents({
     setIsHambergerOpen,
@@ -30,16 +33,24 @@ function Nav({ isClosing, setIsHambergerOpen }: NavType) {
   return (
     <NavContainer $isClosing={isClosing}>
       <NavContent onClick={handleGoToCheck}>치매 진단</NavContent>
-      <NavDetails onClick={handleToggleDetails}>
+      <NavDetails onClick={handleToggle4dDetails}>
         <NavSummary>
           교육
-          {!isDetailsOpen && <FaAngleDown />}
-          {isDetailsOpen && <FaAngleUp />}
+          {!is4dDetailsOpen && <FaAngleDown />}
+          {is4dDetailsOpen && <FaAngleUp />}
         </NavSummary>
         <NavList onClick={handleGoTo4DFrame}>포디프레임</NavList>
         <NavList onClick={handleGoToGame}>게임</NavList>
       </NavDetails>
-      <NavContent onClick={handleGoToDiary}>일기</NavContent>
+      <NavDetails onClick={handleToggleDiaryDetails}>
+        <NavSummary>
+          일기
+          {!isDiaryDetailsOpen && <FaAngleDown />}
+          {isDiaryDetailsOpen && <FaAngleUp />}
+        </NavSummary>
+        <NavList onClick={handleGoToDiary}>일기 쓰기</NavList>
+        <NavList onClick={handleGoToDiaryResult}>일기 보기</NavList>
+      </NavDetails>
       <NavContent onClick={handleGoToCenter}>상담 센터</NavContent>
       <NavContent onClick={handleGoToMypage}>마이페이지</NavContent>
       <StateBtn onClick={accessToken ? handleLogout : handleLogin}>
