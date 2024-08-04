@@ -27,7 +27,6 @@ const useTokenCheck = () => {
 
   useEffect(() => {
     dispatch(apiSlice.util.resetApiState());
-    console.log('호출');
   }, [dispatch, accessToken]);
 
   useEffect(() => {
