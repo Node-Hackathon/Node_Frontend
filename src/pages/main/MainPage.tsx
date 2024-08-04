@@ -13,21 +13,19 @@ import {
   PromotionImg,
   Diary,
   Wrapper,
+  GoToDiary,
 } from './styles';
 import BlockGame from '../../assets/images/BlockGame.png';
 import SettingGame from '../../assets/images/SettingGame.png';
 import ReverseCardGame from '../../assets/images/ReverseCardGame.png';
 import FindNumberGame from '../../assets/images/FindNumberGame.png';
 import HandShake from '../../assets/images/HandShake.png';
+import DiaryBackGround from '../../assets/images/DiaryBackGround.png';
 import { Link } from 'react-router-dom';
 import { Label7 } from '../../components/text/Text';
 import { theme } from '../../styles/theme';
-import { RiBook3Line } from 'react-icons/ri';
-import { useGetUserByIdQuery } from '../../services/myPage/myPageApi';
 
 export default function MainPage() {
-  const { data: userData } = useGetUserByIdQuery();
-
   return (
     <MainContainer>
       {/* 배너 */}
@@ -110,27 +108,18 @@ export default function MainPage() {
           </GoToEdu>
         </Link>
       </Education>
+      {/* 일기 */}
       <Diary>
         <Wrapper>
-          <Text>{userData?.name}님의 일기장</Text>
+          <Text>추억을 기록한다는 것</Text>
           <Text fontSize="15px" $marginTop="1rem">
-            오늘의 감정 기록하러 가기
+            지나가는 오늘의 기억을 노드와 함께해요
           </Text>
         </Wrapper>
-        <Link to="/diary">
-          <div
-            style={{
-              border: '1px solid white',
-              borderRadius: '30%',
-              padding: '1rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <RiBook3Line color="white" size={'3rem'} />
-          </div>
+        <Link to={'/diary'}>
+          <GoToDiary>일기 작성하러 가기</GoToDiary>
         </Link>
+        <img src={DiaryBackGround} width={'95%'} />
       </Diary>
       {/* 홍보 */}
       <Promotion>
