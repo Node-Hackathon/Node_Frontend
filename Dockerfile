@@ -7,6 +7,9 @@ WORKDIR /app
 # 패키지 파일을 복사합니다.
 COPY package.json package-lock.json ./
 
+# .env 파일 복사
+COPY .env.production .env.development ./
+
 # 의존성을 설치합니다.
 RUN npm install
 
