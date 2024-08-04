@@ -8,6 +8,7 @@ const colors = {
   primaryPoint2: '#055858',
   primaryPoint3: '#00C4B8',
   backgroundNormal: '#FFFFFF',
+  backgroundNeutral: '#FFFCFC',
   backgroundLight: '#EDEDED',
   backgroundPoint: '#427FAA',
   textNormal: '#D9D9D9',

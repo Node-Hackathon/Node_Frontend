@@ -36,6 +36,10 @@ function SignUpSecond({
           size="l"
           register={register('password', {
             required: '비밀번호를 입력해주세요.',
+            pattern: {
+              value: /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*#?&])[a-zA-Z\d@$!%*#?&]{8,}$/,
+              message: '8자리 이상, 영어 문자, 숫자, 특수 문자를 포함해서 작성해주세요.',
+            },
           })}
           errors={errors}
         />

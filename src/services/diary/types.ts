@@ -10,3 +10,9 @@ export interface DiaryFormType {
   answer4: string;
   answer5: string;
 }
+
+export interface DiaryReturnType extends DiaryFormType {
+  date: string;
+  id: number;
+  userId: number;
+}

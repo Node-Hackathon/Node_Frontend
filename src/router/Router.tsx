@@ -32,7 +32,7 @@ import CardResultPage from '../pages/result/CardResultPage';
 import ManualPage from '../pages/manual/ManualPage';
 import ManualDetailPage from '../pages/manualDetail/ManualDetailPage';
 import DiaryPage from '../pages/survey/DiaryPage';
-import DiaryResult from '../pages/survey/DiaryResult';
+import DiaryResult from '../components/diary/DiaryResult';
 
 const router = createBrowserRouter([
   {
@@ -81,6 +81,10 @@ const router = createBrowserRouter([
             element: <NumberGame />,
           },
         ],
+      },
+      {
+        path: 'mypage/guardianInfo/update',
+        element: <GuardianPage />,
       },
     ],
   },
@@ -196,10 +200,6 @@ const router = createBrowserRouter([
       {
         path: 'mypage/guardianInfo',
         element: <GuardianInfoPage />,
-      },
-      {
-        path: 'mypage/guardianInfo/update',
-        element: <GuardianPage />,
       },
       // 게임 누적 결과 페이지
       {

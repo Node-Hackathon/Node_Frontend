@@ -117,18 +117,20 @@ export default function MainPage() {
             오늘의 감정 기록하러 가기
           </Text>
         </Wrapper>
-        <div
-          style={{
-            border: '1px solid white',
-            borderRadius: '30%',
-            padding: '1rem',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <RiBook3Line color="white" size={'3rem'} />
-        </div>
+        <Link to="/diary">
+          <div
+            style={{
+              border: '1px solid white',
+              borderRadius: '30%',
+              padding: '1rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <RiBook3Line color="white" size={'3rem'} />
+          </div>
+        </Link>
       </Diary>
       {/* 홍보 */}
       <Promotion>

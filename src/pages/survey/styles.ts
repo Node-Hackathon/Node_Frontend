@@ -87,21 +87,6 @@ export const DiagnosisButton = styled.div`
   flex: 1;
 `;
 
-export const DiaryTextarea = styled.textarea<{ $iserror: boolean }>`
-  width: 20rem;
-  height: 10rem;
-  border-radius: 0.5rem;
-  border: 1px solid ${({ $iserror }) => ($iserror ? theme.colors.error : theme.colors.textNormal)};
-  background-color: ${theme.colors.backgroundNormal};
-  padding: 1rem;
-  font-size: 1rem;
-  font-weight: 500;
-
-  &:focus {
-    border: 1px solid ${theme.colors.primaryNormal};
-  }
-`;
-
 export const ResultContent = styled(SurveyContent)`
   align-items: center;
   justify-content: space-evenly;

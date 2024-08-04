@@ -8,7 +8,6 @@ import {
   AlertBox,
   AlertContent,
   DiagnosisButton,
-  DiaryTextarea,
   ProgressBarBox,
   SurveyBox,
   SurveyContainer,
@@ -16,6 +15,7 @@ import {
   SurveyTitle,
 } from './styles';
 import SadLogo from '../../assets/images/Sad.png';
+import Textarea from '../../components/textarea/Textarea';
 
 export default function DiaryPage() {
   const {
@@ -72,11 +72,13 @@ export default function DiaryPage() {
                     isForward={true}
                   />
                 </ProgressBarBox>
-                <DiaryTextarea
-                  value={answerState}
-                  onChange={handleChangeAnswer}
-                  $iserror={error}
-                ></DiaryTextarea>
+                <div>
+                  <Textarea
+                    value={answerState}
+                    onChange={handleChangeAnswer}
+                    error={error}
+                  ></Textarea>
+                </div>
               </SurveyContent>
               <DiagnosisButton>
                 <PrimaryButton size="l" onClick={handleNext}>
