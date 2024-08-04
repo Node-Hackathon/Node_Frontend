@@ -26,10 +26,6 @@ const useTokenCheck = () => {
   });
 
   useEffect(() => {
-    dispatch(apiSlice.util.resetApiState());
-  }, [dispatch, accessToken]);
-
-  useEffect(() => {
     // 토큰 만료 시간 체크
     const checkTokenExpiry = () => {
       const now = new Date().getTime();

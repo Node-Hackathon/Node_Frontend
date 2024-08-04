@@ -54,7 +54,6 @@ export default function UserInfoPage() {
 
       try {
         await updateUser(updatedData).unwrap();
-        console.log('수정된 정보:', updatedData);
 
         if (profileFile) {
           const formData = new FormData();

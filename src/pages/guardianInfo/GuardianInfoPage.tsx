@@ -33,6 +33,11 @@ export default function GuardianInfoPage() {
   // 우편번호 입력창 show & hide
   const [isPostcodeOpen, setIsPostcodeOpen] = useState(false);
 
+  // 보호자 정보
+  useEffect(() => {
+    refetch();
+  }, []);
+
   // 보호자 정보가 있을 경우 초기값 설정
   useEffect(() => {
     if (guardianData) {

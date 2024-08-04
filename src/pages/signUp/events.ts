@@ -324,8 +324,7 @@ export const useGuardianSignUp = () => {
   const onGuardianSubmit = async (data: GuardianFormType) => {
     try {
       if (isUpdate) {
-        const response = await updateGuardianInfo(data).unwrap();
-        console.log(response);
+        await updateGuardianInfo(data).unwrap();
         navigate('/mypage/guardianInfo', { replace: true });
         guardianReset();
       } else {
