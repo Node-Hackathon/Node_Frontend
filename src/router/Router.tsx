@@ -33,6 +33,7 @@ import ManualPage from '../pages/manual/ManualPage';
 import ManualDetailPage from '../pages/manualDetail/ManualDetailPage';
 import DiaryPage from '../pages/survey/DiaryPage';
 import DiaryResult from '../pages/survey/DiaryResult';
+import DiaryListPage from '../pages/diaryList/DiaryListPage';
 
 const router = createBrowserRouter([
   {
@@ -215,6 +216,11 @@ const router = createBrowserRouter([
       {
         path: 'mypage/totalReslut',
         element: <DiagnosisTotalReslutPage />,
+      },
+      // 일기 보기 페이지
+      {
+        path: '/diaryList',
+        element: <DiaryListPage />,
       },
     ],
   },

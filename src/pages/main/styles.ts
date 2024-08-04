@@ -64,7 +64,7 @@ export const Education = styled.div`
 
 export const GoToEdu = styled.div`
   width: 90%;
-  height: fit-content;
+  height: 10rem;
 
   padding: 2rem 2.5rem;
   margin: 0.5rem auto;
