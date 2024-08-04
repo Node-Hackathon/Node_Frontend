@@ -8,6 +8,7 @@ import apiSlice from '../../services/apiSlice';
 import { setStepReset } from '../../store/reducer/progressSlice';
 import { resetAnswers } from '../../store/reducer/diagnosisSlice';
 import { clearUserName } from '../../store/reducer/userSlice';
+import { resetDiary } from '../../store/reducer/diarySlice';
 
 export const useMyPageEvents = () => {
   const navigate = useNavigate();
@@ -57,6 +58,7 @@ export const useMyPageEvents = () => {
       dispatch(setStepReset());
       dispatch(resetAnswers());
       dispatch(clearUserName());
+      dispatch(resetDiary());
       dispatch(apiSlice.util.resetApiState());
       await new Promise((resolve) => setTimeout(resolve, 0));
       dispatch(logout());
