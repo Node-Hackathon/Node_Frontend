@@ -4,11 +4,14 @@ import { useGetDiaryResultQuery } from '../../services/diary/diaryApi';
 import { Container } from '../gameResult/styles';
 import { IoCalendarNumberOutline } from 'react-icons/io5';
 import { NoExistDiaryList } from './NoExistDiaryList';
+import { useEffect } from 'react';
 
 export default function DiaryListPage() {
-  const { data: DiaryData } = useGetDiaryResultQuery();
+  const { data: DiaryData, refetch } = useGetDiaryResultQuery();
 
-  console.log(DiaryData);
+  useEffect(() => {
+    refetch();
+  }, []);
 
   if (DiaryData?.length === 0) {
     return <NoExistDiaryList />;
