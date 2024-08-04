@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Modal from '../../components/modal/Modal';
 import { useLogout } from '../../hooks/useLogout';
 import myPageApi from '../../services/myPage/myPageApi';
@@ -22,7 +23,12 @@ export default function MyPage() {
   const { handleLogout, handleModalNo, handleModalYes, isOpen, question1, question2 } = useLogout();
 
   // 유저 정보 조회
-  const { data: userData } = myPageApi.useGetUserByIdQuery();
+  const { data: userData, refetch } = myPageApi.useGetUserByIdQuery();
+
+  // 유저 정보 재조회
+  useEffect(() => {
+    refetch();
+  }, []);
 
   return (
     <Container>
