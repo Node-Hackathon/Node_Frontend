@@ -46,7 +46,7 @@ export default function DiaryPage() {
               <Body2 color={theme.colors.textNeutral}>오늘은 이미 일기를 작성했어요</Body2>
             </AlertContent>
             <PrimaryButton size="m" onClick={handleBack}>
-              이전 페이지로
+              일기 보기
             </PrimaryButton>
           </AlertBox>
         ) : (
