@@ -290,7 +290,6 @@ export const useDiary = () => {
       };
       handleSubmitAnswer(formattedData);
     } else {
-      console.log(localAnswers);
       dispatch(nextStep());
     }
 
@@ -309,14 +308,6 @@ export const useDiary = () => {
     dispatch(setStepReset());
     dispatch(resetDiary());
     dispatch(closeModal());
-  };
-
-  const handleGoHome = () => {
-    navigate('/main', { replace: true });
-  };
-
-  const handleGoResult = () => {
-    navigate('/mypage/diaryResult', { replace: true });
   };
 
   const handleSubmitAnswer = async (data: DiaryFormType) => {
@@ -348,8 +339,6 @@ export const useDiary = () => {
     handleRestart,
     writtenData,
     isWrittenSuccess,
-    handleGoHome,
-    handleGoResult,
   };
 };
 
