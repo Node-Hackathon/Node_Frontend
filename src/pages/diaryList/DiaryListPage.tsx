@@ -23,16 +23,18 @@ export default function DiaryListPage() {
         <ResultType>
           <span>일기장</span>
         </ResultType>
-        {DiaryData?.map((diary, index) => (
-          <Link key={index} to={'/diary/result'} state={diary}>
-            <ResultDetail>
-              <div>
-                날짜: <span>{diary.date}</span>
-              </div>
-              <IoCalendarNumberOutline />
-            </ResultDetail>
-          </Link>
-        ))}
+        {DiaryData?.slice()
+          .reverse()
+          .map((diary, index) => (
+            <Link key={index} to={'/diary/result'} state={diary}>
+              <ResultDetail>
+                <div>
+                  날짜: <span>{diary.date}</span>
+                </div>
+                <IoCalendarNumberOutline />
+              </ResultDetail>
+            </Link>
+          ))}
       </ResultBox>
     </Container>
   );
