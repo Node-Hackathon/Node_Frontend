@@ -1,5 +1,5 @@
 # 베이스 이미지로 Node.js를 사용합니다.
-FROM node:14
+FROM --platform=linux/amd64 node:14
 
 # 작업 디렉토리를 설정합니다.
 WORKDIR /app
