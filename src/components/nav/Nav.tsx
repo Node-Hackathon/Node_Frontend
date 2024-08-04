@@ -12,6 +12,7 @@ function Nav({ isClosing, setIsHambergerOpen }: NavType) {
   const {
     handleToggleDetails,
     handleGoToCheck,
+    handleGoToDiary,
     handleGoTo4DFrame,
     handleGoToGame,
     handleGoToCenter,
@@ -38,6 +39,7 @@ function Nav({ isClosing, setIsHambergerOpen }: NavType) {
         <NavList onClick={handleGoTo4DFrame}>포디프레임</NavList>
         <NavList onClick={handleGoToGame}>게임</NavList>
       </NavDetails>
+      <NavContent onClick={handleGoToDiary}>일기</NavContent>
       <NavContent onClick={handleGoToCenter}>상담 센터</NavContent>
       <NavContent onClick={handleGoToMypage}>마이페이지</NavContent>
       <StateBtn onClick={accessToken ? handleLogout : handleLogin}>

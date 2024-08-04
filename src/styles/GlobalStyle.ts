@@ -40,7 +40,8 @@ export const GlobalStyle = styled.createGlobalStyle`
     display: none;
   }
 
-  input {
+  input,
+  textarea {
     font-family:
       'Pretendard',
       -apple-system,

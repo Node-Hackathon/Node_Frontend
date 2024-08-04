@@ -32,6 +32,8 @@ export const tokenSlice = createSlice({
       localStorage.removeItem('expiryTime');
       localStorage.removeItem('checkedValues');
       localStorage.removeItem('name');
+      localStorage.removeItem('diaryAnswers');
+      localStorage.removeItem('diaryExpiration');
     },
   },
 });

@@ -8,6 +8,7 @@ import { clearUserName, setUserName } from '../store/reducer/userSlice';
 import apiSlice from '../services/apiSlice';
 import { setStepReset } from '../store/reducer/progressSlice';
 import { resetAnswers } from '../store/reducer/diagnosisSlice';
+import { resetDiary } from '../store/reducer/diarySlice';
 
 const useTokenCheck = () => {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ const useTokenCheck = () => {
         dispatch(setStepReset());
         dispatch(resetAnswers());
         dispatch(clearUserName());
+        dispatch(resetDiary());
         dispatch(apiSlice.util.resetApiState());
         navigate('/signIn', { replace: true });
       }

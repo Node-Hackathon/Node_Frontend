@@ -18,6 +18,12 @@ export const useNavEvents = ({ setIsHambergerOpen }: EventsType) => {
     navigate('/diagnosis');
   };
 
+  // "일기" 클릭 시
+  const handleGoToDiary = () => {
+    setIsHambergerOpen((prevState) => !prevState);
+    navigate('/diary');
+  };
+
   // "교육 -> 포디프레임" 클릭 시
   const handleGoTo4DFrame = () => {
     setIsHambergerOpen((prevState) => !prevState);
@@ -51,6 +57,7 @@ export const useNavEvents = ({ setIsHambergerOpen }: EventsType) => {
   return {
     handleToggleDetails,
     handleGoToCheck,
+    handleGoToDiary,
     handleGoTo4DFrame,
     handleGoToCenter,
     handleGoToMypage,
