@@ -109,26 +109,52 @@ export const EduImg = styled.div`
 
 export const Diary = styled.div`
   width: 100%;
-  height: 10rem;
+  height: 12.5rem;
 
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  flex-direction: row;
+  justify-content: center;
+  flex-direction: column;
 
-  padding: 0rem 1rem;
+  padding: 2rem 1rem;
 
-  background-color: rgb(79, 161, 230);
+  background-color: #629bd9;
+  position: relative;
+
+  img {
+    position: absolute;
+    bottom: 2rem;
+  }
 `;
 
 export const Wrapper = styled.div`
-  width: fit-content;
+  width: 100%;
   height: fit-content;
 
+  margin-bottom: 1.5rem;
+
   display: flex;
-  align-items: start;
+  align-items: center;
   justify-content: center;
   flex-direction: column;
+`;
+
+export const GoToDiary = styled.div`
+  width: 12rem;
+  height: 2.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  font-weight: 600;
+
+  border-radius: 0.5rem;
+  background-color: #4145a8;
+
+  position: relative;
+  z-index: 999;
 `;
 
 export const Promotion = styled.div`

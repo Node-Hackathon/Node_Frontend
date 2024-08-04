@@ -252,7 +252,7 @@ export const useDiary = () => {
 
   // 오늘 일기 작성 완료 시 결과 페이지로 이동
   const handleBack = () => {
-    navigate('/diaryResult');
+    navigate('/diaryList');
   };
 
   // 텍스트 입력 핸들러 처리
