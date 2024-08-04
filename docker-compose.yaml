@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  web:
+    restart: always
+    command: npm start
+    container_name: web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    stdin_open: true
