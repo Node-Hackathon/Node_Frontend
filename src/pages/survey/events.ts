@@ -290,6 +290,7 @@ export const useDiary = () => {
       };
       handleSubmitAnswer(formattedData);
     } else {
+      console.log(localAnswers);
       dispatch(nextStep());
     }
 
@@ -320,11 +321,11 @@ export const useDiary = () => {
 
   const handleSubmitAnswer = async (data: DiaryFormType) => {
     try {
-      await createDiary(data).unwrap();
+      const response = await createDiary(data).unwrap();
       dispatch(setStepReset());
       dispatch(resetDiary());
       refetch();
-      navigate('result', { replace: true });
+      navigate('result', { state: response, replace: true });
     } catch (error) {
       console.error(error);
       alert('결과 전송에 실패했습니다.');
