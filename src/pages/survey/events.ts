@@ -310,21 +310,13 @@ export const useDiary = () => {
     dispatch(closeModal());
   };
 
-  const handleGoHome = () => {
-    navigate('/main', { replace: true });
-  };
-
-  const handleGoResult = () => {
-    navigate('/mypage/diaryResult', { replace: true });
-  };
-
   const handleSubmitAnswer = async (data: DiaryFormType) => {
     try {
-      await createDiary(data).unwrap();
+      const response = await createDiary(data).unwrap();
       dispatch(setStepReset());
       dispatch(resetDiary());
       refetch();
-      navigate('result', { replace: true });
+      navigate('result', { state: response, replace: true });
     } catch (error) {
       console.error(error);
       alert('결과 전송에 실패했습니다.');
@@ -347,8 +339,6 @@ export const useDiary = () => {
     handleRestart,
     writtenData,
     isWrittenSuccess,
-    handleGoHome,
-    handleGoResult,
   };
 };
 

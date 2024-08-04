@@ -41,7 +41,7 @@ export default function GuardianPage() {
             register={guardianRegister('guardian_phone_num', {
               required: '전화번호를 입력해주세요.',
               pattern: {
-                value: /^010-\d{4}-\d{4}$/,
+                value: /^\d{3}-\d{4}-\d{4}$/,
                 message: '010-0000-0000 형식으로 입력해주세요.',
               },
             })}
