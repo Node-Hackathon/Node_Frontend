@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { quitCloseModal, quitOpenModal, resetModal } from '../../store/reducer/modalSlice';
 import { RootState } from '../../store/store';
 import { logout } from '../../store/reducer/tokenSlice';
-import apiSlice from '../../services/apiSlice';
 import { setStepReset } from '../../store/reducer/progressSlice';
 import { resetAnswers } from '../../store/reducer/diagnosisSlice';
 import { clearUserName } from '../../store/reducer/userSlice';
@@ -54,15 +53,16 @@ export const useMyPageEvents = () => {
     dispatch(quitCloseModal());
     try {
       await signSecession({}).unwrap();
+
       dispatch(resetModal());
       dispatch(setStepReset());
       dispatch(resetAnswers());
       dispatch(clearUserName());
       dispatch(resetDiary());
-      dispatch(apiSlice.util.resetApiState());
-      await new Promise((resolve) => setTimeout(resolve, 0));
       dispatch(logout());
+
       navigate('/', { replace: true });
+      console.log(localStorage.getItem('accessToken'));
     } catch (err) {
       alert('회원 탈퇴에 실패했습니다.');
       console.log(err);

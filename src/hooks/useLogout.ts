@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { closeModal, openModal } from '../store/reducer/modalSlice';
+import { closeModal, openModal, resetModal } from '../store/reducer/modalSlice';
 import { logout } from '../store/reducer/tokenSlice';
 import { useNavigate } from 'react-router-dom';
 import { RootState } from '../store/store';
@@ -32,6 +32,7 @@ export const useLogout = () => {
     dispatch(resetAnswers());
     dispatch(clearUserName());
     dispatch(resetDiary());
+    dispatch(resetModal());
     dispatch(apiSlice.util.resetApiState());
     navigate('/', { replace: true });
   };

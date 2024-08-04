@@ -8,6 +8,7 @@ export const myPageApi = apiSlice.injectEndpoints({
       query: () => ({
         url: '/mypage-api/mypage-inquiry',
         method: 'GET',
+        providesTags: ['User'],
       }),
     }),
     // 유저 정보 수정

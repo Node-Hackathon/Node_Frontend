@@ -26,6 +26,11 @@ const useTokenCheck = () => {
   });
 
   useEffect(() => {
+    dispatch(apiSlice.util.resetApiState());
+    console.log('호출');
+  }, [dispatch, accessToken]);
+
+  useEffect(() => {
     // 토큰 만료 시간 체크
     const checkTokenExpiry = () => {
       const now = new Date().getTime();
@@ -54,7 +59,7 @@ const useTokenCheck = () => {
     } else if (isUserError) {
       console.error('사용자 정보를 가져오는데 실패했습니다.');
     }
-  }, [isUserSuccess, userData, dispatch]);
+  }, [isUserSuccess, userData, dispatch, isUserError]);
 };
 
 export default useTokenCheck;

@@ -57,6 +57,7 @@ export const signApi = apiSlice.injectEndpoints({
         url: '/sign-api/sign-secession',
         method: 'DELETE',
       }),
+      invalidatesTags: ['User'],
     }),
   }),
 });
