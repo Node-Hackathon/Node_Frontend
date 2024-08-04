@@ -10,6 +10,7 @@ import { logout } from '../store/reducer/tokenSlice';
 import { setStepReset } from '../store/reducer/progressSlice';
 import { resetAnswers } from '../store/reducer/diagnosisSlice';
 import { clearUserName } from '../store/reducer/userSlice';
+import { resetDiary } from '../store/reducer/diarySlice';
 
 const baseQuery = fetchBaseQuery({
   baseUrl: process.env.REACT_APP_API_URL,
@@ -36,6 +37,7 @@ const baseQueryWithReauth: BaseQueryFn<string | FetchArgs, unknown, FetchBaseQue
     api.dispatch(setStepReset());
     api.dispatch(resetAnswers());
     api.dispatch(clearUserName());
+    api.dispatch(resetDiary());
     api.dispatch(apiSlice.util.resetApiState());
   }
 
@@ -46,7 +48,7 @@ const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: baseQueryWithReauth,
   endpoints: () => ({}),
-  tagTypes: ['Guardian'],
+  tagTypes: ['Guardian', 'Diary'],
 });
 
 export default apiSlice;

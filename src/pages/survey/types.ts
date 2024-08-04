@@ -5,3 +5,8 @@ export interface CheckBoxType {
   checked: boolean;
   onChange: () => void;
 }
+
+export interface AnswerType {
+  id: number;
+  diary_question: string;
+}

@@ -3,7 +3,7 @@ import checkboxBefore from '../../assets/images/CheckBox-before.svg';
 import checkboxAfter from '../../assets/images/CheckBox-after.svg';
 import { theme } from '../../styles/theme';
 
-export const DiagnosisContainer = styled.section`
+export const SurveyContainer = styled.section`
   width: 100%;
   height: calc(100% - 4rem);
   min-height: calc(100% - 4rem);
@@ -13,19 +13,19 @@ export const DiagnosisContainer = styled.section`
   overflow-x: hidden;
 `;
 
-export const DiagnosisBox = styled.div`
+export const SurveyBox = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
 `;
 
-export const DiagnosisContent = styled.main`
+export const SurveyContent = styled.main`
   display: flex;
   flex-direction: column;
   flex: 1;
 `;
 
-export const DiagnosisTitle = styled.div`
+export const SurveyTitle = styled.div`
   max-width: 20rem;
   display: flex;
   flex-direction: column;
@@ -87,7 +87,22 @@ export const DiagnosisButton = styled.div`
   flex: 1;
 `;
 
-export const ResultContent = styled(DiagnosisContent)`
+export const DiaryTextarea = styled.textarea<{ $iserror: boolean }>`
+  width: 20rem;
+  height: 10rem;
+  border-radius: 0.5rem;
+  border: 1px solid ${({ $iserror }) => ($iserror ? theme.colors.error : theme.colors.textNormal)};
+  background-color: ${theme.colors.backgroundNormal};
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+
+  &:focus {
+    border: 1px solid ${theme.colors.primaryNormal};
+  }
+`;
+
+export const ResultContent = styled(SurveyContent)`
   align-items: center;
   justify-content: space-evenly;
 `;
@@ -99,4 +114,27 @@ export const ResultTitlePair = styled.div`
   span {
     color: ${theme.colors.textNeutral};
   }
+`;
+
+export const AlertBox = styled.div`
+  height: calc(100% - 4rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.44rem;
+`;
+
+export const AlertContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.88rem;
+`;
+
+export const AlertButton = styled.div`
+  width: 20rem;
+  display: flex;
+  justify-content: space-between;
 `;

@@ -5,12 +5,12 @@ import { theme } from '../../styles/theme';
 import CheckBox from './CheckBox';
 import {
   CheckBoxContainer,
-  DiagnosisBox,
+  SurveyBox,
   DiagnosisButton,
-  DiagnosisContainer,
-  DiagnosisContent,
-  DiagnosisTitle,
+  SurveyContent,
+  SurveyTitle,
   ProgressBarBox,
+  SurveyContainer,
 } from './styles';
 import { useDiagnosis } from './events';
 import Modal from '../../components/modal/Modal';
@@ -34,7 +34,7 @@ export default function DiagnosisPage() {
   } = useDiagnosis();
 
   return (
-    <DiagnosisContainer>
+    <SurveyContainer>
       <Modal
         isOpen={isOpen}
         question1={question1}
@@ -43,12 +43,12 @@ export default function DiagnosisPage() {
         onClickYes={handleContinue}
       />
       {isSuccess && data && (
-        <DiagnosisBox>
-          <DiagnosisContent>
-            <DiagnosisTitle>
+        <SurveyBox>
+          <SurveyContent>
+            <SurveyTitle>
               <Label1 color={theme.colors.primaryStrong}>질문 {currentStep}</Label1>
-              <Title4>{data[currentStep - 1].diagnosis_detail}</Title4>
-            </DiagnosisTitle>
+              <Title4>{data[currentStep - 1]?.diagnosis_detail}</Title4>
+            </SurveyTitle>
             <ProgressBarBox>
               <ProgressBar
                 currentStep={currentStep}
@@ -75,7 +75,7 @@ export default function DiagnosisPage() {
                 그렇다
               </CheckBox>
             </CheckBoxContainer>
-          </DiagnosisContent>
+          </SurveyContent>
           <DiagnosisButton>
             <SecondaryButton size="m" onClick={handlePrev}>
               이전
@@ -84,8 +84,8 @@ export default function DiagnosisPage() {
               다음
             </PrimaryButton>
           </DiagnosisButton>
-        </DiagnosisBox>
+        </SurveyBox>
       )}
-    </DiagnosisContainer>
+    </SurveyContainer>
   );
 }

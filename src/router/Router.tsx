@@ -14,8 +14,8 @@ import FDFramePage from '../pages/education/FDFramePage';
 import BlockPage from '../pages/4DFrame/4DBlock/BlockPage';
 import CompositionPage from '../pages/4DFrame/4DComposition/CompositionPage';
 import CenterPage from '../pages/center/CenterPage';
-import DiagnosisPage from '../pages/diagnosis/DiagnosisPage';
-import DiagnosisResult from '../pages/diagnosis/DiagnosisResult';
+import DiagnosisPage from '../pages/survey/DiagnosisPage';
+import DiagnosisResult from '../pages/survey/DiagnosisResult';
 import CardGame from '../pages/game/card/CardGame';
 import MyPage from '../pages/mypage/MyPage';
 import UserInfoPage from '../pages/userInfo/UserInfoPage';
@@ -31,6 +31,8 @@ import DiagnosisTotalReslutPage from '../pages/diagnosisTotalReslut/DiagnosisTot
 import CardResultPage from '../pages/result/CardResultPage';
 import ManualPage from '../pages/manual/ManualPage';
 import ManualDetailPage from '../pages/manualDetail/ManualDetailPage';
+import DiaryPage from '../pages/survey/DiaryPage';
+import DiaryResult from '../pages/survey/DiaryResult';
 
 const router = createBrowserRouter([
   {
@@ -163,6 +165,20 @@ const router = createBrowserRouter([
           {
             path: 'result',
             element: <DiagnosisResult />,
+          },
+        ],
+      },
+      // 일기 페이지
+      {
+        path: 'diary',
+        children: [
+          {
+            path: '',
+            element: <DiaryPage />,
+          },
+          {
+            path: 'result',
+            element: <DiaryResult />,
           },
         ],
       },

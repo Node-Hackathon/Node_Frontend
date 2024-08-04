@@ -4,9 +4,9 @@ import { Body2, Body4, Title2 } from '../../components/text/Text';
 import { theme } from '../../styles/theme';
 import { useDiagnosisResult } from './events';
 import {
-  DiagnosisBox,
+  SurveyBox,
   DiagnosisButton,
-  DiagnosisContainer,
+  SurveyContainer,
   ResultContent,
   ResultTitlePair,
 } from './styles';
@@ -26,8 +26,8 @@ export default function DiagnosisResult() {
   } = useDiagnosisResult();
 
   return (
-    <DiagnosisContainer>
-      <DiagnosisBox>
+    <SurveyContainer>
+      <SurveyBox>
         <ResultContent>
           <Title2>검사결과</Title2>
           {score >= 7 ? (
@@ -55,7 +55,7 @@ export default function DiagnosisResult() {
             확인
           </PrimaryButton>
         </DiagnosisButton>
-      </DiagnosisBox>
+      </SurveyBox>
       <Modal
         isOpen={isOpen}
         question1={question1}
@@ -63,6 +63,6 @@ export default function DiagnosisResult() {
         onClickNo={handleModalNo}
         onClickYes={handleModalYes}
       />
-    </DiagnosisContainer>
+    </SurveyContainer>
   );
 }

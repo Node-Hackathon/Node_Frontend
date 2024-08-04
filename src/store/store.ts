@@ -5,6 +5,7 @@ import modalReducer from './reducer/modalSlice';
 import tokenReducer from './reducer/tokenSlice';
 import diagnosisReducer from './reducer/diagnosisSlice';
 import userReducer from './reducer/userSlice';
+import diaryReducer from './reducer/diarySlice';
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     token: tokenReducer,
     diagnosis: diagnosisReducer,
     user: userReducer,
+    diary: diaryReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
     // 다른 슬라이스들도 추가 가능
   },
