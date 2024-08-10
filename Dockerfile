@@ -1,13 +1,11 @@
-FROM --platform=linux/amd64 node:14 AS build
-
-WORKDIR /app
+FROM nginx:stable-apline
 
 COPY package.json package-lock.json ./
 
 RUN npm cache clean --force
 
 RUN npm install ajv@6 ajv-keywords@3 schema-utils@2 --save
-RUN npm install
+RUN npm install --force
 
 COPY . .
 
