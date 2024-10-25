@@ -1,20 +1,28 @@
 {
+  "root": true,
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "node": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:prettier/recommended"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": "./tsconfig.json"
   },
-  "plugins": ["react", "@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  },
   "rules": {
+    "prettier/prettier": ["error", { "endOfLine": "auto" }],
     "no-var": "error",
     "no-multiple-empty-lines": "error",
     "eqeqeq": "error",
