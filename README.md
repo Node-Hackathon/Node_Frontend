@@ -1,5 +1,6 @@
 <div align="center">
 <h2>[멋쟁이 사자처럼 12기 해커톤] 치매 관리 및 예방 교육 서비스 </h2>
+<h3> 2024 교내 소프트웨어 학술제 우수상(2위) </h3>
 <img width="758" alt="image" src="https://github.com/user-attachments/assets/b9cbe041-041f-4070-b236-28638c21882e"><br />
 우리 서비스는 치매 예방을 목표로 하는 인지 강화 및 교육 활동을 제공합니다. 자체적으로 개발한 게임과 AI 기술을 통해 사용자의 인지 기능을 자극하고 기억력 및 문제 해결 능력을 향상시키는 것을 목표로 합니다.
 </div>
@@ -177,3 +178,7 @@
 - **프론트엔드 배포 및 도메인 설정**
   - Docker와 Nginx를 활용한 이미지 생성 및 컨테이너 실행
   - 도메인 구매 및 IP 주소 연결을 통한 배포 환경 구성
+
+
+https://github.com/user-attachments/assets/1458369f-9868-464d-86cf-643b4ac7c4c5
+
