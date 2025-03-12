@@ -79,7 +79,7 @@
 ## 팀원 구성
 | **김유성 - 팀장** | **이민욱** | **황형진** | **최지은** | **김영훈** |
 | :------: |  :------: | :------: | :------: | :------: |
-| [<img src="https://avatars.githubusercontent.com/u/107562291?v=4" height=150 width=150> <br/> @kimys5278](https://github.com/kimys5278) | [<img src="https://avatars.githubusercontent.com/u/31334541?v=4" height=150 width=150> <br/> @leeminuk](https://github.com/leeminuk) | [<img src="https://avatars.githubusercontent.com/u/80672495?v=4" height=150 width=150> <br/> @HwangHyeongjin](https://github.com/HwangHyeongjin) | [<img src="https://avatars.githubusercontent.com/u/122079153?v=4" height=150 width=150> <br/> @Cjieun](https://github.com/Cjieun) | [<img src="https://avatars.githubusercontent.com/u/145416076?v=4" height=150 width=150> <br/> @eth220421](https://github.com/eth220421) | 
+| [<img src="https://avatars.githubusercontent.com/u/107562291?v=4" height=150 width=150> <br/> @kimys5278](https://github.com/kimys5278) | [<img src="https://avatars.githubusercontent.com/u/31334541?v=4" height=150 width=150> <br/> @leeminuk](https://github.com/leeminwuk) | [<img src="https://avatars.githubusercontent.com/u/80672495?v=4" height=150 width=150> <br/> @HwangHyeongjin](https://github.com/HwangHyeongjin) | [<img src="https://avatars.githubusercontent.com/u/122079153?v=4" height=150 width=150> <br/> @Cjieun](https://github.com/Cjieun) | [<img src="https://avatars.githubusercontent.com/u/145416076?v=4" height=150 width=150> <br/> @eth220421](https://github.com/eth220421) | 
 | 백엔드</br>AI | 프론트</br>백엔드 | 백엔드 | 프론트 | 프론트 |
 
 
@@ -112,6 +112,19 @@
 - AI 서버 배포
 - 백 배포
 - 프론트 배포
+
+### 이민욱 - 백엔드 / 프론트
+- 치매 센터 정보 조회
+    - 공공데이터를 기반으로 전국의 치매 관리 센터 정보 제공
+    - 도시별 필터를 통해 사용자가 원하는 지역의 정보를 쉽게 찾을 수 있음
+- 치매 증상 진단
+    - 자가 체크리스트를 통해 사용자가 스스로 치매 증상 진단 가능
+    - 일별 결과를 누적하여 그래프로 시각화 하여 확인 가능
+- 일기 작성
+    - 하루 일과를 간단하게 기록할 수 있는 질문을 제공
+    - 작성된 일기는 DB에 저장되어 날짜별로 확인 가능
+- 뇌 건강 게임
+    - 숫자 맞추기와 그림 맞추기 게임을 구현
 
 ### 최지은 - 프론트
 - **프로젝트 구조 설계 및 협업 준비**
